@@ -79,6 +79,8 @@ endif(EXISTS ${PROJECT_SOURCE_DIR}/.git)
 # Macros
 include(OpenMWMacros)
 
+include(PVS-Studio.cmake)
+
 # doxygen main page
 
 configure_file ("${OpenMW_SOURCE_DIR}/docs/mainpage.hpp.cmake" "${OpenMW_BINARY_DIR}/docs/mainpage.hpp")

@@ -202,3 +202,8 @@ if (MSVC)
     endif (CMAKE_CL_64)
     add_definitions("-D_USE_MATH_DEFINES")
 endif (MSVC)
+
+pvs_studio_add_target(TARGET tes3mp-server.analyze ALL
+        OUTPUT FORMAT errorfile
+        ANALYZE tes3mp-server
+        LOG target.err)
