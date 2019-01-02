@@ -591,6 +591,7 @@ add_subdirectory (components)
 
 # Apps and tools
 if (BUILD_OPENMW_MP)
+    add_subdirectory (extern/LuaBridge)
     add_subdirectory( apps/openmw-mp )
 endif()
 
