@@ -307,7 +307,9 @@ endif()
 # Make the variable accessible for other subdirectories
 set(COMPONENT_FILES ${COMPONENT_FILES} PARENT_SCOPE)
 
+if (ENABLE_PVS)
 pvs_studio_add_target(TARGET components.analyze ALL
         OUTPUT FORMAT errorfile
         ANALYZE components
         LOG target_components.err)
+endif()

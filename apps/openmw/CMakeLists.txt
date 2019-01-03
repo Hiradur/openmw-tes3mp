@@ -265,3 +265,10 @@ endif (MSVC)
 if (WIN32)
     INSTALL(TARGETS tes3mp RUNTIME DESTINATION ".")
 endif (WIN32)
+
+if (ENABLE_PVS)
+pvs_studio_add_target(TARGET tes3mp.analyze ALL
+        OUTPUT FORMAT errorfile
+        ANALYZE tes3mp
+        LOG target_tes3mp.err)
+endif()

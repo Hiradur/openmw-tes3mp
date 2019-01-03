@@ -91,9 +91,7 @@ void PacketRecordDynamic::Packet(RakNet::BitStream *bs, bool send)
             RW(record.baseId, send, true);
             RW(recordData.mId, send, true);
             RW(recordData.mName, send, true);
-            RW(recordData.mData.mType, send);
-            RW(recordData.mData.mCost, send);
-            RW(recordData.mData.mFlags, send);
+            RW(recordData.mData, send, true);
             ProcessEffects(recordData.mEffects, send);
 
             if (!record.baseId.empty())
@@ -118,9 +116,7 @@ void PacketRecordDynamic::Packet(RakNet::BitStream *bs, bool send)
             RW(recordData.mName, send, true);
             RW(recordData.mModel, send, true);
             RW(recordData.mIcon, send, true);
-            RW(recordData.mData.mWeight, send);
-            RW(recordData.mData.mValue, send);
-            RW(recordData.mData.mAutoCalc, send);
+            RW(recordData.mData, send, true);
             RW(recordData.mScript, send, true);
             ProcessEffects(recordData.mEffects, send);
 
@@ -146,10 +142,7 @@ void PacketRecordDynamic::Packet(RakNet::BitStream *bs, bool send)
 
             RW(record.baseId, send, true);
             RW(recordData.mId, send, true);
-            RW(recordData.mData.mType, send);
-            RW(recordData.mData.mCost, send);
-            RW(recordData.mData.mCharge, send);
-            RW(recordData.mData.mAutocalc, send);
+            RW(recordData.mData, send, true);
             ProcessEffects(recordData.mEffects, send);
 
             if (!record.baseId.empty())
@@ -259,12 +252,7 @@ void PacketRecordDynamic::Packet(RakNet::BitStream *bs, bool send)
             RW(recordData.mName, send, true);
             RW(recordData.mModel, send, true);
             RW(recordData.mIcon, send, true);
-            RW(recordData.mData.mType, send);
-            RW(recordData.mData.mWeight, send);
-            RW(recordData.mData.mValue, send);
-            RW(recordData.mData.mHealth, send);
-            RW(recordData.mData.mArmor, send);
-            RW(recordData.mData.mEnchant, send);
+            RW(recordData.mData, send, true);
             RW(recordData.mEnchant, send, true);
             RW(recordData.mScript, send, true);
             ProcessBodyParts(recordData.mParts, send);
@@ -299,11 +287,7 @@ void PacketRecordDynamic::Packet(RakNet::BitStream *bs, bool send)
             RW(recordData.mModel, send, true);
             RW(recordData.mIcon, send, true);
             RW(recordData.mText, send, true);
-            RW(recordData.mData.mWeight, send);
-            RW(recordData.mData.mValue, send);
-            RW(recordData.mData.mIsScroll, send);
-            RW(recordData.mData.mSkillId, send);
-            RW(recordData.mData.mEnchant, send);
+            RW(recordData.mData, send, true);
             RW(recordData.mEnchant, send, true);
             RW(recordData.mScript, send, true);
 
@@ -462,14 +446,7 @@ void PacketRecordDynamic::ProcessEffects(ESM::EffectList &effectList, bool send)
 
     for (auto &&effect : effectList.mList)
     {
-        RW(effect.mEffectID, send);
-        RW(effect.mAttribute, send);
-        RW(effect.mSkill, send);
-        RW(effect.mRange, send);
-        RW(effect.mArea, send);
-        RW(effect.mDuration, send);
-        RW(effect.mMagnMax, send);
-        RW(effect.mMagnMin, send);
+        RW(effect, send, true);
     }
 }
 

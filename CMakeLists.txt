@@ -16,6 +16,8 @@ option(BUILD_NIFTEST "build nif file tester" OFF)
 option(BUILD_MYGUI_PLUGIN "build MyGUI plugin for OpenMW resources, to use with MyGUI tools" ON)
 option(BUILD_DOCS        "build documentation." OFF )
 
+option(ENABLE_PVS "Enable PVS Studio Analyzer" FALSE)
+
 if (NOT BUILD_LAUNCHER AND NOT BUILD_BROWSER AND NOT BUILD_OPENCS AND NOT BUILD_WIZARD)
    set(USE_QT FALSE)
 else()
