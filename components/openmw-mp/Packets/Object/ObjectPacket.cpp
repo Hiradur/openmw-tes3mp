@@ -7,6 +7,7 @@ using namespace mwmp;
 
 ObjectPacket::ObjectPacket(RakNet::RakPeerInterface *peer) : BasePacket(peer)
 {
+    objectList = nullptr;
     hasCellData = false;
     packetID = 0;
     priority = HIGH_PRIORITY;

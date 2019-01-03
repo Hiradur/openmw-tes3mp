@@ -15,6 +15,7 @@ using namespace RakNet;
 
 PacketMasterQuery::PacketMasterQuery(RakNet::RakPeerInterface *peer) : BasePacket(peer)
 {
+    servers = nullptr;
     packetID = ID_MASTER_QUERY;
     orderChannel = CHANNEL_MASTER;
     reliability = RELIABLE_ORDERED_WITH_ACK_RECEIPT;

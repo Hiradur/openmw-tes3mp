@@ -7,6 +7,7 @@ using namespace mwmp;
 
 WorldstatePacket::WorldstatePacket(RakNet::RakPeerInterface *peer) : BasePacket(peer)
 {
+    worldstate = nullptr;
     packetID = 0;
     priority = HIGH_PRIORITY;
     reliability = RELIABLE_ORDERED;

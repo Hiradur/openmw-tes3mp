@@ -12,6 +12,7 @@ using namespace RakNet;
 
 PacketMasterUpdate::PacketMasterUpdate(RakNet::RakPeerInterface *peer) : BasePacket(peer)
 {
+    server = nullptr;
     packetID = ID_MASTER_UPDATE;
     orderChannel = CHANNEL_MASTER;
     reliability = RELIABLE_ORDERED_WITH_ACK_RECEIPT;

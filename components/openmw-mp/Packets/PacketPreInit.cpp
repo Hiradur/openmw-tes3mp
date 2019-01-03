@@ -4,6 +4,7 @@
 
 mwmp::PacketPreInit::PacketPreInit(RakNet::RakPeerInterface *peer) : BasePacket(peer)
 {
+    checksums = nullptr;
     packetID = ID_GAME_PREINIT;
 }
 

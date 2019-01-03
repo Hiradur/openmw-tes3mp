@@ -13,6 +13,8 @@ using namespace std;
 
 PacketMasterAnnounce::PacketMasterAnnounce(RakNet::RakPeerInterface *peer) : BasePacket(peer)
 {
+    server = nullptr;
+    func = 0;
     packetID = ID_MASTER_ANNOUNCE;
     orderChannel = CHANNEL_MASTER;
     reliability = RELIABLE_ORDERED_WITH_ACK_RECEIPT;

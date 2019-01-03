@@ -7,6 +7,7 @@ using namespace mwmp;
 
 PlayerPacket::PlayerPacket(RakNet::RakPeerInterface *peer) : BasePacket(peer)
 {
+    player = nullptr;
     packetID = 0;
     priority = HIGH_PRIORITY;
     reliability = RELIABLE_ORDERED;
