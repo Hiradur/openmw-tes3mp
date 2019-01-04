@@ -28,7 +28,7 @@ bool WorldstateProcessor::Process(RakNet::Packet &packet, BaseWorldstate &worlds
             if (!processor.second->avoidReading)
                 myPacket->Read();
 
-            if (worldstate.isValid) // -V547
+            if (worldstate.isValid) // -V547 (PVS Studio false-positive warning)
                 processor.second->Do(*myPacket, *player, worldstate);
             else
                 LOG_MESSAGE_SIMPLE(Log::LOG_ERROR, "Received %s that failed integrity check and was ignored!", processor.second->strPacketID.c_str());

@@ -11,7 +11,7 @@ namespace mwmp
         ProcessorPlayerCellState()
         {
             BPP_INIT(ID_PLAYER_CELL_STATE)
-            avoidReading = true;
+            avoidReading = true; // -V519 (PVS Studio false-positive warning)
         }
 
         virtual void Do(PlayerPacket &packet, BasePlayer *player)

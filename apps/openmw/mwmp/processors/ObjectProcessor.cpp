@@ -31,7 +31,7 @@ bool ObjectProcessor::Process(RakNet::Packet &packet, ObjectList &objectList)
             if (!request && !processor.second->avoidReading)
                 myPacket->Read();
 
-            if (objectList.isValid)
+            if (objectList.isValid) // -V547 (PVS Studio false-positive warning)
                 processor.second->Do(*myPacket, objectList);
             else
                 LOG_MESSAGE_SIMPLE(Log::LOG_ERROR, "Received %s that failed integrity check and was ignored!", processor.second->strPacketID.c_str());

@@ -36,7 +36,7 @@ bool ActorProcessor::Process(RakNet::Packet &packet, ActorList &actorList)
                 myPacket->Read();
             }
 
-            if (actorList.isValid)
+            if (actorList.isValid) // -V547 (PVS Studio false-positive warning)
                 processor.second->Do(*myPacket, actorList);
             else
                 LOG_MESSAGE_SIMPLE(Log::LOG_ERROR, "Received %s that failed integrity check and was ignored!", processor.second->strPacketID.c_str());

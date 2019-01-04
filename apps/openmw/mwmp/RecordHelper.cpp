@@ -453,8 +453,6 @@ void RecordHelper::overrideArmorRecord(const mwmp::ArmorRecord& record)
         ESM::Armor finalData = *baseData;
         finalData.mId = recordData.mId;
 
-        finalData.mParts.mParts.at(0);
-
         if (record.baseOverrides.hasName)
             finalData.mName = recordData.mName;
 

@@ -16,7 +16,7 @@ namespace mwmp
         ProcessorPlayerDeath()
         {
             BPP_INIT(ID_PLAYER_DEATH)
-            avoidReading = true;
+            avoidReading = true; // -V519 (PVS Studio false-positive warning)
         }
 
         virtual void Do(PlayerPacket &packet, BasePlayer *player)

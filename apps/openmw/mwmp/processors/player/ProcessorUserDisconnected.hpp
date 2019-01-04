@@ -18,7 +18,7 @@ namespace mwmp
         ProcessorUserDisconnected()
         {
             BPP_INIT(ID_USER_DISCONNECTED)
-            avoidReading = true;
+            avoidReading = true; // -V519 (PVS Studio false-positive warning)
         }
 
         virtual void Do(PlayerPacket &packet, BasePlayer *player)
