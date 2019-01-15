@@ -1,4 +1,4 @@
-#include "Miscellaneous.hpp"
+#include "Miscellaneous.h"
 
 #include <components/misc/stringops.hpp>
 #include <components/openmw-mp/Log.hpp>

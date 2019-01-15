@@ -1,4 +1,4 @@
-#include "Server.hpp"
+#include "Server.h"
 
 #include <components/openmw-mp/NetworkMessages.hpp>
 #include <components/openmw-mp/Log.hpp>

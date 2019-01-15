@@ -3,7 +3,7 @@
 
 #include "../Types.hpp"
 
-#include <Script/Platform.hpp>
+#include "../api.h"
 
 #define SHAPESHIFTAPI \
     {"GetScale",                    ShapeshiftFunctions::GetScale},\
@@ -18,15 +18,14 @@
     \
     {"SendShapeshift",              ShapeshiftFunctions::SendShapeshift}
 
-namespace ShapeshiftFunctions
-{
+NAMESPACE_BEGIN(ShapeshiftFunctions)
     /**
     * \brief Get the scale of a player.
     *
     * \param pid The player ID.
     * \return The scale.
     */
-    EXPORT_APIFUNCTION double CDECL GetScale(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetScale(unsigned short pid) noexcept;
 
     /**
     * \brief Check whether a player is a werewolf.
@@ -36,7 +35,7 @@ namespace ShapeshiftFunctions
     * \param pid The player ID.
     * \return The werewolf state.
     */
-    EXPORT_APIFUNCTION bool CDECL IsWerewolf(unsigned short pid) noexcept;
+    API_FUNCTION bool CDECL IsWerewolf(unsigned short pid) noexcept;
 
     /**
     * \brief Get the refId of the creature the player is disguised as.
@@ -44,7 +43,7 @@ namespace ShapeshiftFunctions
     * \param pid The player ID.
     * \return The creature refId.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetCreatureRefId(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetCreatureRefId(unsigned short pid) noexcept;
 
     /**
     * \brief Check whether a player's name is replaced by that of the creature they are
@@ -55,7 +54,7 @@ namespace ShapeshiftFunctions
     * \param pid The player ID.
     * \return The creature name display state.
     */
-    EXPORT_APIFUNCTION bool CDECL GetCreatureNameDisplayState(unsigned short pid) noexcept;
+    API_FUNCTION bool CDECL GetCreatureNameDisplayState(unsigned short pid) noexcept;
 
     /**
     * \brief Set the scale of a player.
@@ -67,7 +66,7 @@ namespace ShapeshiftFunctions
     * \param scale The new scale.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetScale(unsigned short pid, double scale) noexcept;
+    API_FUNCTION void CDECL SetScale(unsigned short pid, double scale) noexcept;
 
     /**
     * \brief Set the werewolf state of a player.
@@ -79,7 +78,7 @@ namespace ShapeshiftFunctions
     * \param isWerewolf The new werewolf state.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetWerewolfState(unsigned short pid, bool isWerewolf) noexcept;
+    API_FUNCTION void CDECL SetWerewolfState(unsigned short pid, bool isWerewolf) noexcept;
 
     /**
     * \brief Set the refId of the creature a player is disguised as.
@@ -93,7 +92,7 @@ namespace ShapeshiftFunctions
     *                             when hovered over by others.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetCreatureRefId(unsigned short pid, const char *refId) noexcept;
+    API_FUNCTION void CDECL SetCreatureRefId(unsigned short pid, const char *refId) noexcept;
 
     /**
     * \brief Set whether a player's name is replaced by that of the creature they are
@@ -103,7 +102,7 @@ namespace ShapeshiftFunctions
     * \param displayState The creature name display state.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetCreatureNameDisplayState(unsigned short pid, bool displayState) noexcept;
+    API_FUNCTION void CDECL SetCreatureNameDisplayState(unsigned short pid, bool displayState) noexcept;
 
     /**
     * \brief Send a PlayerShapeshift packet about a player.
@@ -114,7 +113,7 @@ namespace ShapeshiftFunctions
     * \param pid The player ID.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendShapeshift(unsigned short pid);
-}
+    API_FUNCTION void CDECL SendShapeshift(unsigned short pid);
+NAMESPACE_END()
 
 #endif //OPENMW_SHAPESHIFTAPI_HPP

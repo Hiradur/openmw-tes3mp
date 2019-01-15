@@ -1,4 +1,4 @@
-#include "Spells.hpp"
+#include "Spells.h"
 
 #include <components/misc/stringops.hpp>
 #include <components/openmw-mp/NetworkMessages.hpp>

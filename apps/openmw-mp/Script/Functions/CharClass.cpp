@@ -2,7 +2,7 @@
 // Created by koncord on 29.08.16.
 //
 
-#include "CharClass.hpp"
+#include "CharClass.h"
 
 #include <components/openmw-mp/NetworkMessages.hpp>
 

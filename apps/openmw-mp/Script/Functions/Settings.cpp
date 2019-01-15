@@ -1,4 +1,4 @@
-#include "Settings.hpp"
+#include "Settings.h"
 
 #include <components/openmw-mp/NetworkMessages.hpp>
 #include <components/openmw-mp/Log.hpp>

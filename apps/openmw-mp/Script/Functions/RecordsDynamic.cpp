@@ -4,10 +4,10 @@
 #include <apps/openmw-mp/Networking.hpp>
 #include <apps/openmw-mp/Player.hpp>
 #include <apps/openmw-mp/Script/ScriptFunctions.hpp>
-#include <apps/openmw-mp/Script/Functions/Worldstate.hpp>
 #include <fstream>
 
-#include "RecordsDynamic.hpp"
+#include "Worldstate.h"
+#include "RecordsDynamic.h"
 
 using namespace std;
 using namespace mwmp;

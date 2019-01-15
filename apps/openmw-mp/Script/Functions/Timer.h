@@ -6,10 +6,9 @@
 #define OPENMW_TIMER_HPP
 
 #include <Script/ScriptFunction.hpp>
-#include <Script/Platform.hpp>
+#include "../api.h"
 
-namespace TimerFunctions
-{
+NAMESPACE_BEGIN(TimerFunctions)
     /**
 * \brief Create a timer that will run a script function after a certain interval.
 *
@@ -17,7 +16,7 @@ namespace TimerFunctions
 * \param msec The interval in miliseconds.
 * \return The ID of the timer thus created.
 */
-    EXPORT_APIFUNCTION int CDECL CreateTimer(ScriptFunc callback, int msec) noexcept;
+    API_FUNCTION int CDECL CreateTimer(ScriptFunc callback, int msec) noexcept;
 
     /**
     * \brief Create a timer that will run a script function after a certain interval and pass
@@ -33,7 +32,7 @@ namespace TimerFunctions
     * \param args The arguments.
     * \return The ID of the timer thus created.
     */
-    EXPORT_APIFUNCTION int CDECL CreateTimerEx(ScriptFunc callback, int msec, const char *types, va_list args) noexcept;
+    API_FUNCTION int CDECL CreateTimerEx(ScriptFunc callback, int msec, const char *types, va_list args) noexcept;
 
     /**
     * \brief Start the timer with a certain ID.
@@ -41,7 +40,7 @@ namespace TimerFunctions
     * \param timerId The timer ID.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL StartTimer(int timerId) noexcept;
+    API_FUNCTION void CDECL StartTimer(int timerId) noexcept;
 
     /**
     * \brief Stop the timer with a certain ID.
@@ -49,7 +48,7 @@ namespace TimerFunctions
     * \param timerId The timer ID.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL StopTimer(int timerId) noexcept;
+    API_FUNCTION void CDECL StopTimer(int timerId) noexcept;
 
     /**
     * \brief Restart the timer with a certain ID for a certain interval.
@@ -58,7 +57,7 @@ namespace TimerFunctions
     * \param msec The interval in miliseconds.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL RestartTimer(int timerId, int msec) noexcept;
+    API_FUNCTION void CDECL RestartTimer(int timerId, int msec) noexcept;
 
     /**
     * \brief Free the timer with a certain ID.
@@ -66,7 +65,7 @@ namespace TimerFunctions
     * \param timerId The timer ID.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL FreeTimer(int timerId) noexcept;
+    API_FUNCTION void CDECL FreeTimer(int timerId) noexcept;
 
     /**
     * \brief Check whether a timer is elapsed.
@@ -74,7 +73,7 @@ namespace TimerFunctions
     * \param timerId The timer ID.
     * \return Whether the timer is elapsed.
     */
-    EXPORT_APIFUNCTION bool CDECL IsTimerElapsed(int timerId) noexcept;
-}
+    API_FUNCTION bool CDECL IsTimerElapsed(int timerId) noexcept;
+NAMESPACE_END()
 
 #endif //OPENMW_TIMER_HPP

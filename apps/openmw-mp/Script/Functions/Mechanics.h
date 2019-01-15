@@ -3,7 +3,7 @@
 
 #include "../Types.hpp"
 
-#include <Script/Platform.hpp>
+#include "../api.h"
 
 #define MECHANICSAPI \
     {"GetMiscellaneousChangeType", MechanicsFunctions::GetMiscellaneousChangeType},\
@@ -40,15 +40,14 @@
     {"GetDeathReason",              MechanicsFunctions::GetDeathReason},\
     {"GetPlayerKillerRefNumIndex",  MechanicsFunctions::GetPlayerKillerRefNumIndex}
 
-namespace MechanicsFunctions
-{
+NAMESPACE_BEGIN(MechanicsFunctions)
     /**
     * \brief Get the type of a PlayerMiscellaneous packet.
     *
     * \param pid The player ID.
     * \return The type.
     */
-    EXPORT_APIFUNCTION unsigned char CDECL GetMiscellaneousChangeType(unsigned short pid) noexcept;
+    API_FUNCTION unsigned char CDECL GetMiscellaneousChangeType(unsigned short pid) noexcept;
 
     /**
     * \brief Get the cell description of a player's Mark cell.
@@ -56,7 +55,7 @@ namespace MechanicsFunctions
     * \param pid The player ID.
     * \return The cell description.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetMarkCell(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetMarkCell(unsigned short pid) noexcept;
 
     /**
     * \brief Get the X position of a player's Mark.
@@ -64,7 +63,7 @@ namespace MechanicsFunctions
     * \param pid The player ID.
     * \return The X position.
     */
-    EXPORT_APIFUNCTION double CDECL GetMarkPosX(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetMarkPosX(unsigned short pid) noexcept;
 
     /**
     * \brief Get the Y position of a player's Mark.
@@ -72,7 +71,7 @@ namespace MechanicsFunctions
     * \param pid The player ID.
     * \return The Y position.
     */
-    EXPORT_APIFUNCTION double CDECL GetMarkPosY(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetMarkPosY(unsigned short pid) noexcept;
 
     /**
     * \brief Get the Z position of a player's Mark.
@@ -80,7 +79,7 @@ namespace MechanicsFunctions
     * \param pid The player ID.
     * \return The Z position.
     */
-    EXPORT_APIFUNCTION double CDECL GetMarkPosZ(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetMarkPosZ(unsigned short pid) noexcept;
 
     /**
     * \brief Get the X rotation of a player's Mark.
@@ -88,7 +87,7 @@ namespace MechanicsFunctions
     * \param pid The player ID.
     * \return The X rotation.
     */
-    EXPORT_APIFUNCTION double CDECL GetMarkRotX(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetMarkRotX(unsigned short pid) noexcept;
 
     /**
     * \brief Get the Z rotation of a player's Mark.
@@ -96,7 +95,7 @@ namespace MechanicsFunctions
     * \param pid The player ID.
     * \return The X rotation.
     */
-    EXPORT_APIFUNCTION double CDECL GetMarkRotZ(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetMarkRotZ(unsigned short pid) noexcept;
 
     /**
     * \brief Get the ID of a player's selected spell.
@@ -104,7 +103,7 @@ namespace MechanicsFunctions
     * \param pid The player ID.
     * \return The spell ID.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetSelectedSpellId(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetSelectedSpellId(unsigned short pid) noexcept;
 
     /**
     * \brief Check whether the killer of a certain player is also a player.
@@ -112,7 +111,7 @@ namespace MechanicsFunctions
     * \param pid The player ID of the killed player.
     * \return Whether the player was killed by another player.
     */
-    EXPORT_APIFUNCTION bool CDECL DoesPlayerHavePlayerKiller(unsigned short pid) noexcept;
+    API_FUNCTION bool CDECL DoesPlayerHavePlayerKiller(unsigned short pid) noexcept;
 
     /**
     * \brief Get the player ID of the killer of a certain player.
@@ -120,7 +119,7 @@ namespace MechanicsFunctions
     * \param pid The player ID of the killed player.
     * \return The player ID of the killer.
     */
-    EXPORT_APIFUNCTION int CDECL GetPlayerKillerPid(unsigned short pid) noexcept;
+    API_FUNCTION int CDECL GetPlayerKillerPid(unsigned short pid) noexcept;
 
     /**
     * \brief Get the refId of the actor killer of a certain player.
@@ -128,7 +127,7 @@ namespace MechanicsFunctions
     * \param pid The player ID of the killed player.
     * \return The refId of the killer.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetPlayerKillerRefId(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetPlayerKillerRefId(unsigned short pid) noexcept;
 
     /**
     * \brief Get the refNum of the actor killer of a certain player.
@@ -136,7 +135,7 @@ namespace MechanicsFunctions
     * \param pid The player ID of the killed player.
     * \return The refNum of the killer.
     */
-    EXPORT_APIFUNCTION unsigned int CDECL GetPlayerKillerRefNum(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetPlayerKillerRefNum(unsigned short pid) noexcept;
 
     /**
     * \brief Get the mpNum of the actor killer of a certain player.
@@ -144,7 +143,7 @@ namespace MechanicsFunctions
     * \param pid The player ID of the killed player.
     * \return The mpNum of the killer.
     */
-    EXPORT_APIFUNCTION unsigned int CDECL GetPlayerKillerMpNum(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetPlayerKillerMpNum(unsigned short pid) noexcept;
 
     /**
     * \brief Get the name of the actor killer of a certain player.
@@ -152,7 +151,7 @@ namespace MechanicsFunctions
     * \param pid The player ID of the killed player.
     * \return The name of the killer.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetPlayerKillerName(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetPlayerKillerName(unsigned short pid) noexcept;
 
     /**
     * \brief Get the draw state of a player (0 for nothing, 1 for drawn weapon,
@@ -161,7 +160,7 @@ namespace MechanicsFunctions
     * \param pid The player ID.
     * \return The draw state.
     */
-    EXPORT_APIFUNCTION unsigned int CDECL GetDrawState(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetDrawState(unsigned short pid) noexcept;
 
     /**
     * \brief Get the sneak state of a player.
@@ -169,7 +168,7 @@ namespace MechanicsFunctions
     * \param pid The player ID.
     * \return Whether the player is sneaking.
     */
-    EXPORT_APIFUNCTION bool CDECL GetSneakState(unsigned short pid) noexcept;
+    API_FUNCTION bool CDECL GetSneakState(unsigned short pid) noexcept;
 
     /**
     * \brief Set the Mark cell of a player.
@@ -184,7 +183,7 @@ namespace MechanicsFunctions
     * \param cellDescription The cell description.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetMarkCell(unsigned short pid, const char *cellDescription) noexcept;
+    API_FUNCTION void CDECL SetMarkCell(unsigned short pid, const char *cellDescription) noexcept;
 
     /**
     * \brief Set the Mark position of a player.
@@ -198,7 +197,7 @@ namespace MechanicsFunctions
     * \param z The Z position.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetMarkPos(unsigned short pid, double x, double y, double z) noexcept;
+    API_FUNCTION void CDECL SetMarkPos(unsigned short pid, double x, double y, double z) noexcept;
 
     /**
     * \brief Set the Mark rotation of a player.
@@ -211,7 +210,7 @@ namespace MechanicsFunctions
     * \param z The Z rotation.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetMarkRot(unsigned short pid, double x, double z) noexcept;
+    API_FUNCTION void CDECL SetMarkRot(unsigned short pid, double x, double z) noexcept;
 
     /**
     * \brief Set the ID of a player's selected spell.
@@ -223,7 +222,7 @@ namespace MechanicsFunctions
     * \param spellId The spell ID.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetSelectedSpellId(unsigned short pid, const char *spellId) noexcept;
+    API_FUNCTION void CDECL SetSelectedSpellId(unsigned short pid, const char *spellId) noexcept;
 
     /**
     * \brief Send a PlayerMiscellaneous packet with a Mark location to a player.
@@ -231,7 +230,7 @@ namespace MechanicsFunctions
     * \param pid The player ID.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendMarkLocation(unsigned short pid);
+    API_FUNCTION void CDECL SendMarkLocation(unsigned short pid);
 
     /**
     * \brief Send a PlayerMiscellaneous packet with a selected spell ID to a player.
@@ -239,7 +238,7 @@ namespace MechanicsFunctions
     * \param pid The player ID.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendSelectedSpell(unsigned short pid);
+    API_FUNCTION void CDECL SendSelectedSpell(unsigned short pid);
 
     /**
     * \brief Send a PlayerJail packet about a player.
@@ -261,7 +260,7 @@ namespace MechanicsFunctions
     * \param jailEndText The text that should be displayed once the jailing period is over.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL Jail(unsigned short pid, int jailDays, bool ignoreJailTeleportation, bool ignoreJailSkillIncreases,
+    API_FUNCTION void CDECL Jail(unsigned short pid, int jailDays, bool ignoreJailTeleportation, bool ignoreJailSkillIncreases,
                      const char* jailProgressText, const char* jailEndText) noexcept;
 
     /**
@@ -274,12 +273,12 @@ namespace MechanicsFunctions
     *             2 for TRIBUNAL_TEMPLE).
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL Resurrect(unsigned short pid, unsigned int type) noexcept;
+    API_FUNCTION void CDECL Resurrect(unsigned short pid, unsigned int type) noexcept;
 
     // All methods below are deprecated versions of methods from above
 
-    EXPORT_APIFUNCTION const char *CDECL GetDeathReason(unsigned short pid) noexcept;
-    EXPORT_APIFUNCTION unsigned int CDECL GetPlayerKillerRefNumIndex(unsigned short pid) noexcept;
-}
+    API_FUNCTION const char *CDECL GetDeathReason(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetPlayerKillerRefNumIndex(unsigned short pid) noexcept;
+NAMESPACE_END()
 
 #endif //OPENMW_MECHANICSAPI_HPP

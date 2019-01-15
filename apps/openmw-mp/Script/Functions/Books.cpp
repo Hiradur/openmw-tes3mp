@@ -1,4 +1,4 @@
-#include "Books.hpp"
+#include "Books.h"
 
 #include <components/openmw-mp/NetworkMessages.hpp>
 

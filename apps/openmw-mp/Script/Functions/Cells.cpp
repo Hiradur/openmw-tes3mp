@@ -1,4 +1,4 @@
-#include "Cells.hpp"
+#include "Cells.h"
 
 #include <components/openmw-mp/Log.hpp>
 #include <components/openmw-mp/NetworkMessages.hpp>

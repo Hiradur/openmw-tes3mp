@@ -2,7 +2,7 @@
 // Created by koncord on 09.12.18.
 //
 
-#include "Public.hpp"
+#include "Public.h"
 
 #include <Script/ScriptFunctions.hpp>
 #include <Script/API/PublicFnAPI.hpp>

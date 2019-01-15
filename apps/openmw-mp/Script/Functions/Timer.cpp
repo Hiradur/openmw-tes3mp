@@ -8,6 +8,8 @@
 #include <Networking.hpp>
 #include <Script/API/TimerAPI.hpp>
 
+#include "Timer.h"
+
 using namespace std;
 using namespace mwmp;
 

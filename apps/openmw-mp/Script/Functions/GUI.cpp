@@ -1,4 +1,4 @@
-#include "GUI.hpp"
+#include "GUI.h"
 
 #include <components/openmw-mp/NetworkMessages.hpp>
 

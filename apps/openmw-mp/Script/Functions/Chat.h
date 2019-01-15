@@ -3,15 +3,14 @@
 
 #include "../Types.hpp"
 
-#include <Script/Platform.hpp>
+#include "../api.h"
 
 #define CHATAPI \
     {"SendMessage",       ChatFunctions::SendMessage},\
     {"CleanChatForPid",   ChatFunctions::CleanChat},\
     {"CleanChat",         ChatFunctions::CleanChatForPid}
 
-namespace ChatFunctions
-{
+NAMESPACE_BEGIN(ChatFunctions)
     /**
     * \brief Send a message to a certain player.
     *
@@ -23,7 +22,7 @@ namespace ChatFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendMessage(unsigned short pid, const char *message, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendMessage(unsigned short pid, const char *message, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Remove all messages from chat for a certain player.
@@ -31,14 +30,14 @@ namespace ChatFunctions
     * \param pid The player ID.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL CleanChatForPid(unsigned short pid);
+    API_FUNCTION void CDECL CleanChatForPid(unsigned short pid);
 
     /**
     * \brief Remove all messages from chat for everyone on the server.
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL CleanChat();
-}
+    API_FUNCTION void CDECL CleanChat();
+NAMESPACE_END()
 
 #endif //OPENMW_CHATAPI_HPP

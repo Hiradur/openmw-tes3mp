@@ -6,7 +6,7 @@
 #include <apps/openmw-mp/Utils.hpp>
 #include <apps/openmw-mp/Script/ScriptFunctions.hpp>
 
-#include "Objects.hpp"
+#include "Objects.h"
 
 using namespace mwmp;
 

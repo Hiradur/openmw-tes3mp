@@ -5,7 +5,7 @@
 #include <apps/openmw-mp/Script/ScriptFunctions.hpp>
 #include <fstream>
 
-#include "Worldstate.hpp"
+#include "Worldstate.h"
 
 using namespace std;
 using namespace mwmp;

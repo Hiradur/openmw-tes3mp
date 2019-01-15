@@ -1,4 +1,4 @@
-#include "Stats.hpp"
+#include "Stats.h"
 
 #include <iostream>
 

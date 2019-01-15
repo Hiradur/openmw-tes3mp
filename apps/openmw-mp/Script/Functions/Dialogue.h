@@ -1,7 +1,7 @@
 #ifndef OPENMW_DIALOGUEAPI_HPP
 #define OPENMW_DIALOGUEAPI_HPP
 
-#include <Script/Platform.hpp>
+#include "../api.h"
 
 #define DIALOGUEAPI \
     {"ClearTopicChanges",       DialogueFunctions::ClearTopicChanges},\
@@ -19,8 +19,7 @@
     \
     {"InitializeTopicChanges",  DialogueFunctions::InitializeTopicChanges}
 
-namespace DialogueFunctions
-{
+NAMESPACE_BEGIN(DialogueFunctions)
     /**
     * \brief Clear the last recorded topic changes for a player.
     *
@@ -29,7 +28,7 @@ namespace DialogueFunctions
     * \param pid The player ID whose topic changes should be used.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL ClearTopicChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL ClearTopicChanges(unsigned short pid) noexcept;
 
     /**
     * \brief Get the number of indexes in a player's latest topic changes.
@@ -37,7 +36,7 @@ namespace DialogueFunctions
     * \param pid The player ID whose topic changes should be used.
     * \return The number of indexes.
     */
-    EXPORT_APIFUNCTION unsigned int CDECL GetTopicChangesSize(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetTopicChangesSize(unsigned short pid) noexcept;
 
     /**
     * \brief Add a new topic to the topic changes for a player.
@@ -46,7 +45,7 @@ namespace DialogueFunctions
     * \param topicId The topicId of the topic.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL AddTopic(unsigned short pid, const char* topicId) noexcept;
+    API_FUNCTION void CDECL AddTopic(unsigned short pid, const char* topicId) noexcept;
 
     /**
     * \brief Get the topicId at a certain index in a player's latest topic changes.
@@ -55,7 +54,7 @@ namespace DialogueFunctions
     * \param index The index of the topic.
     * \return The topicId.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetTopicId(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetTopicId(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Send a PlayerTopic packet with a player's recorded topic changes.
@@ -67,7 +66,7 @@ namespace DialogueFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendTopicChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendTopicChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Play a certain animation on a player's character by sending a PlayerAnimation
@@ -80,7 +79,7 @@ namespace DialogueFunctions
     * \param bool Whether the animation should persist or not.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL PlayAnimation(unsigned short pid, const char* groupname, int mode, int count, bool persist) noexcept;
+    API_FUNCTION void CDECL PlayAnimation(unsigned short pid, const char* groupname, int mode, int count, bool persist) noexcept;
 
     /**
     * \brief Play a certain sound for a player as spoken by their character by sending
@@ -90,11 +89,11 @@ namespace DialogueFunctions
     * \param sound The path of the sound file.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL PlaySpeech(unsigned short pid, const char* sound) noexcept;
+    API_FUNCTION void CDECL PlaySpeech(unsigned short pid, const char* sound) noexcept;
 
     // All methods below are deprecated versions of methods from above
 
-    EXPORT_APIFUNCTION void CDECL InitializeTopicChanges(unsigned short pid) noexcept;
-}
+    API_FUNCTION void CDECL InitializeTopicChanges(unsigned short pid) noexcept;
+NAMESPACE_END()
 
 #endif //OPENMW_DIALOGUEAPI_HPP

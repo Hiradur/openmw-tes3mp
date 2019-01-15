@@ -3,7 +3,7 @@
 
 #include "../Types.hpp"
 
-#include <Script/Platform.hpp>
+#include "../api.h"
 
 #define SETTINGSAPI \
     {"SetDifficulty",               SettingFunctions::SetDifficulty},\
@@ -17,8 +17,7 @@
     \
     {"SendSettings",                SettingFunctions::SendSettings}
 
-namespace SettingFunctions
-{
+NAMESPACE_BEGIN(SettingFunctions)
     /**
     * \brief Set the difficulty for a player.
     *
@@ -29,7 +28,7 @@ namespace SettingFunctions
     * \param difficulty The difficulty.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetDifficulty(unsigned short pid, int difficulty);
+    API_FUNCTION void CDECL SetDifficulty(unsigned short pid, int difficulty);
 
     /**
     * \brief Set the client log level enforced for a player.
@@ -47,7 +46,7 @@ namespace SettingFunctions
     * \param enforcedLogLevel The enforced log level.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetEnforcedLogLevel(unsigned short pid, int enforcedLogLevel);
+    API_FUNCTION void CDECL SetEnforcedLogLevel(unsigned short pid, int enforcedLogLevel);
 
     /**
     * \brief Set the physics framerate for a player.
@@ -59,7 +58,7 @@ namespace SettingFunctions
     * \param physicsFramerate The physics framerate.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetPhysicsFramerate(unsigned short pid, double physicsFramerate);
+    API_FUNCTION void CDECL SetPhysicsFramerate(unsigned short pid, double physicsFramerate);
 
     /**
     * \brief Set whether the console is allowed for a player.
@@ -71,7 +70,7 @@ namespace SettingFunctions
     * \param state The console permission state.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetConsoleAllowed(unsigned short pid, bool state);
+    API_FUNCTION void CDECL SetConsoleAllowed(unsigned short pid, bool state);
 
     /**
     * \brief Set whether resting in beds is allowed for a player.
@@ -83,7 +82,7 @@ namespace SettingFunctions
     * \param state The resting permission state.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetBedRestAllowed(unsigned short pid, bool state);
+    API_FUNCTION void CDECL SetBedRestAllowed(unsigned short pid, bool state);
 
     /**
     * \brief Set whether resting in the wilderness is allowed for a player.
@@ -95,7 +94,7 @@ namespace SettingFunctions
     * \param state The resting permission state.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetWildernessRestAllowed(unsigned short pid, bool state);
+    API_FUNCTION void CDECL SetWildernessRestAllowed(unsigned short pid, bool state);
 
     /**
     * \brief Set whether waiting is allowed for a player.
@@ -107,7 +106,7 @@ namespace SettingFunctions
     * \param state The waiting permission state.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetWaitAllowed(unsigned short pid, bool state);
+    API_FUNCTION void CDECL SetWaitAllowed(unsigned short pid, bool state);
 
     /**
     * \brief Send a PlayerSettings packet to the player affected by it.
@@ -115,7 +114,7 @@ namespace SettingFunctions
     * \param pid The player ID to send it to.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendSettings(unsigned short pid) noexcept;
-}
+    API_FUNCTION void CDECL SendSettings(unsigned short pid) noexcept;
+NAMESPACE_END()
 
 #endif //OPENMW_SETTINGSAPI_HPP

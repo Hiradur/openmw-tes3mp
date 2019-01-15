@@ -1,4 +1,4 @@
-#include "Items.hpp"
+#include "Items.h"
 
 #include <components/misc/stringops.hpp>
 #include <components/openmw-mp/NetworkMessages.hpp>

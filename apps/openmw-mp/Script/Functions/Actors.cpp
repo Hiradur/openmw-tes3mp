@@ -8,7 +8,7 @@
 
 #include <components/esm/creaturestats.hpp>
 
-#include "Actors.hpp"
+#include "Actors.h"
 
 using namespace mwmp;
 

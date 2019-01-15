@@ -45,7 +45,7 @@ namespace mwmp
 #if defined(ENABLE_LUA)
         static int CreateTimerLua(lua_State *lua, ScriptFuncLua callback, long msec, const std::string& def, std::vector<boost::any> args);
 #endif
-        static int CreateTimer(ScriptFunc callback, long msec, const std::string& def, std::vector<boost::any> args);
+        static int CreateTimer(ScriptFunc callback, long msec, const std::string& def, const std::vector<boost::any> &args);
         static void FreeTimer(int timerid);
         static void ResetTimer(int timerid, long msec);
         static void StartTimer(int timerid);

@@ -1,4 +1,4 @@
-#include "Chat.hpp"
+#include "Chat.h"
 
 #include <components/openmw-mp/NetworkMessages.hpp>
 #include <components/openmw-mp/Log.hpp>

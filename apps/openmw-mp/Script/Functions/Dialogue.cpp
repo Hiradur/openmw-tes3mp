@@ -1,4 +1,4 @@
-#include "Dialogue.hpp"
+#include "Dialogue.h"
 
 #include <components/openmw-mp/NetworkMessages.hpp>
 

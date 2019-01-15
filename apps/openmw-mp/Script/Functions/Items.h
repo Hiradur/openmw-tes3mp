@@ -1,7 +1,7 @@
 #ifndef OPENMW_ITEMAPI_HPP
 #define OPENMW_ITEMAPI_HPP
 
-#include <Script/Platform.hpp>
+#include "../api.h"
 
 #define ITEMAPI \
     {"ClearInventoryChanges",                 ItemFunctions::ClearInventoryChanges},\
@@ -43,8 +43,7 @@
     {"InitializeInventoryChanges",            ItemFunctions::InitializeInventoryChanges},\
     {"AddItem",                               ItemFunctions::AddItem}
 
-namespace ItemFunctions
-{
+NAMESPACE_BEGIN(ItemFunctions)
     /**
     * \brief Clear the last recorded inventory changes for a player.
     *
@@ -53,7 +52,7 @@ namespace ItemFunctions
     * \param pid The player ID whose inventory changes should be used.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL ClearInventoryChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL ClearInventoryChanges(unsigned short pid) noexcept;
 
     /**
     * \brief Get the number of slots used for equipment.
@@ -62,7 +61,7 @@ namespace ItemFunctions
     *
     * \return The number of slots.
     */
-    EXPORT_APIFUNCTION int CDECL GetEquipmentSize() noexcept;
+    API_FUNCTION int CDECL GetEquipmentSize() noexcept;
 
     /**
     * \brief Get the number of indexes in a player's latest inventory changes.
@@ -70,7 +69,7 @@ namespace ItemFunctions
     * \param pid The player ID whose inventory changes should be used.
     * \return The number of indexes.
     */
-    EXPORT_APIFUNCTION unsigned int CDECL GetInventoryChangesSize(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetInventoryChangesSize(unsigned short pid) noexcept;
 
     /**
     * \brief Get the action type used in a player's latest inventory changes.
@@ -78,7 +77,7 @@ namespace ItemFunctions
     * \param pid The player ID whose inventory changes should be used.
     * \return The action type (0 for SET, 1 for ADD, 2 for REMOVE).
     */
-    EXPORT_APIFUNCTION unsigned int CDECL GetInventoryChangesAction(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetInventoryChangesAction(unsigned short pid) noexcept;
 
     /**
     * \brief Set the action type in a player's inventory changes.
@@ -87,7 +86,7 @@ namespace ItemFunctions
     * \param action The action (0 for SET, 1 for ADD, 2 for REMOVE).
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetInventoryChangesAction(unsigned short pid, unsigned char action) noexcept;
+    API_FUNCTION void CDECL SetInventoryChangesAction(unsigned short pid, unsigned char action) noexcept;
 
     /**
     * \brief Equip an item in a certain slot of the equipment of a player.
@@ -100,7 +99,7 @@ namespace ItemFunctions
     * \param enchantmentCharge The enchantment charge of the item.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL EquipItem(unsigned short pid, unsigned short slot, const char* refId, unsigned int count, int charge,
+    API_FUNCTION void CDECL EquipItem(unsigned short pid, unsigned short slot, const char* refId, unsigned int count, int charge,
         double enchantmentCharge = -1) noexcept;
     
     /**
@@ -110,7 +109,7 @@ namespace ItemFunctions
     * \param slot The equipment slot.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL UnequipItem(unsigned short pid, unsigned short slot) noexcept;
+    API_FUNCTION void CDECL UnequipItem(unsigned short pid, unsigned short slot) noexcept;
 
     /**
     * \brief Add an item change to a player's inventory changes.
@@ -123,7 +122,7 @@ namespace ItemFunctions
     * \param soul The soul of the item.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL AddItemChange(unsigned short pid, const char* refId, unsigned int count, int charge,
+    API_FUNCTION void CDECL AddItemChange(unsigned short pid, const char* refId, unsigned int count, int charge,
         double enchantmentCharge, const char* soul) noexcept;
 
     /**
@@ -133,7 +132,7 @@ namespace ItemFunctions
     * \param refId The refId of the item.
     * \return Whether the player has the item equipped.
     */
-    EXPORT_APIFUNCTION bool CDECL HasItemEquipped(unsigned short pid, const char* refId);
+    API_FUNCTION bool CDECL HasItemEquipped(unsigned short pid, const char* refId);
 
     /**
     * \brief Get the refId of the item in a certain slot of the equipment of a player.
@@ -142,7 +141,7 @@ namespace ItemFunctions
     * \param slot The slot of the equipment item.
     * \return The refId.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetEquipmentItemRefId(unsigned short pid, unsigned short slot) noexcept;
+    API_FUNCTION const char *CDECL GetEquipmentItemRefId(unsigned short pid, unsigned short slot) noexcept;
 
     /**
     * \brief Get the count of the item in a certain slot of the equipment of a player.
@@ -151,7 +150,7 @@ namespace ItemFunctions
     * \param slot The slot of the equipment item.
     * \return The item count.
     */
-    EXPORT_APIFUNCTION int CDECL GetEquipmentItemCount(unsigned short pid, unsigned short slot) noexcept;
+    API_FUNCTION int CDECL GetEquipmentItemCount(unsigned short pid, unsigned short slot) noexcept;
 
     /**
     * \brief Get the charge of the item in a certain slot of the equipment of a player.
@@ -160,7 +159,7 @@ namespace ItemFunctions
     * \param slot The slot of the equipment item.
     * \return The charge.
     */
-    EXPORT_APIFUNCTION int CDECL GetEquipmentItemCharge(unsigned short pid, unsigned short slot) noexcept;
+    API_FUNCTION int CDECL GetEquipmentItemCharge(unsigned short pid, unsigned short slot) noexcept;
 
     /**
     * \brief Get the enchantment charge of the item in a certain slot of the equipment of
@@ -170,7 +169,7 @@ namespace ItemFunctions
     * \param slot The slot of the equipment item.
     * \return The enchantment charge.
     */
-    EXPORT_APIFUNCTION double CDECL GetEquipmentItemEnchantmentCharge(unsigned short pid, unsigned short slot) noexcept;
+    API_FUNCTION double CDECL GetEquipmentItemEnchantmentCharge(unsigned short pid, unsigned short slot) noexcept;
 
     /**
     * \brief Get the refId of the item at a certain index in a player's latest inventory
@@ -180,7 +179,7 @@ namespace ItemFunctions
     * \param index The index of the inventory item.
     * \return The refId.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetInventoryItemRefId(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetInventoryItemRefId(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Get the count of the item at a certain index in a player's latest inventory
@@ -190,7 +189,7 @@ namespace ItemFunctions
     * \param index The index of the inventory item.
     * \return The item count.
     */
-    EXPORT_APIFUNCTION int CDECL GetInventoryItemCount(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetInventoryItemCount(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Get the charge of the item at a certain index in a player's latest inventory
@@ -200,7 +199,7 @@ namespace ItemFunctions
     * \param index The index of the inventory item.
     * \return The charge.
     */
-    EXPORT_APIFUNCTION int CDECL GetInventoryItemCharge(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetInventoryItemCharge(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Get the enchantment charge of the item at a certain index in a player's
@@ -210,7 +209,7 @@ namespace ItemFunctions
     * \param index The index of the inventory item.
     * \return The enchantment charge.
     */
-    EXPORT_APIFUNCTION double CDECL GetInventoryItemEnchantmentCharge(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetInventoryItemEnchantmentCharge(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Get the soul of the item at a certain index in a player's latest inventory
@@ -220,7 +219,7 @@ namespace ItemFunctions
     * \param index The index of the inventory item.
     * \return The soul.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetInventoryItemSoul(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetInventoryItemSoul(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Get the refId of the item last used by a player.
@@ -228,7 +227,7 @@ namespace ItemFunctions
     * \param pid The player ID.
     * \return The refId.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetUsedItemRefId(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetUsedItemRefId(unsigned short pid) noexcept;
 
     /**
     * \brief Get the count of the item last used by a player.
@@ -236,7 +235,7 @@ namespace ItemFunctions
     * \param pid The player ID.
     * \return The item count.
     */
-    EXPORT_APIFUNCTION int CDECL GetUsedItemCount(unsigned short pid) noexcept;
+    API_FUNCTION int CDECL GetUsedItemCount(unsigned short pid) noexcept;
 
     /**
     * \brief Get the charge of the item last used by a player.
@@ -244,7 +243,7 @@ namespace ItemFunctions
     * \param pid The player ID.
     * \return The charge.
     */
-    EXPORT_APIFUNCTION int CDECL GetUsedItemCharge(unsigned short pid) noexcept;
+    API_FUNCTION int CDECL GetUsedItemCharge(unsigned short pid) noexcept;
 
     /**
     * \brief Get the enchantment charge of the item last used by a player.
@@ -252,7 +251,7 @@ namespace ItemFunctions
     * \param pid The player ID.
     * \return The enchantment charge.
     */
-    EXPORT_APIFUNCTION double CDECL GetUsedItemEnchantmentCharge(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetUsedItemEnchantmentCharge(unsigned short pid) noexcept;
 
     /**
     * \brief Get the soul of the item last used by a player.
@@ -260,7 +259,7 @@ namespace ItemFunctions
     * \param pid The player ID.
     * \return The soul.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetUsedItemSoul(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetUsedItemSoul(unsigned short pid) noexcept;
 
     /**
     * \brief Send a PlayerEquipment packet with a player's equipment.
@@ -270,7 +269,7 @@ namespace ItemFunctions
     * \param pid The player ID whose equipment should be sent.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendEquipment(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SendEquipment(unsigned short pid) noexcept;
 
     /**
     * \brief Send a PlayerInventory packet with a player's recorded inventory changes.
@@ -282,7 +281,7 @@ namespace ItemFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendInventoryChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendInventoryChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send a PlayerItemUse causing a player to use their recorded usedItem.
@@ -290,14 +289,14 @@ namespace ItemFunctions
     * \param pid The player ID affected.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendItemUse(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SendItemUse(unsigned short pid) noexcept;
 
     // All methods below are deprecated versions of methods from above
 
-    EXPORT_APIFUNCTION void CDECL InitializeInventoryChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL InitializeInventoryChanges(unsigned short pid) noexcept;
 
-    EXPORT_APIFUNCTION void CDECL AddItem(unsigned short pid, const char* refId, unsigned int count, int charge,
+    API_FUNCTION void CDECL AddItem(unsigned short pid, const char* refId, unsigned int count, int charge,
         double enchantmentCharge, const char* soul) noexcept;
-}
+NAMESPACE_END()
 
 #endif //OPENMW_ITEMAPI_HPP

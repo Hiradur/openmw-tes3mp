@@ -1,7 +1,7 @@
 #ifndef OPENMW_ACTORAPI_HPP
 #define OPENMW_ACTORAPI_HPP
 
-#include <Script/Platform.hpp>
+#include "../api.h"
 
 #define ACTORAPI \
     {"ReadReceivedActorList",                  ActorFunctions::ReadReceivedActorList},\
@@ -104,14 +104,13 @@
     {"GetActorKillerRefNumIndex",              ActorFunctions::GetActorKillerRefNumIndex},\
     {"SetActorRefNumIndex",                    ActorFunctions::SetActorRefNumIndex}
 
-namespace ActorFunctions
-{
+NAMESPACE_BEGIN(ActorFunctions)
     /**
     * \brief Use the last actor list received by the server as the one being read.
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL ReadReceivedActorList() noexcept;
+    API_FUNCTION void CDECL ReadReceivedActorList() noexcept;
 
     /**
     * \brief Use the temporary actor list stored for a cell as the one being read.
@@ -122,14 +121,14 @@ namespace ActorFunctions
     * \param cellDescription The description of the cell whose actor list should be read.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL ReadCellActorList(const char* cellDescription) noexcept;
+    API_FUNCTION void CDECL ReadCellActorList(const char* cellDescription) noexcept;
 
     /**
     * \brief Clear the data from the actor list stored on the server.
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL ClearActorList() noexcept;
+    API_FUNCTION void CDECL ClearActorList() noexcept;
 
     /**
     * \brief Set the pid attached to the ActorList.
@@ -137,7 +136,7 @@ namespace ActorFunctions
     * \param pid The player ID to whom the actor list should be attached.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorListPid(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SetActorListPid(unsigned short pid) noexcept;
 
     /**
     * \brief Take the contents of the read-only actor list last received by the
@@ -146,21 +145,21 @@ namespace ActorFunctions
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL CopyReceivedActorListToStore() noexcept;
+    API_FUNCTION void CDECL CopyReceivedActorListToStore() noexcept;
 
     /**
     * \brief Get the number of indexes in the read actor list.
     *
     * \return The number of indexes.
     */
-    EXPORT_APIFUNCTION unsigned int CDECL GetActorListSize() noexcept;
+    API_FUNCTION unsigned int CDECL GetActorListSize() noexcept;
 
     /**
     * \brief Get the action type used in the read actor list.
     *
     * \return The action type (0 for SET, 1 for ADD, 2 for REMOVE, 3 for REQUEST).
     */
-    EXPORT_APIFUNCTION unsigned char CDECL GetActorListAction() noexcept;
+    API_FUNCTION unsigned char CDECL GetActorListAction() noexcept;
 
     /**
     * \brief Get the cell description of the actor at a certain index in the read actor list.
@@ -168,7 +167,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The cell description.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetActorCell(unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetActorCell(unsigned int index) noexcept;
     
     /**
     * \brief Get the refId of the actor at a certain index in the read actor list.
@@ -176,7 +175,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The refId.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetActorRefId(unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetActorRefId(unsigned int index) noexcept;
 
     /**
     * \brief Get the refNum of the actor at a certain index in the read actor list.
@@ -184,7 +183,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The refNum.
     */
-    EXPORT_APIFUNCTION unsigned int CDECL GetActorRefNum(unsigned int index) noexcept;
+    API_FUNCTION unsigned int CDECL GetActorRefNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the mpNum of the actor at a certain index in the read actor list.
@@ -192,7 +191,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The mpNum.
     */
-    EXPORT_APIFUNCTION unsigned int CDECL GetActorMpNum(unsigned int index) noexcept;
+    API_FUNCTION unsigned int CDECL GetActorMpNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the X position of the actor at a certain index in the read actor list.
@@ -200,7 +199,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The X position.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorPosX(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorPosX(unsigned int index) noexcept;
 
     /**
     * \brief Get the Y position of the actor at a certain index in the read actor list.
@@ -208,7 +207,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The Y position.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorPosY(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorPosY(unsigned int index) noexcept;
 
     /**
     * \brief Get the Z position of the actor at a certain index in the read actor list.
@@ -216,7 +215,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The Z position.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorPosZ(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorPosZ(unsigned int index) noexcept;
 
     /**
     * \brief Get the X rotation of the actor at a certain index in the read actor list.
@@ -224,7 +223,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The X rotation.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorRotX(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorRotX(unsigned int index) noexcept;
 
     /**
     * \brief Get the Y rotation of the actor at a certain index in the read actor list.
@@ -232,7 +231,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The Y rotation.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorRotY(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorRotY(unsigned int index) noexcept;
 
     /**
     * \brief Get the Z rotation of the actor at a certain index in the read actor list.
@@ -240,7 +239,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The Z rotation.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorRotZ(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorRotZ(unsigned int index) noexcept;
 
     /**
     * \brief Get the base health of the actor at a certain index in the read actor list.
@@ -248,7 +247,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The base health.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorHealthBase(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorHealthBase(unsigned int index) noexcept;
 
     /**
     * \brief Get the current health of the actor at a certain index in the read actor list.
@@ -256,7 +255,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The current health.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorHealthCurrent(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorHealthCurrent(unsigned int index) noexcept;
 
     /**
     * \brief Get the modified health of the actor at a certain index in the read actor list.
@@ -264,7 +263,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The modified health.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorHealthModified(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorHealthModified(unsigned int index) noexcept;
 
     /**
     * \brief Get the base magicka of the actor at a certain index in the read actor list.
@@ -272,7 +271,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The base magicka.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorMagickaBase(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorMagickaBase(unsigned int index) noexcept;
 
     /**
     * \brief Get the current magicka of the actor at a certain index in the read actor list.
@@ -280,7 +279,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The current magicka.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorMagickaCurrent(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorMagickaCurrent(unsigned int index) noexcept;
 
     /**
     * \brief Get the modified magicka of the actor at a certain index in the read actor list.
@@ -288,7 +287,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The modified magicka.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorMagickaModified(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorMagickaModified(unsigned int index) noexcept;
 
     /**
     * \brief Get the base fatigue of the actor at a certain index in the read actor list.
@@ -296,7 +295,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The base fatigue.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorFatigueBase(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorFatigueBase(unsigned int index) noexcept;
 
     /**
     * \brief Get the current fatigue of the actor at a certain index in the read actor list.
@@ -304,7 +303,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The current fatigue.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorFatigueCurrent(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorFatigueCurrent(unsigned int index) noexcept;
 
     /**
     * \brief Get the modified fatigue of the actor at a certain index in the read actor list.
@@ -312,7 +311,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The modified fatigue.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorFatigueModified(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetActorFatigueModified(unsigned int index) noexcept;
 
     /**
     * \brief Get the refId of the item in a certain slot of the equipment of the actor at a
@@ -322,7 +321,7 @@ namespace ActorFunctions
     * \param slot The slot of the equipment item.
     * \return The refId.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetActorEquipmentItemRefId(unsigned int index, unsigned short slot) noexcept;
+    API_FUNCTION const char *CDECL GetActorEquipmentItemRefId(unsigned int index, unsigned short slot) noexcept;
 
     /**
     * \brief Get the count of the item in a certain slot of the equipment of the actor at a
@@ -332,7 +331,7 @@ namespace ActorFunctions
     * \param slot The slot of the equipment item.
     * \return The item count.
     */
-    EXPORT_APIFUNCTION int CDECL GetActorEquipmentItemCount(unsigned int index, unsigned short slot) noexcept;
+    API_FUNCTION int CDECL GetActorEquipmentItemCount(unsigned int index, unsigned short slot) noexcept;
 
     /**
     * \brief Get the charge of the item in a certain slot of the equipment of the actor at a
@@ -342,7 +341,7 @@ namespace ActorFunctions
     * \param slot The slot of the equipment item.
     * \return The charge.
     */
-    EXPORT_APIFUNCTION int CDECL GetActorEquipmentItemCharge(unsigned int index, unsigned short slot) noexcept;
+    API_FUNCTION int CDECL GetActorEquipmentItemCharge(unsigned int index, unsigned short slot) noexcept;
 
     /**
     * \brief Get the enchantment charge of the item in a certain slot of the equipment of the actor at a
@@ -352,7 +351,7 @@ namespace ActorFunctions
     * \param slot The slot of the equipment item.
     * \return The enchantment charge.
     */
-    EXPORT_APIFUNCTION double CDECL GetActorEquipmentItemEnchantmentCharge(unsigned int index, unsigned short slot) noexcept;
+    API_FUNCTION double CDECL GetActorEquipmentItemEnchantmentCharge(unsigned int index, unsigned short slot) noexcept;
 
     /**
     * \brief Check whether the killer of the actor at a certain index in the read actor list is a player.
@@ -360,7 +359,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return Whether the actor was killed by a player.
     */
-    EXPORT_APIFUNCTION bool CDECL DoesActorHavePlayerKiller(unsigned int index) noexcept;
+    API_FUNCTION bool CDECL DoesActorHavePlayerKiller(unsigned int index) noexcept;
 
     /**
     * \brief Get the player ID of the killer of the actor at a certain index in the read actor list.
@@ -368,7 +367,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The player ID of the killer.
     */
-    EXPORT_APIFUNCTION int CDECL GetActorKillerPid(unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetActorKillerPid(unsigned int index) noexcept;
 
     /**
     * \brief Get the refId of the actor killer of the actor at a certain index in the read actor list.
@@ -376,7 +375,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The refId of the killer.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetActorKillerRefId(unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetActorKillerRefId(unsigned int index) noexcept;
 
     /**
     * \brief Get the refNum of the actor killer of the actor at a certain index in the read actor list.
@@ -384,7 +383,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The refNum of the killer.
     */
-    EXPORT_APIFUNCTION unsigned int CDECL GetActorKillerRefNum(unsigned int index) noexcept;
+    API_FUNCTION unsigned int CDECL GetActorKillerRefNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the mpNum of the actor killer of the actor at a certain index in the read actor list.
@@ -392,7 +391,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The mpNum of the killer.
     */
-    EXPORT_APIFUNCTION unsigned int CDECL GetActorKillerMpNum(unsigned int index) noexcept;
+    API_FUNCTION unsigned int CDECL GetActorKillerMpNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the name of the actor killer of the actor at a certain index in the read actor list.
@@ -400,7 +399,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The name of the killer.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetActorKillerName(unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetActorKillerName(unsigned int index) noexcept;
 
     /**
     * \brief Check whether there is any positional data for the actor at a certain index in
@@ -411,7 +410,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return Whether the read actor list contains positional data.
     */
-    EXPORT_APIFUNCTION bool CDECL DoesActorHavePosition(unsigned int index) noexcept;
+    API_FUNCTION bool CDECL DoesActorHavePosition(unsigned int index) noexcept;
 
     /**
     * \brief Check whether there is any dynamic stats data for the actor at a certain index in
@@ -422,7 +421,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return Whether the read actor list contains dynamic stats data.
     */
-    EXPORT_APIFUNCTION bool CDECL DoesActorHaveStatsDynamic(unsigned int index) noexcept;
+    API_FUNCTION bool CDECL DoesActorHaveStatsDynamic(unsigned int index) noexcept;
 
     /**
     * \brief Set the cell of the temporary actor list stored on the server.
@@ -433,7 +432,7 @@ namespace ActorFunctions
     * \param cellDescription The description of the cell.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorListCell(const char* cellDescription) noexcept;
+    API_FUNCTION void CDECL SetActorListCell(const char* cellDescription) noexcept;
 
     /**
     * \brief Set the action type of the temporary actor list stored on the server.
@@ -441,7 +440,7 @@ namespace ActorFunctions
     * \param action The action type (0 for SET, 1 for ADD, 2 for REMOVE, 3 for REQUEST).
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorListAction(unsigned char action) noexcept;
+    API_FUNCTION void CDECL SetActorListAction(unsigned char action) noexcept;
 
     /**
     * \brief Set the cell of the temporary actor stored on the server.
@@ -455,7 +454,7 @@ namespace ActorFunctions
     * \param cellDescription The description of the cell.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorCell(const char* cellDescription) noexcept;
+    API_FUNCTION void CDECL SetActorCell(const char* cellDescription) noexcept;
 
     /**
     * \brief Set the refId of the temporary actor stored on the server.
@@ -463,7 +462,7 @@ namespace ActorFunctions
     * \param refId The refId.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorRefId(const char* refId) noexcept;
+    API_FUNCTION void CDECL SetActorRefId(const char* refId) noexcept;
 
     /**
     * \brief Set the refNum of the temporary actor stored on the server.
@@ -471,7 +470,7 @@ namespace ActorFunctions
     * \param refNum The refNum.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorRefNum(int refNum) noexcept;
+    API_FUNCTION void CDECL SetActorRefNum(int refNum) noexcept;
 
     /**
     * \brief Set the mpNum of the temporary actor stored on the server.
@@ -479,7 +478,7 @@ namespace ActorFunctions
     * \param mpNum The mpNum.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorMpNum(int mpNum) noexcept;
+    API_FUNCTION void CDECL SetActorMpNum(int mpNum) noexcept;
 
     /**
     * \brief Set the position of the temporary actor stored on the server.
@@ -489,7 +488,7 @@ namespace ActorFunctions
     * \param z The Z position.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorPosition(double x, double y, double z) noexcept;
+    API_FUNCTION void CDECL SetActorPosition(double x, double y, double z) noexcept;
 
     /**
     * \brief Set the rotation of the temporary actor stored on the server.
@@ -499,7 +498,7 @@ namespace ActorFunctions
     * \param z The Z rotation.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorRotation(double x, double y, double z) noexcept;
+    API_FUNCTION void CDECL SetActorRotation(double x, double y, double z) noexcept;
 
     /**
     * \brief Set the base health of the temporary actor stored on the server.
@@ -507,7 +506,7 @@ namespace ActorFunctions
     * \param value The new value.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorHealthBase(double value) noexcept;
+    API_FUNCTION void CDECL SetActorHealthBase(double value) noexcept;
 
     /**
     * \brief Set the current health of the temporary actor stored on the server.
@@ -515,7 +514,7 @@ namespace ActorFunctions
     * \param value The new value.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorHealthCurrent(double value) noexcept;
+    API_FUNCTION void CDECL SetActorHealthCurrent(double value) noexcept;
 
     /**
     * \brief Set the modified health of the temporary actor stored on the server.
@@ -523,7 +522,7 @@ namespace ActorFunctions
     * \param value The new value.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorHealthModified(double value) noexcept;
+    API_FUNCTION void CDECL SetActorHealthModified(double value) noexcept;
 
     /**
     * \brief Set the base magicka of the temporary actor stored on the server.
@@ -531,7 +530,7 @@ namespace ActorFunctions
     * \param value The new value.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorMagickaBase(double value) noexcept;
+    API_FUNCTION void CDECL SetActorMagickaBase(double value) noexcept;
 
     /**
     * \brief Set the current magicka of the temporary actor stored on the server.
@@ -539,7 +538,7 @@ namespace ActorFunctions
     * \param value The new value.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorMagickaCurrent(double value) noexcept;
+    API_FUNCTION void CDECL SetActorMagickaCurrent(double value) noexcept;
 
     /**
     * \brief Set the modified magicka of the temporary actor stored on the server.
@@ -547,7 +546,7 @@ namespace ActorFunctions
     * \param value The new value.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorMagickaModified(double value) noexcept;
+    API_FUNCTION void CDECL SetActorMagickaModified(double value) noexcept;
 
     /**
     * \brief Set the base fatigue of the temporary actor stored on the server.
@@ -555,7 +554,7 @@ namespace ActorFunctions
     * \param value The new value.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorFatigueBase(double value) noexcept;
+    API_FUNCTION void CDECL SetActorFatigueBase(double value) noexcept;
 
     /**
     * \brief Set the current fatigue of the temporary actor stored on the server.
@@ -563,7 +562,7 @@ namespace ActorFunctions
     * \param value The new value.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorFatigueCurrent(double value) noexcept;
+    API_FUNCTION void CDECL SetActorFatigueCurrent(double value) noexcept;
 
     /**
     * \brief Set the modified fatigue of the temporary actor stored on the server.
@@ -571,7 +570,7 @@ namespace ActorFunctions
     * \param value The new value.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorFatigueModified(double value) noexcept;
+    API_FUNCTION void CDECL SetActorFatigueModified(double value) noexcept;
 
     /**
     * \brief Set the sound of the temporary actor stored on the server.
@@ -579,7 +578,7 @@ namespace ActorFunctions
     * \param sound The sound.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorSound(const char* sound) noexcept;
+    API_FUNCTION void CDECL SetActorSound(const char* sound) noexcept;
 
     /**
     * \brief Set the AI action of the temporary actor stored on the server.
@@ -587,7 +586,7 @@ namespace ActorFunctions
     * \param action The new action.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorAIAction(unsigned int action) noexcept;
+    API_FUNCTION void CDECL SetActorAIAction(unsigned int action) noexcept;
 
     /**
     * \brief Set a player as the AI target of the temporary actor stored on the server.
@@ -595,7 +594,7 @@ namespace ActorFunctions
     * \param pid The player ID.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorAITargetToPlayer(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SetActorAITargetToPlayer(unsigned short pid) noexcept;
 
     /**
     * \brief Set another object as the AI target of the temporary actor stored on the server.
@@ -604,7 +603,7 @@ namespace ActorFunctions
     * \param mpNum The mpNum of the target object.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorAITargetToObject(int refNum, int mpNum) noexcept;
+    API_FUNCTION void CDECL SetActorAITargetToObject(int refNum, int mpNum) noexcept;
 
     /**
     * \brief Set the coordinates for the AI package associated with the current AI action.
@@ -614,7 +613,7 @@ namespace ActorFunctions
     * \param z The Z coordinate.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorAICoordinates(double x, double y, double z) noexcept;
+    API_FUNCTION void CDECL SetActorAICoordinates(double x, double y, double z) noexcept;
 
     /**
     * \brief Set the distance of the AI package associated with the current AI action.
@@ -622,7 +621,7 @@ namespace ActorFunctions
     * \param duration The distance of the package.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorAIDistance(unsigned int distance) noexcept;
+    API_FUNCTION void CDECL SetActorAIDistance(unsigned int distance) noexcept;
 
     /**
     * \brief Set the duration of the AI package associated with the current AI action.
@@ -630,7 +629,7 @@ namespace ActorFunctions
     * \param duration The duration of the package.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorAIDuration(unsigned int duration) noexcept;
+    API_FUNCTION void CDECL SetActorAIDuration(unsigned int duration) noexcept;
 
     /**
     * \brief Set whether the current AI package should be repeated.
@@ -640,7 +639,7 @@ namespace ActorFunctions
     * \param shouldRepeat Whether the package should be repeated.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorAIRepetition(bool shouldRepeat) noexcept;
+    API_FUNCTION void CDECL SetActorAIRepetition(bool shouldRepeat) noexcept;
 
     /**
     * \brief Equip an item in a certain slot of the equipment of the temporary actor stored
@@ -653,7 +652,7 @@ namespace ActorFunctions
     * \param enchantmentCharge The enchantment charge of the item.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL EquipActorItem(unsigned short slot, const char* refId, unsigned int count, int charge, double enchantmentCharge = -1) noexcept;
+    API_FUNCTION void CDECL EquipActorItem(unsigned short slot, const char* refId, unsigned int count, int charge, double enchantmentCharge = -1) noexcept;
 
     /**
     * \brief Unequip the item in a certain slot of the equipment of the temporary actor stored
@@ -662,7 +661,7 @@ namespace ActorFunctions
     * \param slot The equipment slot.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL UnequipActorItem(unsigned short slot) noexcept;
+    API_FUNCTION void CDECL UnequipActorItem(unsigned short slot) noexcept;
 
     /**
     * \brief Add a copy of the server's temporary actor to the server's temporary actor list.
@@ -672,7 +671,7 @@ namespace ActorFunctions
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL AddActor() noexcept;
+    API_FUNCTION void CDECL AddActor() noexcept;
 
     /**
     * \brief Send an ActorList packet.
@@ -681,7 +680,7 @@ namespace ActorFunctions
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendActorList() noexcept;
+    API_FUNCTION void CDECL SendActorList() noexcept;
 
     /**
     * \brief Send an ActorAuthority packet.
@@ -693,7 +692,7 @@ namespace ActorFunctions
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendActorAuthority() noexcept;
+    API_FUNCTION void CDECL SendActorAuthority() noexcept;
 
     /**
     * \brief Send an ActorPosition packet.
@@ -705,7 +704,7 @@ namespace ActorFunctions
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendActorPosition(bool sendToOtherVisitors, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendActorPosition(bool sendToOtherVisitors, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send an ActorStatsDynamic packet.
@@ -717,7 +716,7 @@ namespace ActorFunctions
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendActorStatsDynamic(bool sendToOtherVisitors, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendActorStatsDynamic(bool sendToOtherVisitors, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send an ActorEquipment packet.
@@ -729,7 +728,7 @@ namespace ActorFunctions
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendActorEquipment(bool sendToOtherVisitors, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendActorEquipment(bool sendToOtherVisitors, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send an ActorSpeech packet.
@@ -740,7 +739,7 @@ namespace ActorFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendActorSpeech(bool sendToOtherVisitors, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendActorSpeech(bool sendToOtherVisitors, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send an ActorAI packet.
@@ -751,7 +750,7 @@ namespace ActorFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendActorAI(bool sendToOtherVisitors, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendActorAI(bool sendToOtherVisitors, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send an ActorCellChange packet.
@@ -763,18 +762,18 @@ namespace ActorFunctions
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendActorCellChange(bool sendToOtherVisitors, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendActorCellChange(bool sendToOtherVisitors, bool skipAttachedPlayer) noexcept;
 
 
     // All methods below are deprecated versions of methods from above
 
-    EXPORT_APIFUNCTION void CDECL ReadLastActorList() noexcept;
-    EXPORT_APIFUNCTION void CDECL InitializeActorList(unsigned short pid) noexcept;
-    EXPORT_APIFUNCTION void CDECL CopyLastActorListToStore() noexcept;
-    EXPORT_APIFUNCTION unsigned int CDECL GetActorRefNumIndex(unsigned int index) noexcept;
-    EXPORT_APIFUNCTION unsigned int CDECL GetActorKillerRefNumIndex(unsigned int index) noexcept;
-    EXPORT_APIFUNCTION void CDECL SetActorRefNumIndex(int refNum) noexcept;
-}
+    API_FUNCTION void CDECL ReadLastActorList() noexcept;
+    API_FUNCTION void CDECL InitializeActorList(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL CopyLastActorListToStore() noexcept;
+    API_FUNCTION unsigned int CDECL GetActorRefNumIndex(unsigned int index) noexcept;
+    API_FUNCTION unsigned int CDECL GetActorKillerRefNumIndex(unsigned int index) noexcept;
+    API_FUNCTION void CDECL SetActorRefNumIndex(int refNum) noexcept;
+NAMESPACE_END()
 
 
 #endif //OPENMW_ACTORAPI_HPP

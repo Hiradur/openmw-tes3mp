@@ -1,4 +1,4 @@
-#include "Factions.hpp"
+#include "Factions.h"
 
 #include <components/misc/stringops.hpp>
 #include <components/openmw-mp/NetworkMessages.hpp>

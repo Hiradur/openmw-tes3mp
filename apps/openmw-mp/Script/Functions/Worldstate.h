@@ -4,7 +4,7 @@
 #include <components/openmw-mp/Base/BaseWorldstate.hpp>
 #include "../Types.hpp"
 
-#include <Script/Platform.hpp>
+#include "../api.h"
 
 #define WORLDSTATEAPI \
     {"ReadReceivedWorldstate",            WorldstateFunctions::ReadReceivedWorldstate},\
@@ -60,17 +60,15 @@
     {"ReadLastWorldstate",                WorldstateFunctions::ReadLastWorldstate},\
     {"CopyLastWorldstateToStore",         WorldstateFunctions::CopyLastWorldstateToStore}
 
-namespace WorldstateFunctions
-{
-    EXPORT_APIFUNCTION mwmp::BaseWorldstate CDECL *readWorldstate;
-    EXPORT_APIFUNCTION mwmp::BaseWorldstate CDECL writeWorldstate;
-
+NAMESPACE_BEGIN(WorldstateFunctions)
+    API_FUNCTION mwmp::BaseWorldstate CDECL *readWorldstate;
+    API_FUNCTION mwmp::BaseWorldstate CDECL writeWorldstate;
     /**
     * \brief Use the last worldstate received by the server as the one being read.
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL ReadReceivedWorldstate() noexcept;
+    API_FUNCTION void CDECL ReadReceivedWorldstate() noexcept;
 
     /**
     * \brief Take the contents of the read-only worldstate last received by the
@@ -79,7 +77,7 @@ namespace WorldstateFunctions
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL CopyReceivedWorldstateToStore() noexcept;
+    API_FUNCTION void CDECL CopyReceivedWorldstateToStore() noexcept;
 
     /**
     * \brief Clear the map changes for the write-only worldstate.
@@ -88,49 +86,49 @@ namespace WorldstateFunctions
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL ClearMapChanges() noexcept;
+    API_FUNCTION void CDECL ClearMapChanges() noexcept;
 
     /**
     * \brief Get the number of indexes in the read worldstate's map changes.
     *
     * \return The number of indexes.
     */
-    EXPORT_APIFUNCTION unsigned int CDECL GetMapChangesSize() noexcept;
+    API_FUNCTION unsigned int CDECL GetMapChangesSize() noexcept;
 
     /**
     * \brief Get the weather region in the read worldstate.
     *
     * \return The weather region.
     */
-    EXPORT_APIFUNCTION const char *CDECL GetWeatherRegion() noexcept;
+    API_FUNCTION const char *CDECL GetWeatherRegion() noexcept;
 
     /**
     * \brief Get the current weather in the read worldstate.
     *
     * \return The current weather.
     */
-    EXPORT_APIFUNCTION int CDECL GetWeatherCurrent() noexcept;
+    API_FUNCTION int CDECL GetWeatherCurrent() noexcept;
 
     /**
     * \brief Get the next weather in the read worldstate.
     *
     * \return The next weather.
     */
-    EXPORT_APIFUNCTION int CDECL GetWeatherNext() noexcept;
+    API_FUNCTION int CDECL GetWeatherNext() noexcept;
 
     /**
     * \brief Get the queued weather in the read worldstate.
     *
     * \return The queued weather.
     */
-    EXPORT_APIFUNCTION int CDECL GetWeatherQueued() noexcept;
+    API_FUNCTION int CDECL GetWeatherQueued() noexcept;
 
     /**
     * \brief Get the transition factor of the weather in the read worldstate.
     *
     * \return The transition factor of the weather.
     */
-    EXPORT_APIFUNCTION double CDECL GetWeatherTransitionFactor() noexcept;
+    API_FUNCTION double CDECL GetWeatherTransitionFactor() noexcept;
 
     /**
     * \brief Get the X coordinate of the cell corresponding to the map tile at a certain index in
@@ -139,7 +137,7 @@ namespace WorldstateFunctions
     * \param index The index of the map tile.
     * \return The X coordinate of the cell.
     */
-    EXPORT_APIFUNCTION int CDECL GetMapTileCellX(unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetMapTileCellX(unsigned int index) noexcept;
 
     /**
     * \brief Get the Y coordinate of the cell corresponding to the map tile at a certain index in
@@ -148,7 +146,7 @@ namespace WorldstateFunctions
     * \param index The index of the map tile.
     * \return The Y coordinate of the cell.
     */
-    EXPORT_APIFUNCTION int CDECL GetMapTileCellY(unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetMapTileCellY(unsigned int index) noexcept;
 
     /**
     * \brief Set the region affected by the next WorldRegionAuthority packet sent.
@@ -156,7 +154,7 @@ namespace WorldstateFunctions
     * \param region The region.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetAuthorityRegion(const char* authorityRegion) noexcept;
+    API_FUNCTION void CDECL SetAuthorityRegion(const char* authorityRegion) noexcept;
 
     /**
     * \brief Set the weather region in the write-only worldstate stored on the server.
@@ -164,7 +162,7 @@ namespace WorldstateFunctions
     * \param region The region.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetWeatherRegion(const char* region) noexcept;
+    API_FUNCTION void CDECL SetWeatherRegion(const char* region) noexcept;
 
     /**
     * \brief Set the weather forcing state in the write-only worldstate stored on the server.
@@ -174,7 +172,7 @@ namespace WorldstateFunctions
     * \param forceState The weather forcing state.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetWeatherForceState(bool forceState) noexcept;
+    API_FUNCTION void CDECL SetWeatherForceState(bool forceState) noexcept;
 
     /**
     * \brief Set the current weather in the write-only worldstate stored on the server.
@@ -182,7 +180,7 @@ namespace WorldstateFunctions
     * \param currentWeather The current weather.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetWeatherCurrent(int currentWeather) noexcept;
+    API_FUNCTION void CDECL SetWeatherCurrent(int currentWeather) noexcept;
 
     /**
     * \brief Set the next weather in the write-only worldstate stored on the server.
@@ -190,7 +188,7 @@ namespace WorldstateFunctions
     * \param nextWeather The next weather.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetWeatherNext(int nextWeather) noexcept;
+    API_FUNCTION void CDECL SetWeatherNext(int nextWeather) noexcept;
 
     /**
     * \brief Set the queued weather in the write-only worldstate stored on the server.
@@ -198,7 +196,7 @@ namespace WorldstateFunctions
     * \param queuedWeather The queued weather.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetWeatherQueued(int queuedWeather) noexcept;
+    API_FUNCTION void CDECL SetWeatherQueued(int queuedWeather) noexcept;
 
     /**
     * \brief Set the transition factor for the weather in the write-only worldstate stored on the server.
@@ -206,7 +204,7 @@ namespace WorldstateFunctions
     * \param transitionFactor The transition factor.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetWeatherTransitionFactor(double transitionFactor) noexcept;
+    API_FUNCTION void CDECL SetWeatherTransitionFactor(double transitionFactor) noexcept;
 
     /**
     * \brief Set the world's hour in the write-only worldstate stored on the server.
@@ -214,7 +212,7 @@ namespace WorldstateFunctions
     * \param hour The hour.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetHour(double hour) noexcept;
+    API_FUNCTION void CDECL SetHour(double hour) noexcept;
 
     /**
     * \brief Set the world's day in the write-only worldstate stored on the server.
@@ -222,7 +220,7 @@ namespace WorldstateFunctions
     * \param day The day.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetDay(int day) noexcept;
+    API_FUNCTION void CDECL SetDay(int day) noexcept;
 
     /**
     * \brief Set the world's month in the write-only worldstate stored on the server.
@@ -230,7 +228,7 @@ namespace WorldstateFunctions
     * \param month The month.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetMonth(int month) noexcept;
+    API_FUNCTION void CDECL SetMonth(int month) noexcept;
 
     /**
     * \brief Set the world's year in the write-only worldstate stored on the server.
@@ -238,7 +236,7 @@ namespace WorldstateFunctions
     * \param year The year.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetYear(int year) noexcept;
+    API_FUNCTION void CDECL SetYear(int year) noexcept;
 
     /**
     * \brief Set the world's days passed in the write-only worldstate stored on the server.
@@ -246,7 +244,7 @@ namespace WorldstateFunctions
     * \param daysPassed The days passed.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetDaysPassed(int daysPassed) noexcept;
+    API_FUNCTION void CDECL SetDaysPassed(int daysPassed) noexcept;
 
     /**
     * \brief Set the world's time scale in the write-only worldstate stored on the server.
@@ -255,7 +253,7 @@ namespace WorldstateFunctions
     * \param timeScale The time scale.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetTimeScale(double timeScale) noexcept;
+    API_FUNCTION void CDECL SetTimeScale(double timeScale) noexcept;
 
     /**
     * \brief Set the collision state for other players in the write-only worldstate stored
@@ -264,7 +262,7 @@ namespace WorldstateFunctions
     * \param state The collision state.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetPlayerCollisionState(bool state) noexcept;
+    API_FUNCTION void CDECL SetPlayerCollisionState(bool state) noexcept;
 
     /**
     * \brief Set the collision state for actors in the write-only worldstate stored on the
@@ -273,7 +271,7 @@ namespace WorldstateFunctions
     * \param state The collision state.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetActorCollisionState(bool state) noexcept;
+    API_FUNCTION void CDECL SetActorCollisionState(bool state) noexcept;
 
     /**
     * \brief Set the collision state for placed objects in the write-only worldstate stored
@@ -282,7 +280,7 @@ namespace WorldstateFunctions
     * \param state The collision state.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SetPlacedObjectCollisionState(bool state) noexcept;
+    API_FUNCTION void CDECL SetPlacedObjectCollisionState(bool state) noexcept;
 
     /**
     * \brief Whether placed objects with collision turned on should use actor collision, i.e.
@@ -291,7 +289,7 @@ namespace WorldstateFunctions
     * \param useActorCollision Whether to use actor collision.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL UseActorCollisionForPlacedObjects(bool useActorCollision) noexcept;
+    API_FUNCTION void CDECL UseActorCollisionForPlacedObjects(bool useActorCollision) noexcept;
 
     /**
     * \brief Add a refId to the list of refIds for which collision should be enforced
@@ -300,7 +298,7 @@ namespace WorldstateFunctions
     * \param refId The refId.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL AddEnforcedCollisionRefId(const char* refId) noexcept;
+    API_FUNCTION void CDECL AddEnforcedCollisionRefId(const char* refId) noexcept;
 
     /**
     * \brief Clear the list of refIdsd for which collision should be enforced irrespective
@@ -308,7 +306,7 @@ namespace WorldstateFunctions
     *
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL ClearEnforcedCollisionRefIds() noexcept;
+    API_FUNCTION void CDECL ClearEnforcedCollisionRefIds() noexcept;
 
     /**
     * \brief Save the .png image data of the map tile at a certain index in the read worldstate's
@@ -318,7 +316,7 @@ namespace WorldstateFunctions
     * \param filePath The file path of the resulting file.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SaveMapTileImageFile(unsigned int index, const char *filePath) noexcept;
+    API_FUNCTION void CDECL SaveMapTileImageFile(unsigned int index, const char *filePath) noexcept;
 
     /**
     * \brief Load a .png file as the image data for a map tile and add it to the write-only worldstate
@@ -329,7 +327,7 @@ namespace WorldstateFunctions
     * \param filePath The file path of the loaded file.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL LoadMapTileImageFile(int cellX, int cellY, const char* filePath) noexcept;
+    API_FUNCTION void CDECL LoadMapTileImageFile(int cellX, int cellY, const char* filePath) noexcept;
 
     /**
     * \brief Send a WorldRegionAuthority packet establishing a certain player as the only one who
@@ -340,7 +338,7 @@ namespace WorldstateFunctions
     * \param pid The player ID attached to the packet.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendWorldRegionAuthority(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SendWorldRegionAuthority(unsigned short pid) noexcept;
 
     /**
     * \brief Send a WorldMap packet with the current set of map changes in the write-only
@@ -351,7 +349,7 @@ namespace WorldstateFunctions
     *                  or to all players on the server.
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendWorldMap(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendWorldMap(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send a WorldTime packet with the current time and time scale in the write-only
@@ -364,7 +362,7 @@ namespace WorldstateFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendWorldTime(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendWorldTime(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send a WorldWeather packet with the current weather in the write-only worldstate.
@@ -376,7 +374,7 @@ namespace WorldstateFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendWorldWeather(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendWorldWeather(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send a WorldCollisionOverride packet with the current collision overrides in
@@ -389,13 +387,13 @@ namespace WorldstateFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    EXPORT_APIFUNCTION void CDECL SendWorldCollisionOverride(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendWorldCollisionOverride(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
 
     // All methods below are deprecated versions of methods from above
 
-    EXPORT_APIFUNCTION void CDECL ReadLastWorldstate() noexcept;
-    EXPORT_APIFUNCTION void CDECL CopyLastWorldstateToStore() noexcept;
-}
+    API_FUNCTION void CDECL ReadLastWorldstate() noexcept;
+    API_FUNCTION void CDECL CopyLastWorldstateToStore() noexcept;
+NAMESPACE_END()
 
 #endif //OPENMW_WORLDSTATEAPI_HPP
