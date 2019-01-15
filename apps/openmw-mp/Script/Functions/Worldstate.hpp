@@ -93,14 +93,14 @@ namespace WorldstateFunctions
     *
     * \return The number of indexes.
     */
-    extern "C" unsigned int GetMapChangesSize() noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetMapChangesSize() noexcept;
 
     /**
     * \brief Get the weather region in the read worldstate.
     *
     * \return The weather region.
     */
-    extern "C" const char *GetWeatherRegion() noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetWeatherRegion() noexcept;
 
     /**
     * \brief Get the current weather in the read worldstate.

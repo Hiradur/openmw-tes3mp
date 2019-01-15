@@ -89,14 +89,14 @@ namespace ServerFunctions
     *
     * \return The server version.
     */
-    extern "C" const char *GetServerVersion() noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetServerVersion() noexcept;
 
     /**
     * \brief Get the protocol version of the server.
     *
     * \return The protocol version.
     */
-    extern "C" const char *GetProtocolVersion() noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetProtocolVersion() noexcept;
 
     /**
     * \brief Get the average ping of a certain player.
@@ -119,14 +119,14 @@ namespace ServerFunctions
      *
      * \return Port
      */
-    extern "C" unsigned short GetPort() noexcept;
+    EXPORT_APIFUNCTION unsigned short CDECL GetPort() noexcept;
 
     /**
      * \brief Get the maximum number of players.
      *
      * \return Max players
      */
-    extern "C" unsigned int GetMaxPlayers() noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetMaxPlayers() noexcept;
 
     /**
      * \brief Checking if the server requires a password to connect.

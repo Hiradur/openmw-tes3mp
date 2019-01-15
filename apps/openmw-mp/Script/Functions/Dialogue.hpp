@@ -35,7 +35,7 @@ namespace DialogueFunctions
     * \param pid The player ID whose topic changes should be used.
     * \return The number of indexes.
     */
-    extern "C" unsigned int GetTopicChangesSize(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetTopicChangesSize(unsigned short pid) noexcept;
 
     /**
     * \brief Add a new topic to the topic changes for a player.
@@ -53,7 +53,7 @@ namespace DialogueFunctions
     * \param index The index of the topic.
     * \return The topicId.
     */
-    extern "C" const char *GetTopicId(unsigned short pid, unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetTopicId(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Send a PlayerTopic packet with a player's recorded topic changes.

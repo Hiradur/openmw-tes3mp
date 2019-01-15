@@ -42,7 +42,7 @@ namespace ShapeshiftFunctions
     * \param pid The player ID.
     * \return The creature refId.
     */
-    extern "C" const char *GetCreatureRefId(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetCreatureRefId(unsigned short pid) noexcept;
 
     /**
     * \brief Check whether a player's name is replaced by that of the creature they are

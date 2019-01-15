@@ -151,14 +151,14 @@ namespace ActorFunctions
     *
     * \return The number of indexes.
     */
-    extern "C" unsigned int GetActorListSize() noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetActorListSize() noexcept;
 
     /**
     * \brief Get the action type used in the read actor list.
     *
     * \return The action type (0 for SET, 1 for ADD, 2 for REMOVE, 3 for REQUEST).
     */
-    extern "C" unsigned char GetActorListAction() noexcept;
+    EXPORT_APIFUNCTION unsigned char CDECL GetActorListAction() noexcept;
 
     /**
     * \brief Get the cell description of the actor at a certain index in the read actor list.
@@ -166,7 +166,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The cell description.
     */
-    extern "C" const char *GetActorCell(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetActorCell(unsigned int index) noexcept;
     
     /**
     * \brief Get the refId of the actor at a certain index in the read actor list.
@@ -174,7 +174,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The refId.
     */
-    extern "C" const char *GetActorRefId(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetActorRefId(unsigned int index) noexcept;
 
     /**
     * \brief Get the refNum of the actor at a certain index in the read actor list.
@@ -182,7 +182,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The refNum.
     */
-    extern "C" unsigned int GetActorRefNum(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetActorRefNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the mpNum of the actor at a certain index in the read actor list.
@@ -190,7 +190,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The mpNum.
     */
-    extern "C" unsigned int GetActorMpNum(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetActorMpNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the X position of the actor at a certain index in the read actor list.
@@ -320,7 +320,7 @@ namespace ActorFunctions
     * \param slot The slot of the equipment item.
     * \return The refId.
     */
-    extern "C" const char *GetActorEquipmentItemRefId(unsigned int index, unsigned short slot) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetActorEquipmentItemRefId(unsigned int index, unsigned short slot) noexcept;
 
     /**
     * \brief Get the count of the item in a certain slot of the equipment of the actor at a
@@ -374,7 +374,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The refId of the killer.
     */
-    extern "C" const char *GetActorKillerRefId(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetActorKillerRefId(unsigned int index) noexcept;
 
     /**
     * \brief Get the refNum of the actor killer of the actor at a certain index in the read actor list.
@@ -382,7 +382,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The refNum of the killer.
     */
-    extern "C" unsigned int GetActorKillerRefNum(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetActorKillerRefNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the mpNum of the actor killer of the actor at a certain index in the read actor list.
@@ -390,7 +390,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The mpNum of the killer.
     */
-    extern "C" unsigned int GetActorKillerMpNum(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetActorKillerMpNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the name of the actor killer of the actor at a certain index in the read actor list.
@@ -398,7 +398,7 @@ namespace ActorFunctions
     * \param index The index of the actor.
     * \return The name of the killer.
     */
-    extern "C" const char *GetActorKillerName(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetActorKillerName(unsigned int index) noexcept;
 
     /**
     * \brief Check whether there is any positional data for the actor at a certain index in
@@ -766,12 +766,12 @@ namespace ActorFunctions
 
     // All methods below are deprecated versions of methods from above
 
-    extern "C" void ReadLastActorList() noexcept;
-    extern "C" void InitializeActorList(unsigned short pid) noexcept;
-    extern "C" void CopyLastActorListToStore() noexcept;
-    extern "C" unsigned int GetActorRefNumIndex(unsigned int index) noexcept;
-    extern "C" unsigned int GetActorKillerRefNumIndex(unsigned int index) noexcept;
-    extern "C" void SetActorRefNumIndex(int refNum) noexcept;
+    EXPORT_APIFUNCTION void CDECL ReadLastActorList() noexcept;
+    EXPORT_APIFUNCTION void CDECL InitializeActorList(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL CopyLastActorListToStore() noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetActorRefNumIndex(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetActorKillerRefNumIndex(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetActorRefNumIndex(int refNum) noexcept;
 }
 
 

@@ -107,7 +107,7 @@ namespace GUIFunctions
     * \param pid The player ID whose quick key changes should be used.
     * \return The number of indexes.
     */
-    extern "C" unsigned int GetQuickKeyChangesSize(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetQuickKeyChangesSize(unsigned short pid) noexcept;
 
     /**
     * \brief Add a new quick key to the quick key changes for a player.
@@ -145,7 +145,7 @@ namespace GUIFunctions
     * \param index The index of the quick key in the quick key changes vector.
     * \return The itemId.
     */
-    extern "C" const char *GetQuickKeyItemId(unsigned short pid, unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetQuickKeyItemId(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Send a PlayerQuickKeys packet with a player's recorded quick key changes.

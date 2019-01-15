@@ -34,7 +34,7 @@ namespace SpellFunctions
     * \param pid The player ID whose spellbook changes should be used.
     * \return The number of indexes.
     */
-    extern "C" unsigned int GetSpellbookChangesSize(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetSpellbookChangesSize(unsigned short pid) noexcept;
 
     /**
     * \brief Get the action type used in a player's latest spellbook changes.
@@ -42,7 +42,7 @@ namespace SpellFunctions
     * \param pid The player ID whose spellbook changes should be used.
     * \return The action type (0 for SET, 1 for ADD, 2 for REMOVE).
     */
-    extern "C" unsigned int GetSpellbookChangesAction(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetSpellbookChangesAction(unsigned short pid) noexcept;
 
     /**
     * \brief Set the action type in a player's spellbook changes.
@@ -69,7 +69,7 @@ namespace SpellFunctions
     * \param index The index of the spell.
     * \return The spellId.
     */
-    extern "C" const char *GetSpellId(unsigned short pid, unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetSpellId(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Send a PlayerSpellbook packet with a player's recorded spellbook changes.

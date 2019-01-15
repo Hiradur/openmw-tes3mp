@@ -123,7 +123,7 @@ namespace StatsFunctions
     * \param attributeId The ID of the attribute.
     * \return The name of the attribute.
     */
-    extern "C" const char *GetAttributeName(unsigned short attributeId) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetAttributeName(unsigned short attributeId) noexcept;
 
     /**
     * \brief Get the name of the skill with a certain numerical ID.
@@ -133,7 +133,7 @@ namespace StatsFunctions
     * \param skillId The ID of the skill.
     * \return The name of the skill.
     */
-    extern "C" const char *GetSkillName(unsigned short skillId) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetSkillName(unsigned short skillId) noexcept;
 
     /**
     * \brief Get the name of a player.
@@ -141,7 +141,7 @@ namespace StatsFunctions
     * \param pid The player ID.
     * \return The name of the player.
     */
-    extern "C" const char *GetName(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetName(unsigned short pid) noexcept;
 
     /**
     * \brief Get the race of a player.
@@ -149,7 +149,7 @@ namespace StatsFunctions
     * \param pid The player ID.
     * \return The race of the player.
     */
-    extern "C" const char *GetRace(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetRace(unsigned short pid) noexcept;
 
     /**
     * \brief Get the head mesh used by a player.
@@ -157,7 +157,7 @@ namespace StatsFunctions
     * \param pid The player ID.
     * \return The head mesh of the player.
     */
-    extern "C" const char *GetHead(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetHead(unsigned short pid) noexcept;
 
     /**
     * \brief Get the hairstyle mesh used by a player.
@@ -165,7 +165,7 @@ namespace StatsFunctions
     * \param pid The player ID.
     * \return The hairstyle mesh of the player.
     */
-    extern "C" const char *GetHairstyle(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetHairstyle(unsigned short pid) noexcept;
 
     /**
     * \brief Check whether a player is male or not.
@@ -181,7 +181,7 @@ namespace StatsFunctions
     * \param pid The player ID.
     * \return The birthsign of the player.
     */
-    extern "C" const char *GetBirthsign(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetBirthsign(unsigned short pid) noexcept;
 
     /**
     * \brief Get the character level of a player.

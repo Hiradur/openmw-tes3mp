@@ -174,7 +174,7 @@ namespace ObjectFunctions
     *
     * \return The number of indexes.
     */
-    extern "C" unsigned int GetObjectListSize() noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetObjectListSize() noexcept;
 
     /**
     * \brief Get the origin of the read object list.
@@ -183,7 +183,7 @@ namespace ObjectFunctions
     * CLIENT_DIALOGUE, 3 for CLIENT_SCRIPT_LOCAL, 4 for CLIENT_SCRIPT_GLOBAL,
     * 5 for SERVER_SCRIPT).
     */
-    extern "C" unsigned char GetObjectListOrigin() noexcept;
+    EXPORT_APIFUNCTION unsigned char CDECL GetObjectListOrigin() noexcept;
 
     /**
     * \brief Get the client script that the read object list originated from.
@@ -192,21 +192,21 @@ namespace ObjectFunctions
     *
     * \return The ID of the client script.
     */
-    extern "C" const char *GetObjectListClientScript() noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetObjectListClientScript() noexcept;
 
     /**
     * \brief Get the action type used in the read object list.
     *
     * \return The action type (0 for SET, 1 for ADD, 2 for REMOVE, 3 for REQUEST).
     */
-    extern "C" unsigned char GetObjectListAction() noexcept;
+    EXPORT_APIFUNCTION unsigned char CDECL GetObjectListAction() noexcept;
 
     /**
     * \brief Get the container subaction type used in the read object list.
     *
     * \return The action type (0 for NONE, 1 for DRAG, 2 for DROP, 3 for TAKE_ALL).
     */
-    extern "C" unsigned char GetObjectListContainerSubAction() noexcept;
+    EXPORT_APIFUNCTION unsigned char CDECL GetObjectListContainerSubAction() noexcept;
 
     /**
     * \brief Check whether the object at a certain index in the read object list is a
@@ -239,7 +239,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The refId.
     */
-    extern "C" const char *GetObjectRefId(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetObjectRefId(unsigned int index) noexcept;
 
     /**
     * \brief Get the refNum of the object at a certain index in the read object list.
@@ -247,7 +247,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The refNum.
     */
-    extern "C" unsigned int GetObjectRefNum(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetObjectRefNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the mpNum of the object at a certain index in the read object list.
@@ -255,7 +255,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The mpNum.
     */
-    extern "C" unsigned int GetObjectMpNum(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetObjectMpNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the count of the object at a certain index in the read object list.
@@ -287,7 +287,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The soul.
     */
-    extern "C" const char *GetObjectSoul(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetObjectSoul(unsigned int index) noexcept;
 
     /**
     * \brief Get the gold value of the object at a certain index in the read object list.
@@ -356,7 +356,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The refId of the activating actor.
     */
-    extern "C" const char *GetObjectActivatingRefId(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetObjectActivatingRefId(unsigned int index) noexcept;
 
     /**
     * \brief Get the refNum of the actor activating the object at a certain index in the read
@@ -365,7 +365,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The refNum of the activating actor.
     */
-    extern "C" unsigned int GetObjectActivatingRefNum(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetObjectActivatingRefNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the mpNum of the actor activating the object at a certain index in the read
@@ -374,7 +374,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The mpNum of the activating actor.
     */
-    extern "C" unsigned int GetObjectActivatingMpNum(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetObjectActivatingMpNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the name of the actor activating the object at a certain index in the read
@@ -383,7 +383,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The name of the activating actor.
     */
-    extern "C" const char *GetObjectActivatingName(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetObjectActivatingName(unsigned int index) noexcept;
 
     /**
     * \brief Check whether the object at a certain index in the read object list is a
@@ -432,7 +432,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The refId of the summoner.
     */
-    extern "C" const char *GetObjectSummonerRefId(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetObjectSummonerRefId(unsigned int index) noexcept;
 
     /**
     * \brief Get the refNum of the actor summoner of the object at a certain index in the read object
@@ -441,7 +441,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The refNum of the summoner.
     */
-    extern "C" unsigned int GetObjectSummonerRefNum(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetObjectSummonerRefNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the mpNum of the actor summoner of the object at a certain index in the read object list.
@@ -449,7 +449,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The mpNum of the summoner.
     */
-    extern "C" unsigned int GetObjectSummonerMpNum(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetObjectSummonerMpNum(unsigned int index) noexcept;
 
     /**
     * \brief Get the X position of the object at a certain index in the read object list.
@@ -504,7 +504,7 @@ namespace ObjectFunctions
     *
     * \return The videoFilename.
     */
-    extern "C" const char *GetVideoFilename(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetVideoFilename(unsigned int index) noexcept;
 
     /**
     * \brief Get the number of container item indexes of the object at a certain index in the
@@ -513,7 +513,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The number of container item indexes.
     */
-    extern "C" unsigned int GetContainerChangesSize(unsigned int objectIndex) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetContainerChangesSize(unsigned int objectIndex) noexcept;
 
     /**
     * \brief Get the refId of the container item at a certain itemIndex in the container changes
@@ -523,7 +523,7 @@ namespace ObjectFunctions
     * \param itemIndex The index of the container item.
     * \return The refId.
     */
-    extern "C" const char *GetContainerItemRefId(unsigned int objectIndex, unsigned int itemIndex) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetContainerItemRefId(unsigned int objectIndex, unsigned int itemIndex) noexcept;
 
     /**
     * \brief Get the item count of the container item at a certain itemIndex in the container
@@ -563,7 +563,7 @@ namespace ObjectFunctions
     * \param itemIndex The index of the container item.
     * \return The soul.
     */
-    extern "C" const char *GetContainerItemSoul(unsigned int objectIndex, unsigned int itemIndex) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetContainerItemSoul(unsigned int objectIndex, unsigned int itemIndex) noexcept;
 
     /**
     * \brief Get the action count of the container item at a certain itemIndex in the container
@@ -1069,21 +1069,21 @@ namespace ObjectFunctions
 
     // All methods below are deprecated versions of methods from above
 
-    extern "C" void ReadLastObjectList() noexcept;
-    extern "C" void ReadLastEvent() noexcept;
-    extern "C" void InitializeObjectList(unsigned short pid) noexcept;
-    extern "C" void InitializeEvent(unsigned short pid) noexcept;
-    extern "C" void CopyLastObjectListToStore() noexcept;
-    extern "C" unsigned int GetObjectChangesSize() noexcept;
-    extern "C" unsigned char GetEventAction() noexcept;
-    extern "C" unsigned char GetEventContainerSubAction() noexcept;
-    extern "C" unsigned int GetObjectRefNumIndex(unsigned int index) noexcept;
-    extern "C" unsigned int GetObjectSummonerRefNumIndex(unsigned int index) noexcept;
-    extern "C" void SetEventCell(const char* cellDescription) noexcept;
-    extern "C" void SetEventAction(unsigned char action) noexcept;
-    extern "C" void SetEventConsoleCommand(const char* consoleCommand) noexcept;
-    extern "C" void SetObjectRefNumIndex(int refNum) noexcept;
-    extern "C" void AddWorldObject() noexcept;
+    EXPORT_APIFUNCTION void CDECL ReadLastObjectList() noexcept;
+    EXPORT_APIFUNCTION void CDECL ReadLastEvent() noexcept;
+    EXPORT_APIFUNCTION void CDECL InitializeObjectList(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL InitializeEvent(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL CopyLastObjectListToStore() noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetObjectChangesSize() noexcept;
+    EXPORT_APIFUNCTION unsigned char CDECL GetEventAction() noexcept;
+    EXPORT_APIFUNCTION unsigned char CDECL GetEventContainerSubAction() noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetObjectRefNumIndex(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetObjectSummonerRefNumIndex(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetEventCell(const char* cellDescription) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetEventAction(unsigned char action) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetEventConsoleCommand(const char* consoleCommand) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectRefNumIndex(int refNum) noexcept;
+    EXPORT_APIFUNCTION void CDECL AddWorldObject() noexcept;
 }
 
 

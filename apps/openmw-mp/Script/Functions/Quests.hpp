@@ -59,7 +59,7 @@ namespace QuestFunctions
     * \param pid The player ID whose journal changes should be used.
     * \return The number of indexes.
     */
-    extern "C" unsigned int GetJournalChangesSize(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetJournalChangesSize(unsigned short pid) noexcept;
 
     /**
     * \brief Get the number of indexes in a player's latest kill count changes.
@@ -67,7 +67,7 @@ namespace QuestFunctions
     * \param pid The player ID whose kill count changes should be used.
     * \return The number of indexes.
     */
-    extern "C" unsigned int GetKillChangesSize(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION unsigned int CDECL GetKillChangesSize(unsigned short pid) noexcept;
 
     /**
     * \brief Add a new journal item of type ENTRY to the journal changes for a player,
@@ -133,7 +133,7 @@ namespace QuestFunctions
     * \param index The index of the journalItem.
     * \return The quest.
     */
-    extern "C" const char *GetJournalItemQuest(unsigned short pid, unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetJournalItemQuest(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Get the quest index at a certain index in a player's latest journal changes.
@@ -162,7 +162,7 @@ namespace QuestFunctions
     * \param index The index of the journalItem.
     * \return The actor refId.
     */
-    extern "C" const char *GetJournalItemActorRefId(unsigned short pid, unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetJournalItemActorRefId(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Get the refId at a certain index in a player's latest kill count changes.
@@ -171,7 +171,7 @@ namespace QuestFunctions
     * \param index The index of the kill count.
     * \return The refId.
     */
-    extern "C" const char *GetKillRefId(unsigned short pid, unsigned int index) noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetKillRefId(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Get the number of kills at a certain index in a player's latest kill count changes.
