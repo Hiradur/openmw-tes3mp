@@ -3,6 +3,8 @@
 
 #include "../Types.hpp"
 
+#include <Script/Platform.hpp>
+
 #define RECORDSDYNAMICAPI \
     {"ClearRecords",                            RecordsDynamicFunctions::ClearRecords},\
     \
@@ -117,7 +119,7 @@ namespace RecordsDynamicFunctions
     *
     * \return void
     */
-    extern "C" void ClearRecords() noexcept;
+    EXPORT_APIFUNCTION void CDECL ClearRecords() noexcept;
 
     /**
     * \brief Get the type of records in the read worldstate's dynamic records.
@@ -169,7 +171,7 @@ namespace RecordsDynamicFunctions
     * \param index The index of the record.
     * \return The type of the record.
     */
-    extern "C" int GetRecordSubtype(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetRecordSubtype(unsigned int index) noexcept;
 
     /**
     * \brief Get the name of the record at a certain index in the read worldstate's
@@ -223,7 +225,7 @@ namespace RecordsDynamicFunctions
     * \param index The index of the record.
     * \return The enchantment charge of the record.
     */
-    extern "C" int GetRecordEnchantmentCharge(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetRecordEnchantmentCharge(unsigned int index) noexcept;
 
     /**
     * \brief Get the auto-calculation flag value of the record at a certain index in
@@ -232,7 +234,7 @@ namespace RecordsDynamicFunctions
     * \param index The index of the record.
     * \return The auto-calculation flag value of the record.
     */
-    extern "C" int GetRecordAutoCalc(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetRecordAutoCalc(unsigned int index) noexcept;
 
     /**
     * \brief Get the charge of the record at a certain index in the read worldstate's
@@ -241,7 +243,7 @@ namespace RecordsDynamicFunctions
     * \param index The index of the record.
     * \return The charge of the record.
     */
-    extern "C" int GetRecordCharge(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetRecordCharge(unsigned int index) noexcept;
 
     /**
     * \brief Get the cost of the record at a certain index in the read worldstate's
@@ -250,7 +252,7 @@ namespace RecordsDynamicFunctions
     * \param index The index of the record.
     * \return The cost of the record.
     */
-    extern "C" int GetRecordCost(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetRecordCost(unsigned int index) noexcept;
 
     /**
     * \brief Get the flags of the record at a certain index in the read worldstate's
@@ -259,7 +261,7 @@ namespace RecordsDynamicFunctions
     * \param index The index of the record.
     * \return The flags of the spell as an integer.
     */
-    extern "C" int GetRecordFlags(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetRecordFlags(unsigned int index) noexcept;
 
     /**
     * \brief Get the value of the record at a certain index in the read worldstate's
@@ -268,7 +270,7 @@ namespace RecordsDynamicFunctions
     * \param index The index of the record.
     * \return The value of the record.
     */
-    extern "C" int GetRecordValue(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetRecordValue(unsigned int index) noexcept;
 
     /**
     * \brief Get the weight of the record at a certain index in the read worldstate's
@@ -277,7 +279,7 @@ namespace RecordsDynamicFunctions
     * \param index The index of the record.
     * \return The weight of the record.
     */
-    extern "C" double GetRecordWeight(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION double CDECL GetRecordWeight(unsigned int index) noexcept;
 
     /**
     * \brief Get the ID of the effect at a certain index in the read worldstate's
@@ -297,7 +299,7 @@ namespace RecordsDynamicFunctions
     * \param effectIndex The index of the effect.
     * \return The attribute ID for the effect.
     */
-    extern "C" int GetRecordEffectAttribute(unsigned int recordIndex, unsigned int effectIndex) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetRecordEffectAttribute(unsigned int recordIndex, unsigned int effectIndex) noexcept;
 
     /**
     * \brief Get the ID of the skill modified by the effect at a certain index in the
@@ -307,7 +309,7 @@ namespace RecordsDynamicFunctions
     * \param effectIndex The index of the effect.
     * \return The skill ID for the effect.
     */
-    extern "C" int GetRecordEffectSkill(unsigned int recordIndex, unsigned int effectIndex) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetRecordEffectSkill(unsigned int recordIndex, unsigned int effectIndex) noexcept;
 
     /**
     * \brief Get the range type of the effect at a certain index in the read worldstate's
@@ -327,7 +329,7 @@ namespace RecordsDynamicFunctions
     * \param effectIndex The index of the effect.
     * \return The area of the effect.
     */
-    extern "C" int GetRecordEffectArea(unsigned int recordIndex, unsigned int effectIndex) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetRecordEffectArea(unsigned int recordIndex, unsigned int effectIndex) noexcept;
 
     /**
     * \brief Get the duration of the effect at a certain index in the read worldstate's current
@@ -337,7 +339,7 @@ namespace RecordsDynamicFunctions
     * \param effectIndex The index of the effect.
     * \return The duration of the effect.
     */
-    extern "C" int GetRecordEffectDuration(unsigned int recordIndex, unsigned int effectIndex) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetRecordEffectDuration(unsigned int recordIndex, unsigned int effectIndex) noexcept;
 
     /**
     * \brief Get the maximum magnitude of the effect at a certain index in the read
@@ -347,7 +349,7 @@ namespace RecordsDynamicFunctions
     * \param effectIndex The index of the effect.
     * \return The maximum magnitude of the effect.
     */
-    extern "C" int GetRecordEffectMagnitudeMax(unsigned int recordIndex, unsigned int effectIndex) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetRecordEffectMagnitudeMax(unsigned int recordIndex, unsigned int effectIndex) noexcept;
 
     /**
     * \brief Get the minimum magnitude of the effect at a certain index in the read
@@ -357,7 +359,7 @@ namespace RecordsDynamicFunctions
     * \param effectIndex The index of the effect.
     * \return The minimum magnitude of the effect.
     */
-    extern "C" int GetRecordEffectMagnitudeMin(unsigned int recordIndex, unsigned int effectIndex) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetRecordEffectMagnitudeMin(unsigned int recordIndex, unsigned int effectIndex) noexcept;
 
     /**
     * \brief Set which type of temporary records stored on the server should have
@@ -366,7 +368,7 @@ namespace RecordsDynamicFunctions
     * \param type The type of records.
     * \return void
     */
-    extern "C" void SetRecordType(unsigned int type) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordType(unsigned int type) noexcept;
 
     /**
     * \brief Set the id of the temporary record stored on the server for the
@@ -375,7 +377,7 @@ namespace RecordsDynamicFunctions
     * \param id The id of the record.
     * \return void
     */
-    extern "C" void SetRecordId(const char* id) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordId(const char* id) noexcept;
 
     /**
     * \brief Set the base id (i.e. the id this record should inherit default
@@ -385,7 +387,7 @@ namespace RecordsDynamicFunctions
     * \param baseId The baseId of the record.
     * \return void
     */
-    extern "C" void SetRecordBaseId(const char* baseId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordBaseId(const char* baseId) noexcept;
 
     /**
     * \brief Set the inventory base id (i.e. the id this record should inherit
@@ -395,7 +397,7 @@ namespace RecordsDynamicFunctions
     * \param inventoryBaseId The inventoryBaseId of the record.
     * \return void
     */
-    extern "C" void SetRecordInventoryBaseId(const char* inventoryBaseId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordInventoryBaseId(const char* inventoryBaseId) noexcept;
 
     /**
     * \brief Set the subtype of the temporary record stored on the server for
@@ -404,7 +406,7 @@ namespace RecordsDynamicFunctions
     * \param type The spell type.
     * \return void
     */
-    extern "C" void SetRecordSubtype(unsigned int subtype) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordSubtype(unsigned int subtype) noexcept;
 
     /**
     * \brief Set the name of the temporary record stored on the server for the
@@ -413,7 +415,7 @@ namespace RecordsDynamicFunctions
     * \param name The name of the record.
     * \return void
     */
-    extern "C" void SetRecordName(const char* name) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordName(const char* name) noexcept;
 
     /**
     * \brief Set the model of the temporary record stored on the server for the
@@ -422,7 +424,7 @@ namespace RecordsDynamicFunctions
     * \param model The model of the record.
     * \return void
     */
-    extern "C" void SetRecordModel(const char* model) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordModel(const char* model) noexcept;
 
     /**
     * \brief Set the icon of the temporary record stored on the server for the
@@ -431,7 +433,7 @@ namespace RecordsDynamicFunctions
     * \param icon The icon of the record.
     * \return void
     */
-    extern "C" void SetRecordIcon(const char* icon) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordIcon(const char* icon) noexcept;
 
     /**
     * \brief Set the script of the temporary record stored on the server for the
@@ -440,7 +442,7 @@ namespace RecordsDynamicFunctions
     * \param script The script of the record.
     * \return void
     */
-    extern "C" void SetRecordScript(const char* script) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordScript(const char* script) noexcept;
 
     /**
     * \brief Set the enchantment id of the temporary record stored on the server
@@ -449,7 +451,7 @@ namespace RecordsDynamicFunctions
     * \param enchantmentId The enchantment id of the record.
     * \return void
     */
-    extern "C" void SetRecordEnchantmentId(const char* enchantmentId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordEnchantmentId(const char* enchantmentId) noexcept;
 
     /**
     * \brief Set the enchantment charge of the temporary record stored on the server
@@ -458,7 +460,7 @@ namespace RecordsDynamicFunctions
     * \param enchantmentCharge The enchantmentCharge of the record.
     * \return void
     */
-    extern "C" void SetRecordEnchantmentCharge(int enchantmentCharge) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordEnchantmentCharge(int enchantmentCharge) noexcept;
 
     /**
     * \brief Set the auto-calculation flag value of the temporary record stored
@@ -467,7 +469,7 @@ namespace RecordsDynamicFunctions
     * \param autoCalc The auto-calculation flag value of the record.
     * \return void
     */
-    extern "C" void SetRecordAutoCalc(int autoCalc) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordAutoCalc(int autoCalc) noexcept;
 
     /**
     * \brief Set the charge of the temporary record stored on the server for the
@@ -476,7 +478,7 @@ namespace RecordsDynamicFunctions
     * \param charge The charge of the record.
     * \return void
     */
-    extern "C" void SetRecordCharge(int charge) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordCharge(int charge) noexcept;
 
     /**
     * \brief Set the cost of the temporary record stored on the server for the
@@ -485,7 +487,7 @@ namespace RecordsDynamicFunctions
     * \param cost The cost of the record.
     * \return void
     */
-    extern "C" void SetRecordCost(int cost) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordCost(int cost) noexcept;
 
     /**
     * \brief Set the flags of the temporary record stored on the server for the
@@ -494,7 +496,7 @@ namespace RecordsDynamicFunctions
     * \param flags The flags of the record.
     * \return void
     */
-    extern "C" void SetRecordFlags(int flags) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordFlags(int flags) noexcept;
 
     /**
     * \brief Set the value of the temporary record stored on the server for the
@@ -503,7 +505,7 @@ namespace RecordsDynamicFunctions
     * \param value The value of the record.
     * \return void
     */
-    extern "C" void SetRecordValue(int value) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordValue(int value) noexcept;
 
     /**
     * \brief Set the weight of the temporary record stored on the server for the
@@ -512,7 +514,7 @@ namespace RecordsDynamicFunctions
     * \param weight The weight of the record.
     * \return void
     */
-    extern "C" void SetRecordWeight(double weight) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordWeight(double weight) noexcept;
 
     /**
     * \brief Set the armor rating of the temporary record stored on the server
@@ -521,7 +523,7 @@ namespace RecordsDynamicFunctions
     * \param armorRating The armor rating of the record.
     * \return void
     */
-    extern "C" void SetRecordArmorRating(int armorRating) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordArmorRating(int armorRating) noexcept;
 
     /**
     * \brief Set the health of the temporary record stored on the server for the
@@ -530,7 +532,7 @@ namespace RecordsDynamicFunctions
     * \param health The health of the record.
     * \return void
     */
-    extern "C" void SetRecordHealth(int health) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordHealth(int health) noexcept;
 
     /**
     * \brief Set the chop damage of the temporary record stored on the server for the
@@ -540,7 +542,7 @@ namespace RecordsDynamicFunctions
     * \param maxDamage The maximum damage of the record.
     * \return void
     */
-    extern "C" void SetRecordDamageChop(unsigned int minDamage, unsigned int maxDamage) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordDamageChop(unsigned int minDamage, unsigned int maxDamage) noexcept;
 
     /**
     * \brief Set the slash damage of the temporary record stored on the server for the
@@ -550,7 +552,7 @@ namespace RecordsDynamicFunctions
     * \param maxDamage The maximum damage of the record.
     * \return void
     */
-    extern "C" void SetRecordDamageSlash(unsigned int minDamage, unsigned int maxDamage) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordDamageSlash(unsigned int minDamage, unsigned int maxDamage) noexcept;
 
     /**
     * \brief Set the thrust damage of the temporary record stored on the server for the
@@ -560,7 +562,7 @@ namespace RecordsDynamicFunctions
     * \param maxDamage The maximum damage of the record.
     * \return void
     */
-    extern "C" void SetRecordDamageThrust(unsigned int minDamage, unsigned int maxDamage) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordDamageThrust(unsigned int minDamage, unsigned int maxDamage) noexcept;
 
     /**
     * \brief Set the reach of the temporary record stored on the server for the
@@ -569,7 +571,7 @@ namespace RecordsDynamicFunctions
     * \param reach The reach of the record.
     * \return void
     */
-    extern "C" void SetRecordReach(double reach) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordReach(double reach) noexcept;
 
     /**
     * \brief Set the speed of the temporary record stored on the server for the
@@ -578,7 +580,7 @@ namespace RecordsDynamicFunctions
     * \param speed The speed of the record.
     * \return void
     */
-    extern "C" void SetRecordSpeed(double speed) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordSpeed(double speed) noexcept;
 
     /**
     * \brief Set whether the temporary record stored on the server for the
@@ -589,7 +591,7 @@ namespace RecordsDynamicFunctions
     * \param keyState Whether the record is a key.
     * \return void
     */
-    extern "C" void SetRecordKeyState(bool keyState) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordKeyState(bool keyState) noexcept;
 
     /**
     * \brief Set whether the temporary record stored on the server for the
@@ -600,7 +602,7 @@ namespace RecordsDynamicFunctions
     * \param scrollState Whether the record is a scroll.
     * \return void
     */
-    extern "C" void SetRecordScrollState(bool scrollState) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordScrollState(bool scrollState) noexcept;
 
     /**
     * \brief Set the skill ID of the temporary record stored on the server for the
@@ -609,7 +611,7 @@ namespace RecordsDynamicFunctions
     * \param skillId The skill ID of the record.
     * \return void
     */
-    extern "C" void SetRecordSkillId(int skillId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordSkillId(int skillId) noexcept;
 
     /**
     * \brief Set the text of the temporary record stored on the server for the
@@ -618,7 +620,7 @@ namespace RecordsDynamicFunctions
     * \param text The text of the record.
     * \return void
     */
-    extern "C" void SetRecordText(const char* text) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordText(const char* text) noexcept;
 
     /**
     * \brief Set the hair of the temporary record stored on the server for the
@@ -627,7 +629,7 @@ namespace RecordsDynamicFunctions
     * \param hair The hair of the record.
     * \return void
     */
-    extern "C" void SetRecordHair(const char* hair) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordHair(const char* hair) noexcept;
 
     /**
     * \brief Set the head of the temporary record stored on the server for the
@@ -636,7 +638,7 @@ namespace RecordsDynamicFunctions
     * \param hair The head of the record.
     * \return void
     */
-    extern "C" void SetRecordHead(const char* head) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordHead(const char* head) noexcept;
 
     /**
     * \brief Set the gender of the temporary record stored on the server for the
@@ -645,7 +647,7 @@ namespace RecordsDynamicFunctions
     * \param hair The race of the record.
     * \return void
     */
-    extern "C" void SetRecordGender(unsigned int gender) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordGender(unsigned int gender) noexcept;
 
     /**
     * \brief Set the race of the temporary record stored on the server for the
@@ -654,7 +656,7 @@ namespace RecordsDynamicFunctions
     * \param hair The race of the record.
     * \return void
     */
-    extern "C" void SetRecordRace(const char* race) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordRace(const char* race) noexcept;
 
     /**
     * \brief Set the character class of the temporary record stored on the server
@@ -663,7 +665,7 @@ namespace RecordsDynamicFunctions
     * \param hair The character class of the record.
     * \return void
     */
-    extern "C" void SetRecordClass(const char* charClass) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordClass(const char* charClass) noexcept;
 
     /**
     * \brief Set the faction of the temporary record stored on the server for the
@@ -672,7 +674,7 @@ namespace RecordsDynamicFunctions
     * \param faction The faction of the record.
     * \return void
     */
-    extern "C" void SetRecordFaction(const char* faction) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordFaction(const char* faction) noexcept;
 
     /**
     * \brief Set the level of the temporary record stored on the server for the
@@ -681,7 +683,7 @@ namespace RecordsDynamicFunctions
     * \param level The level of the record.
     * \return void
     */
-    extern "C" void SetRecordLevel(int level) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordLevel(int level) noexcept;
 
     /**
     * \brief Set the magicka of the temporary record stored on the server for the
@@ -690,7 +692,7 @@ namespace RecordsDynamicFunctions
     * \param magicka The magicka of the record.
     * \return void
     */
-    extern "C" void SetRecordMagicka(int magicka) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordMagicka(int magicka) noexcept;
 
     /**
     * \brief Set the fatigue of the temporary record stored on the server for the
@@ -699,7 +701,7 @@ namespace RecordsDynamicFunctions
     * \param fatigue The fatigue of the record.
     * \return void
     */
-    extern "C" void SetRecordFatigue(int fatigue) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordFatigue(int fatigue) noexcept;
 
     /**
     * \brief Set the AI fight value of the temporary record stored on the server for the
@@ -708,7 +710,7 @@ namespace RecordsDynamicFunctions
     * \param aiFight The AI fight value of the record.
     * \return void
     */
-    extern "C" void SetRecordAIFight(int aiFight) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordAIFight(int aiFight) noexcept;
 
     /**
     * \brief Set the id of the record at a certain index in the records stored on the server.
@@ -720,7 +722,7 @@ namespace RecordsDynamicFunctions
     * \param id The id of the record.
     * \return void
     */
-    extern "C" void SetRecordIdByIndex(unsigned int index, const char* id) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordIdByIndex(unsigned int index, const char* id) noexcept;
 
     /**
     * \brief Set the enchantment id of the record at a certain index in the records stored on
@@ -733,7 +735,7 @@ namespace RecordsDynamicFunctions
     * \param enchantmentId The enchantment id of the record.
     * \return void
     */
-    extern "C" void SetRecordEnchantmentIdByIndex(unsigned int index, const char* enchantmentId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordEnchantmentIdByIndex(unsigned int index, const char* enchantmentId) noexcept;
 
     /**
     * \brief Set the ID of the temporary effect stored on the server.
@@ -741,7 +743,7 @@ namespace RecordsDynamicFunctions
     * \param effectId The ID of the effect.
     * \return void
     */
-    extern "C" void SetRecordEffectId(unsigned int effectId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordEffectId(unsigned int effectId) noexcept;
 
     /**
     * \brief Set the ID of the attribute modified by the temporary effect stored on
@@ -750,7 +752,7 @@ namespace RecordsDynamicFunctions
     * \param attributeId The ID of the attribute.
     * \return void
     */
-    extern "C" void SetRecordEffectAttribute(int attributeId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordEffectAttribute(int attributeId) noexcept;
 
     /**
     * \brief Set the ID of the skill modified by the temporary effect stored on the
@@ -759,7 +761,7 @@ namespace RecordsDynamicFunctions
     * \param skillId The ID of the skill.
     * \return void
     */
-    extern "C" void SetRecordEffectSkill(int skillId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordEffectSkill(int skillId) noexcept;
 
     /**
     * \brief Set the range type of the temporary effect stored on the server (0 for
@@ -768,7 +770,7 @@ namespace RecordsDynamicFunctions
     * \param rangeType The range type of the effect.
     * \return void
     */
-    extern "C" void SetRecordEffectRangeType(unsigned int rangeType) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordEffectRangeType(unsigned int rangeType) noexcept;
 
     /**
     * \brief Set the area of the temporary effect stored on the server.
@@ -776,7 +778,7 @@ namespace RecordsDynamicFunctions
     * \param area The area of the effect.
     * \return void
     */
-    extern "C" void SetRecordEffectArea(int area) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordEffectArea(int area) noexcept;
 
     /**
     * \brief Set the duration of the temporary effect stored on the server.
@@ -784,7 +786,7 @@ namespace RecordsDynamicFunctions
     * \param duration The duration of the effect.
     * \return void
     */
-    extern "C" void SetRecordEffectDuration(int duration) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordEffectDuration(int duration) noexcept;
 
     /**
     * \brief Set the maximum magnitude of the temporary effect stored on the server.
@@ -792,7 +794,7 @@ namespace RecordsDynamicFunctions
     * \param magnitudeMax The maximum magnitude of the effect.
     * \return void
     */
-    extern "C" void SetRecordEffectMagnitudeMax(int magnitudeMax) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordEffectMagnitudeMax(int magnitudeMax) noexcept;
 
     /**
     * \brief Set the minimum magnitude of the temporary effect stored on the server.
@@ -800,7 +802,7 @@ namespace RecordsDynamicFunctions
     * \param magnitudeMin The minimum magnitude of the effect.
     * \return void
     */
-    extern "C" void SetRecordEffectMagnitudeMin(int magnitudeMin) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordEffectMagnitudeMin(int magnitudeMin) noexcept;
 
     /**
     * \brief Set the type of the temporary body part stored on the server.
@@ -808,7 +810,7 @@ namespace RecordsDynamicFunctions
     * \param partType The type of the body part.
     * \return void
     */
-    extern "C" void SetRecordBodyPartType(unsigned int partType) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordBodyPartType(unsigned int partType) noexcept;
 
     /**
     * \brief Set the id of the male version of the temporary body part stored on the
@@ -817,7 +819,7 @@ namespace RecordsDynamicFunctions
     * \param partId The id of the body part.
     * \return void
     */
-    extern "C" void SetRecordBodyPartIdForMale(const char* partId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordBodyPartIdForMale(const char* partId) noexcept;
 
     /**
     * \brief Set the id of the female version of the temporary body part stored on the
@@ -826,7 +828,7 @@ namespace RecordsDynamicFunctions
     * \param partId The id of the body part.
     * \return void
     */
-    extern "C" void SetRecordBodyPartIdForFemale(const char* partId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordBodyPartIdForFemale(const char* partId) noexcept;
 
     /**
     * \brief Set the id of the of the temporary inventory item stored on the server.
@@ -834,7 +836,7 @@ namespace RecordsDynamicFunctions
     * \param partId The id of the inventory item.
     * \return void
     */
-    extern "C" void SetRecordInventoryItemId(const char* itemId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordInventoryItemId(const char* itemId) noexcept;
 
     /**
     * \brief Set the count of the of the temporary inventory item stored on the server.
@@ -842,7 +844,7 @@ namespace RecordsDynamicFunctions
     * \param count The count of the inventory item.
     * \return void
     */
-    extern "C" void SetRecordInventoryItemCount(unsigned int count) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRecordInventoryItemCount(unsigned int count) noexcept;
 
     /**
     * \brief Add a copy of the server's temporary record of the current specified
@@ -853,7 +855,7 @@ namespace RecordsDynamicFunctions
     *
     * \return void
     */
-    extern "C" void AddRecord() noexcept;
+    EXPORT_APIFUNCTION void CDECL AddRecord() noexcept;
 
     /**
     * \brief Add a copy of the server's temporary effect to the temporary record
@@ -864,7 +866,7 @@ namespace RecordsDynamicFunctions
     *
     * \return void
     */
-    extern "C" void AddRecordEffect() noexcept;
+    EXPORT_APIFUNCTION void CDECL AddRecordEffect() noexcept;
 
     /**
     * \brief Add a copy of the server's temporary body part to the temporary record
@@ -875,7 +877,7 @@ namespace RecordsDynamicFunctions
     *
     * \return void
     */
-    extern "C" void AddRecordBodyPart() noexcept;
+    EXPORT_APIFUNCTION void CDECL AddRecordBodyPart() noexcept;
 
     /**
     * \brief Add a copy of the server's temporary inventory item to the temporary record
@@ -889,7 +891,7 @@ namespace RecordsDynamicFunctions
     *
     * \return void
     */
-    extern "C" void AddRecordInventoryItem() noexcept;
+    EXPORT_APIFUNCTION void CDECL AddRecordInventoryItem() noexcept;
 
     /**
     * \brief Send a RecordDynamic packet with the current specified record type.
@@ -901,7 +903,7 @@ namespace RecordsDynamicFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendRecordDynamic(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendRecordDynamic(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 }
 
 #endif //OPENMW_RECORDSDYNAMICAPI_HPP

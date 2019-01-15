@@ -3,6 +3,10 @@
 
 #include "../Types.hpp"
 
+#include <Script/Platform.hpp>
+
+#include <Script/Platform.hpp>
+
 #define SERVERAPI \
     {"StopServer",                  ServerFunctions::StopServer},\
     \
@@ -40,7 +44,7 @@ namespace ServerFunctions
     * \param code The shutdown code.
     * \return void
     */
-    extern "C" void StopServer(int code) noexcept;
+    EXPORT_APIFUNCTION void CDECL StopServer(int code) noexcept;
 
     /**
     * \brief Kick a certain player from the server.
@@ -48,7 +52,7 @@ namespace ServerFunctions
     * \param pid The player ID.
     * \return void
     */
-    extern "C" void Kick(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL Kick(unsigned short pid) noexcept;
 
     /**
     * \brief Ban a certain IP address from the server.
@@ -56,7 +60,7 @@ namespace ServerFunctions
     * \param ipAddress The IP address.
     * \return void
     */
-    extern "C" void BanAddress(const char *ipAddress) noexcept;
+    EXPORT_APIFUNCTION void CDECL BanAddress(const char *ipAddress) noexcept;
 
     /**
     * \brief Unban a certain IP address from the server.
@@ -64,7 +68,7 @@ namespace ServerFunctions
     * \param ipAddress The IP address.
     * \return void
     */
-    extern "C" void UnbanAddress(const char *ipAddress) noexcept;
+    EXPORT_APIFUNCTION void CDECL UnbanAddress(const char *ipAddress) noexcept;
 
     /**
     * \brief Get the type of the operating system used by the server.
@@ -104,7 +108,7 @@ namespace ServerFunctions
     * \param pid The player ID.
     * \return The average ping.
     */
-    extern "C" int GetAvgPing(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetAvgPing(unsigned short pid) noexcept;
 
     /**
     * \brief Get the IP address of a certain player.
@@ -112,7 +116,7 @@ namespace ServerFunctions
     * \param pid The player ID.
     * \return The IP address.
     */
-    extern "C" const char* GetIP(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION const CDECL char* GetIP(unsigned short pid) noexcept;
 
     /**
      * \brief Get the port used by the server.
@@ -133,7 +137,7 @@ namespace ServerFunctions
      *
      * @return
      */
-    extern "C" bool HasPassword() noexcept;
+    EXPORT_APIFUNCTION bool CDECL HasPassword() noexcept;
 
     /**
     * \brief Get the plugin enforcement state of the server.
@@ -142,7 +146,7 @@ namespace ServerFunctions
     *
     * \return The enforcement state.
     */
-    extern "C" bool GetPluginEnforcementState() noexcept;
+    EXPORT_APIFUNCTION bool CDECL GetPluginEnforcementState() noexcept;
 
     /**
     * \brief Get the script error ignoring state of the server.
@@ -151,7 +155,7 @@ namespace ServerFunctions
     *
     * \return The script error ignoring state.
     */
-    extern "C" bool GetScriptErrorIgnoringState() noexcept;
+    EXPORT_APIFUNCTION bool CDECL GetScriptErrorIgnoringState() noexcept;
 
     /**
     * \brief Set the game mode of the server, as displayed in the server browser.
@@ -159,7 +163,7 @@ namespace ServerFunctions
     * \param name The new game mode.
     * \return void
     */
-    extern "C" void SetGameMode(const char* gameMode) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetGameMode(const char* gameMode) noexcept;
 
     /**
     * \brief Set the name of the server, as displayed in the server browser.
@@ -167,7 +171,7 @@ namespace ServerFunctions
     * \param name The new name.
     * \return void
     */
-    extern "C" void SetHostname(const char* name) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetHostname(const char* name) noexcept;
 
     /**
     * \brief Set the password required to join the server.
@@ -175,7 +179,7 @@ namespace ServerFunctions
     * \param password The password.
     * \return void
     */
-    extern "C" void SetServerPassword(const char *password) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetServerPassword(const char *password) noexcept;
 
     /**
     * \brief Set the plugin enforcement state of the server.
@@ -185,7 +189,7 @@ namespace ServerFunctions
     * \param state The new enforcement state.
     * \return void
     */
-    extern "C" void SetPluginEnforcementState(bool state) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetPluginEnforcementState(bool state) noexcept;
 
     /**
     * \brief Set whether script errors should be ignored or not.
@@ -197,7 +201,7 @@ namespace ServerFunctions
     * \param state The new script error ignoring state.
     * \return void
     */
-    extern "C" void SetScriptErrorIgnoringState(bool state) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetScriptErrorIgnoringState(bool state) noexcept;
 
     /**
     * \brief Set a rule string for the server details displayed in the server browser.
@@ -206,7 +210,7 @@ namespace ServerFunctions
     * \param value The string value of the rule.
     * \return void
     */
-    extern "C" void SetRuleString(const char *key, const char *value) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRuleString(const char *key, const char *value) noexcept;
 
     /**
     * \brief Set a rule value for the server details displayed in the server browser.
@@ -215,16 +219,16 @@ namespace ServerFunctions
     * \param value The numerical value of the rule.
     * \return void
     */
-    extern "C" void SetRuleValue(const char *key, double value) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetRuleValue(const char *key, double value) noexcept;
 
     /**
      * \brief Adds plugins to the internal server structure to validate players.
      * @param pluginName Name with extension of the plugin or master file.
      * @param hash Hash string
      */
-    extern "C" void AddPluginHash(const char *pluginName, const char *hash) noexcept;
+    EXPORT_APIFUNCTION void CDECL AddPluginHash(const char *pluginName, const char *hash) noexcept;
 
-    extern "C" const char *GetModDir() noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetModDir() noexcept;
 }
 
 #endif //OPENMW_SERVERAPI_HPP

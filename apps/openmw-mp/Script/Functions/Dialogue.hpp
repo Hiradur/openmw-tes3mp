@@ -1,6 +1,8 @@
 #ifndef OPENMW_DIALOGUEAPI_HPP
 #define OPENMW_DIALOGUEAPI_HPP
 
+#include <Script/Platform.hpp>
+
 #define DIALOGUEAPI \
     {"ClearTopicChanges",       DialogueFunctions::ClearTopicChanges},\
     \
@@ -27,7 +29,7 @@ namespace DialogueFunctions
     * \param pid The player ID whose topic changes should be used.
     * \return void
     */
-    extern "C" void ClearTopicChanges(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL ClearTopicChanges(unsigned short pid) noexcept;
 
     /**
     * \brief Get the number of indexes in a player's latest topic changes.
@@ -44,7 +46,7 @@ namespace DialogueFunctions
     * \param topicId The topicId of the topic.
     * \return void
     */
-    extern "C" void AddTopic(unsigned short pid, const char* topicId) noexcept;
+    EXPORT_APIFUNCTION void CDECL AddTopic(unsigned short pid, const char* topicId) noexcept;
 
     /**
     * \brief Get the topicId at a certain index in a player's latest topic changes.
@@ -65,7 +67,7 @@ namespace DialogueFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendTopicChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendTopicChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Play a certain animation on a player's character by sending a PlayerAnimation
@@ -78,7 +80,7 @@ namespace DialogueFunctions
     * \param bool Whether the animation should persist or not.
     * \return void
     */
-    extern "C" void PlayAnimation(unsigned short pid, const char* groupname, int mode, int count, bool persist) noexcept;
+    EXPORT_APIFUNCTION void CDECL PlayAnimation(unsigned short pid, const char* groupname, int mode, int count, bool persist) noexcept;
 
     /**
     * \brief Play a certain sound for a player as spoken by their character by sending
@@ -88,11 +90,11 @@ namespace DialogueFunctions
     * \param sound The path of the sound file.
     * \return void
     */
-    extern "C" void PlaySpeech(unsigned short pid, const char* sound) noexcept;
+    EXPORT_APIFUNCTION void CDECL PlaySpeech(unsigned short pid, const char* sound) noexcept;
 
     // All methods below are deprecated versions of methods from above
 
-    extern "C" void InitializeTopicChanges(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL InitializeTopicChanges(unsigned short pid) noexcept;
 }
 
 #endif //OPENMW_DIALOGUEAPI_HPP

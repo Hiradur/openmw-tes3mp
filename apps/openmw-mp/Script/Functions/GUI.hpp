@@ -1,6 +1,8 @@
 #ifndef OPENMW_GUIAPI_HPP
 #define OPENMW_GUIAPI_HPP
 
+#include <Script/Platform.hpp>
+
 #define GUIAPI \
     {"MessageBox",                 GUIFunctions::_MessageBox},\
     {"CustomMessageBox",           GUIFunctions::CustomMessageBox},\
@@ -39,7 +41,7 @@ namespace GUIFunctions
     * \param label The text in the messagebox.
     * \return void
     */
-    extern "C" void _MessageBox(unsigned short pid, int id, const char *label) noexcept;
+    EXPORT_APIFUNCTION void CDECL _MessageBox(unsigned short pid, int id, const char *label) noexcept;
 
     /**
     * \brief Display an interactive messagebox at the center of the screen that
@@ -51,7 +53,7 @@ namespace GUIFunctions
     * \parm buttons The captions of the buttons, separated by semicolons (e.g. "Yes;No;Maybe").
     * \return void
     */
-    extern "C" void CustomMessageBox(unsigned short pid, int id, const char *label, const char *buttons) noexcept;
+    EXPORT_APIFUNCTION void CDECL CustomMessageBox(unsigned short pid, int id, const char *label, const char *buttons) noexcept;
 
     /**
     * \brief Display an input dialog at the center of the screen.
@@ -62,7 +64,7 @@ namespace GUIFunctions
     * \parm note The text at the bottom of the input dialog.
     * \return void
     */
-    extern "C" void InputDialog(unsigned short pid, int id, const char *label, const char *note) noexcept;
+    EXPORT_APIFUNCTION void CDECL InputDialog(unsigned short pid, int id, const char *label, const char *note) noexcept;
 
     /**
     * \brief Display a password dialog at the center of the screen.
@@ -76,7 +78,7 @@ namespace GUIFunctions
     * \parm note The text at the bottom of the password dialog.
     * \return void
     */
-    extern "C" void PasswordDialog(unsigned short pid, int id, const char *label, const char *note) noexcept;
+    EXPORT_APIFUNCTION void CDECL PasswordDialog(unsigned short pid, int id, const char *label, const char *note) noexcept;
 
     /**
     * \brief Display a listbox at the center of the screen where each item takes up
@@ -89,7 +91,7 @@ namespace GUIFunctions
     * \parm items The items in the listbox, separated by newlines (e.g. "Item 1\nItem 2").
     * \return void
     */
-    extern "C" void ListBox(unsigned short pid, int id, const char *label, const char *items);
+    EXPORT_APIFUNCTION void CDECL ListBox(unsigned short pid, int id, const char *label, const char *items);
 
     /**
     * \brief Clear the last recorded quick key changes for a player.
@@ -99,7 +101,7 @@ namespace GUIFunctions
     * \param pid The player ID whose quick key changes should be used.
     * \return void
     */
-    extern "C" void ClearQuickKeyChanges(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL ClearQuickKeyChanges(unsigned short pid) noexcept;
 
     /**
     * \brief Get the number of indexes in a player's latest quick key changes.
@@ -118,7 +120,7 @@ namespace GUIFunctions
     * \param itemId The itemId of the item.
     * \return void
     */
-    extern "C" void AddQuickKey(unsigned short pid, unsigned short slot, int type, const char* itemId = "") noexcept;
+    EXPORT_APIFUNCTION void CDECL AddQuickKey(unsigned short pid, unsigned short slot, int type, const char* itemId = "") noexcept;
 
     /**
     * \brief Get the slot of the quick key at a certain index in a player's latest quick key changes.
@@ -127,7 +129,7 @@ namespace GUIFunctions
     * \param index The index of the quick key in the quick key changes vector.
     * \return The slot.
     */
-    extern "C" int GetQuickKeySlot(unsigned short pid, unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetQuickKeySlot(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Get the type of the quick key at a certain index in a player's latest quick key changes.
@@ -136,7 +138,7 @@ namespace GUIFunctions
     * \param index The index of the quick key in the quick key changes vector.
     * \return The quick key type.
     */
-    extern "C" int GetQuickKeyType(unsigned short pid, unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetQuickKeyType(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Get the itemId at a certain index in a player's latest quick key changes.
@@ -153,7 +155,7 @@ namespace GUIFunctions
     * \param pid The player ID whose quick key changes should be used.
     * \return void
     */
-    extern "C" void SendQuickKeyChanges(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendQuickKeyChanges(unsigned short pid) noexcept;
 
     //state 0 - disallow, 1 - allow
 
@@ -167,7 +169,7 @@ namespace GUIFunctions
     * \param state The state of the map marker (false to hide, true to reveal).
     * \return void
     */
-    extern "C" void SetMapVisibility(unsigned short targetPid, unsigned short affectedPid, unsigned short state) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetMapVisibility(unsigned short targetPid, unsigned short affectedPid, unsigned short state) noexcept;
 
     /**
     * \brief Determine whether a player's map marker can be seen by all other players.
@@ -178,11 +180,11 @@ namespace GUIFunctions
     * \param state The state of the map marker (false to hide, true to reveal).
     * \return void
     */
-    extern "C" void SetMapVisibilityAll(unsigned short targetPid, unsigned short state) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetMapVisibilityAll(unsigned short targetPid, unsigned short state) noexcept;
 
     // All methods below are deprecated versions of methods from above
 
-    extern "C" void InitializeQuickKeyChanges(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL InitializeQuickKeyChanges(unsigned short pid) noexcept;
 }
 
 #endif //OPENMW_GUIAPI_HPP

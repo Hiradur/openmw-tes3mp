@@ -1,6 +1,8 @@
 #ifndef OPENMW_OBJECTAPI_HPP
 #define OPENMW_OBJECTAPI_HPP
 
+#include <Script/Platform.hpp>
+
 #define OBJECTAPI \
     {"ReadReceivedObjectList",                ObjectFunctions::ReadReceivedObjectList},\
     \
@@ -143,14 +145,14 @@ namespace ObjectFunctions
     *
     * \return void
     */
-    extern "C" void ReadReceivedObjectList() noexcept;
+    EXPORT_APIFUNCTION void CDECL ReadReceivedObjectList() noexcept;
 
     /**
     * \brief Clear the data from the object list stored on the server.
     *
     * \return void
     */
-    extern "C" void ClearObjectList() noexcept;
+    EXPORT_APIFUNCTION void CDECL ClearObjectList() noexcept;
 
     /**
     * \brief Set the pid attached to the ObjectList.
@@ -158,7 +160,7 @@ namespace ObjectFunctions
     * \param pid The player ID to whom the object list should be attached.
     * \return void
     */
-    extern "C" void SetObjectListPid(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectListPid(unsigned short pid) noexcept;
 
     /**
     * \brief Take the contents of the read-only object list last received by the
@@ -167,7 +169,7 @@ namespace ObjectFunctions
     *
     * \return void
     */
-    extern "C" void CopyReceivedObjectListToStore() noexcept;
+    EXPORT_APIFUNCTION void CDECL CopyReceivedObjectListToStore() noexcept;
 
     /**
     * \brief Get the number of indexes in the read object list.
@@ -219,7 +221,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return Whether the object is a player.
     */
-    extern "C" bool IsObjectPlayer(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION bool CDECL IsObjectPlayer(unsigned int index) noexcept;
 
     /**
     * \brief Get the player ID of the object at a certain index in the read object list,
@@ -231,7 +233,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The player ID of the object.
     */
-    extern "C" int GetObjectPid(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetObjectPid(unsigned int index) noexcept;
 
     /**
     * \brief Get the refId of the object at a certain index in the read object list.
@@ -263,7 +265,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The object count.
     */
-    extern "C" int GetObjectCount(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetObjectCount(unsigned int index) noexcept;
 
     /**
     * \brief Get the charge of the object at a certain index in the read object list.
@@ -271,7 +273,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The charge.
     */
-    extern "C" int GetObjectCharge(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetObjectCharge(unsigned int index) noexcept;
 
     /**
     * \brief Get the enchantment charge of the object at a certain index in the read object list.
@@ -279,7 +281,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The enchantment charge.
     */
-    extern "C" double GetObjectEnchantmentCharge(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION double CDECL GetObjectEnchantmentCharge(unsigned int index) noexcept;
 
     /**
     * \brief Get the soul of the object at a certain index in the read object list.
@@ -297,7 +299,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The gold value.
     */
-    extern "C" int GetObjectGoldValue(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetObjectGoldValue(unsigned int index) noexcept;
 
     /**
     * \brief Get the object scale of the object at a certain index in the read object list.
@@ -305,7 +307,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The object scale.
     */
-    extern "C" double GetObjectScale(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION double CDECL GetObjectScale(unsigned int index) noexcept;
 
     /**
     * \brief Get the object state of the object at a certain index in the read object list.
@@ -313,7 +315,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The object state.
     */
-    extern "C" bool GetObjectState(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION bool CDECL GetObjectState(unsigned int index) noexcept;
 
     /**
     * \brief Get the door state of the object at a certain index in the read object list.
@@ -321,7 +323,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The door state.
     */
-    extern "C" int GetObjectDoorState(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetObjectDoorState(unsigned int index) noexcept;
 
     /**
     * \brief Get the lock level of the object at a certain index in the read object list.
@@ -329,7 +331,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The lock level.
     */
-    extern "C" int GetObjectLockLevel(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetObjectLockLevel(unsigned int index) noexcept;
 
     /**
     * \brief Check whether the object at a certain index in the read object list has been
@@ -338,7 +340,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return Whether the object has been activated by a player.
     */
-    extern "C" bool DoesObjectHavePlayerActivating(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION bool CDECL DoesObjectHavePlayerActivating(unsigned int index) noexcept;
 
     /**
     * \brief Get the player ID of the player activating the object at a certain index in the
@@ -347,7 +349,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The player ID of the activating player.
     */
-    extern "C" int GetObjectActivatingPid(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetObjectActivatingPid(unsigned int index) noexcept;
 
     /**
     * \brief Get the refId of the actor activating the object at a certain index in the read
@@ -393,7 +395,7 @@ namespace ObjectFunctions
     *
     * \return The summon state.
     */
-    extern "C" bool GetObjectSummonState(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION bool CDECL GetObjectSummonState(unsigned int index) noexcept;
 
     /**
     * \brief Get the summon duration of the object at a certain index in the read object list.
@@ -403,7 +405,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The summon duration.
     */
-    extern "C" double GetObjectSummonDuration(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION double CDECL GetObjectSummonDuration(unsigned int index) noexcept;
 
     /**
     * \brief Check whether the object at a certain index in the read object list has a player
@@ -414,7 +416,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return Whether a player is the summoner of the object.
     */
-    extern "C" bool DoesObjectHavePlayerSummoner(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION bool CDECL DoesObjectHavePlayerSummoner(unsigned int index) noexcept;
 
     /**
     * \brief Get the player ID of the summoner of the object at a certain index in the read object
@@ -423,7 +425,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The player ID of the summoner.
     */
-    extern "C" int GetObjectSummonerPid(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetObjectSummonerPid(unsigned int index) noexcept;
 
     /**
     * \brief Get the refId of the actor summoner of the object at a certain index in the read object
@@ -457,7 +459,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The X position.
     */
-    extern "C" double GetObjectPosX(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION double CDECL GetObjectPosX(unsigned int index) noexcept;
 
     /**
     * \brief Get the Y position of the object at a certain index in the read object list.
@@ -465,7 +467,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The Y position.
     */
-    extern "C" double GetObjectPosY(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION double CDECL GetObjectPosY(unsigned int index) noexcept;
 
     /**
     * \brief Get the Z position at a certain index in the read object list.
@@ -473,7 +475,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The Z position.
     */
-    extern "C" double GetObjectPosZ(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION double CDECL GetObjectPosZ(unsigned int index) noexcept;
 
     /**
     * \brief Get the X rotation of the object at a certain index in the read object list.
@@ -481,7 +483,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The X rotation.
     */
-    extern "C" double GetObjectRotX(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION double CDECL GetObjectRotX(unsigned int index) noexcept;
 
     /**
     * \brief Get the Y rotation of the object at a certain index in the read object list.
@@ -489,7 +491,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The Y rotation.
     */
-    extern "C" double GetObjectRotY(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION double CDECL GetObjectRotY(unsigned int index) noexcept;
 
     /**
     * \brief Get the Z rotation of the object at a certain index in the read object list.
@@ -497,7 +499,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return The Z rotation.
     */
-    extern "C" double GetObjectRotZ(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION double CDECL GetObjectRotZ(unsigned int index) noexcept;
 
     /**
     * \brief Get the videoFilename of the object at a certain index in the read object list.
@@ -533,7 +535,7 @@ namespace ObjectFunctions
     * \param itemIndex The index of the container item.
     * \return The item count.
     */
-    extern "C" int GetContainerItemCount(unsigned int objectIndex, unsigned int itemIndex) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetContainerItemCount(unsigned int objectIndex, unsigned int itemIndex) noexcept;
 
     /**
     * \brief Get the charge of the container item at a certain itemIndex in the container changes
@@ -543,7 +545,7 @@ namespace ObjectFunctions
     * \param itemIndex The index of the container item.
     * \return The charge.
     */
-    extern "C" int GetContainerItemCharge(unsigned int objectIndex, unsigned int itemIndex) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetContainerItemCharge(unsigned int objectIndex, unsigned int itemIndex) noexcept;
 
     /**
     * \brief Get the enchantment charge of the container item at a certain itemIndex in the container changes
@@ -553,7 +555,7 @@ namespace ObjectFunctions
     * \param itemIndex The index of the container item.
     * \return The enchantment charge.
     */
-    extern "C" double GetContainerItemEnchantmentCharge(unsigned int objectIndex, unsigned int itemIndex) noexcept;
+    EXPORT_APIFUNCTION double CDECL GetContainerItemEnchantmentCharge(unsigned int objectIndex, unsigned int itemIndex) noexcept;
 
     /**
     * \brief Get the soul of the container item at a certain itemIndex in the container changes
@@ -573,7 +575,7 @@ namespace ObjectFunctions
     * \param itemIndex The index of the container item.
     * \return The action count.
     */
-    extern "C" int GetContainerItemActionCount(unsigned int objectIndex, unsigned int itemIndex) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetContainerItemActionCount(unsigned int objectIndex, unsigned int itemIndex) noexcept;
 
     /**
     * \brief Check whether the object at a certain index in the read object list has a container.
@@ -584,7 +586,7 @@ namespace ObjectFunctions
     * \param index The index of the object.
     * \return Whether the object has a container.
     */
-    extern "C" bool DoesObjectHaveContainer(unsigned int index) noexcept;
+    EXPORT_APIFUNCTION bool CDECL DoesObjectHaveContainer(unsigned int index) noexcept;
 
     /**
     * \brief Set the cell of the temporary object list stored on the server.
@@ -595,7 +597,7 @@ namespace ObjectFunctions
     * \param cellDescription The description of the cell.
     * \return void
     */
-    extern "C" void SetObjectListCell(const char* cellDescription) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectListCell(const char* cellDescription) noexcept;
 
     /**
     * \brief Set the action type of the temporary object list stored on the server.
@@ -603,7 +605,7 @@ namespace ObjectFunctions
     * \param action The action type (0 for SET, 1 for ADD, 2 for REMOVE, 3 for REQUEST).
     * \return void
     */
-    extern "C" void SetObjectListAction(unsigned char action) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectListAction(unsigned char action) noexcept;
 
     /**
     * \brief Set the console command of the temporary object list stored on the server.
@@ -614,7 +616,7 @@ namespace ObjectFunctions
     * \param consoleCommand The console command.
     * \return void
     */
-    extern "C" void SetObjectListConsoleCommand(const char* consoleCommand) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectListConsoleCommand(const char* consoleCommand) noexcept;
 
     /**
     * \brief Set the refId of the temporary object stored on the server.
@@ -622,7 +624,7 @@ namespace ObjectFunctions
     * \param refId The refId.
     * \return void
     */
-    extern "C" void SetObjectRefId(const char* refId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectRefId(const char* refId) noexcept;
 
     /**
     * \brief Set the refNum of the temporary object stored on the server.
@@ -636,7 +638,7 @@ namespace ObjectFunctions
     * \param refNum The refNum.
     * \return void
     */
-    extern "C" void SetObjectRefNum(int refNum) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectRefNum(int refNum) noexcept;
 
     /**
     * \brief Set the mpNum of the temporary object stored on the server.
@@ -651,7 +653,7 @@ namespace ObjectFunctions
     * \param mpNum The mpNum.
     * \return void
     */
-    extern "C" void SetObjectMpNum(int mpNum) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectMpNum(int mpNum) noexcept;
 
     /**
     * \brief Set the object count of the temporary object stored on the server.
@@ -661,7 +663,7 @@ namespace ObjectFunctions
     * \param count The object count.
     * \return void
     */
-    extern "C" void SetObjectCount(int count) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectCount(int count) noexcept;
 
     /**
     * \brief Set the charge of the temporary object stored on the server.
@@ -671,7 +673,7 @@ namespace ObjectFunctions
     * \param charge The charge.
     * \return void
     */
-    extern "C" void SetObjectCharge(int charge) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectCharge(int charge) noexcept;
 
     /**
     * \brief Set the enchantment charge of the temporary object stored on the server.
@@ -681,7 +683,7 @@ namespace ObjectFunctions
     * \param charge The enchantment charge.
     * \return void
     */
-    extern "C" void SetObjectEnchantmentCharge(double enchantmentCharge) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectEnchantmentCharge(double enchantmentCharge) noexcept;
 
     /**
     * \brief Set the soul of the temporary object stored on the server.
@@ -689,7 +691,7 @@ namespace ObjectFunctions
     * \param refId The soul.
     * \return void
     */
-    extern "C" void SetObjectSoul(const char* soul) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectSoul(const char* soul) noexcept;
 
     /**
     * \brief Set the gold value of the temporary object stored on the server.
@@ -699,7 +701,7 @@ namespace ObjectFunctions
     * \param goldValue The gold value.
     * \return void
     */
-    extern "C" void SetObjectGoldValue(int goldValue) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectGoldValue(int goldValue) noexcept;
 
     /**
     * \brief Set the scale of the temporary object stored on the server.
@@ -709,7 +711,7 @@ namespace ObjectFunctions
     * \param scale The scale.
     * \return void
     */
-    extern "C" void SetObjectScale(double scale) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectScale(double scale) noexcept;
 
     /**
     * \brief Set the object state of the temporary object stored on the server.
@@ -719,7 +721,7 @@ namespace ObjectFunctions
     * \param objectState The object state.
     * \return void
     */
-    extern "C" void SetObjectState(bool objectState) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectState(bool objectState) noexcept;
 
     /**
     * \brief Set the lock level of the temporary object stored on the server.
@@ -727,7 +729,7 @@ namespace ObjectFunctions
     * \param lockLevel The lock level.
     * \return void
     */
-    extern "C" void SetObjectLockLevel(int lockLevel) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectLockLevel(int lockLevel) noexcept;
 
     /**
     * \brief Set the summon duration of the temporary object stored on the server.
@@ -735,7 +737,7 @@ namespace ObjectFunctions
     * \param summonDuration The summon duration.
     * \return void
     */
-    extern "C" void SetObjectSummonDuration(float summonDuration) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectSummonDuration(float summonDuration) noexcept;
 
     /**
     * \brief Set the disarm state of the temporary object stored on the server.
@@ -743,7 +745,7 @@ namespace ObjectFunctions
     * \param disarmState The disarmState.
     * \return void
     */
-    extern "C" void SetObjectDisarmState(bool disarmState) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectDisarmState(bool disarmState) noexcept;
 
     /**
     * \brief Set the summon state of the temporary object stored on the server.
@@ -754,7 +756,7 @@ namespace ObjectFunctions
     * \param summonState The summon state.
     * \return void
     */
-    extern "C" void SetObjectSummonState(bool summonState) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectSummonState(bool summonState) noexcept;
 
     /**
     * \brief Set the position of the temporary object stored on the server.
@@ -764,7 +766,7 @@ namespace ObjectFunctions
     * \param z The Z position.
     * \return void
     */
-    extern "C" void SetObjectPosition(double x, double y, double z) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectPosition(double x, double y, double z) noexcept;
 
     /**
     * \brief Set the rotation of the temporary object stored on the server.
@@ -774,7 +776,7 @@ namespace ObjectFunctions
     * \param z The Z rotation.
     * \return void
     */
-    extern "C" void SetObjectRotation(double x, double y, double z) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectRotation(double x, double y, double z) noexcept;
 
     /**
     * \brief Set the player ID of the player activating the temporary object stored on the
@@ -783,7 +785,7 @@ namespace ObjectFunctions
     * \param pid The pid of the player.
     * \return void
     */
-    extern "C" void SetObjectActivatingPid(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectActivatingPid(unsigned short pid) noexcept;
 
     /**
     * \brief Set the door state of the temporary object stored on the server.
@@ -793,7 +795,7 @@ namespace ObjectFunctions
     * \param doorState The door state.
     * \return void
     */
-    extern "C" void SetObjectDoorState(int doorState) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectDoorState(int doorState) noexcept;
 
     /**
     * \brief Set the teleport state of the temporary object stored on the server.
@@ -804,7 +806,7 @@ namespace ObjectFunctions
     * \param teleportState The teleport state.
     * \return void
     */
-    extern "C" void SetObjectDoorTeleportState(bool teleportState) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectDoorTeleportState(bool teleportState) noexcept;
 
     /**
     * \brief Set the door destination cell of the temporary object stored on the server.
@@ -815,7 +817,7 @@ namespace ObjectFunctions
     * \param cellDescription The description of the cell.
     * \return void
     */
-    extern "C" void SetObjectDoorDestinationCell(const char* cellDescription) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectDoorDestinationCell(const char* cellDescription) noexcept;
 
     /**
     * \brief Set the door destination position of the temporary object stored on the server.
@@ -825,7 +827,7 @@ namespace ObjectFunctions
     * \param z The Z position.
     * \return void
     */
-    extern "C" void SetObjectDoorDestinationPosition(double x, double y, double z) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectDoorDestinationPosition(double x, double y, double z) noexcept;
 
     /**
     * \brief Set the door destination rotation of the temporary object stored on the server.
@@ -837,7 +839,7 @@ namespace ObjectFunctions
     * \param z The Z rotation.
     * \return void
     */
-    extern "C" void SetObjectDoorDestinationRotation(double x, double z) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetObjectDoorDestinationRotation(double x, double z) noexcept;
 
     /**
     * \brief Set a player as the object in the temporary object stored on the server.
@@ -846,7 +848,7 @@ namespace ObjectFunctions
     * \param pid The pid of the player.
     * \return void
     */
-    extern "C" void SetPlayerAsObject(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetPlayerAsObject(unsigned short pid) noexcept;
 
     /**
     * \brief Set the refId of the temporary container item stored on the server.
@@ -854,7 +856,7 @@ namespace ObjectFunctions
     * \param refId The refId.
     * \return void
     */
-    extern "C" void SetContainerItemRefId(const char* refId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetContainerItemRefId(const char* refId) noexcept;
 
     /**
     * \brief Set the item count of the temporary container item stored on the server.
@@ -862,7 +864,7 @@ namespace ObjectFunctions
     * \param count The item count.
     * \return void
     */
-    extern "C" void SetContainerItemCount(int count) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetContainerItemCount(int count) noexcept;
 
     /**
     * \brief Set the charge of the temporary container item stored on the server.
@@ -870,7 +872,7 @@ namespace ObjectFunctions
     * \param charge The charge.
     * \return void
     */
-    extern "C" void SetContainerItemCharge(int charge) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetContainerItemCharge(int charge) noexcept;
 
     /**
     * \brief Set the enchantment charge of the temporary container item stored on the server.
@@ -878,7 +880,7 @@ namespace ObjectFunctions
     * \param charge The enchantment charge.
     * \return void
     */
-    extern "C" void SetContainerItemEnchantmentCharge(double enchantmentCharge) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetContainerItemEnchantmentCharge(double enchantmentCharge) noexcept;
 
     /**
     * \brief Set the soul of the temporary container item stored on the server.
@@ -886,7 +888,7 @@ namespace ObjectFunctions
     * \param refId The soul.
     * \return void
     */
-    extern "C" void SetContainerItemSoul(const char* soul) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetContainerItemSoul(const char* soul) noexcept;
 
     /**
     * \brief Set the action count of the container item at a certain itemIndex in the container
@@ -901,7 +903,7 @@ namespace ObjectFunctions
     * \param actionCount The action count.
     * \return void
     */
-    extern "C" void SetContainerItemActionCountByIndex(unsigned int objectIndex, unsigned int itemIndex, int actionCount) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetContainerItemActionCountByIndex(unsigned int objectIndex, unsigned int itemIndex, int actionCount) noexcept;
 
     /**
     * \brief Add a copy of the server's temporary object to the server's currently stored object
@@ -912,7 +914,7 @@ namespace ObjectFunctions
     *
     * \return void
     */
-    extern "C" void AddObject() noexcept;
+    EXPORT_APIFUNCTION void CDECL AddObject() noexcept;
 
     /**
     * \brief Add a copy of the server's temporary container item to the container changes of the
@@ -923,7 +925,7 @@ namespace ObjectFunctions
     *
     * \return void
     */
-    extern "C" void AddContainerItem() noexcept;
+    EXPORT_APIFUNCTION void CDECL AddContainerItem() noexcept;
 
     /**
     * \brief Send an ObjectActivate packet.
@@ -934,7 +936,7 @@ namespace ObjectFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendObjectActivate(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendObjectActivate(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send an ObjectPlace packet.
@@ -945,7 +947,7 @@ namespace ObjectFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendObjectPlace(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendObjectPlace(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send an ObjectSpawn packet.
@@ -956,7 +958,7 @@ namespace ObjectFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendObjectSpawn(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendObjectSpawn(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send an ObjectDelete packet.
@@ -966,7 +968,7 @@ namespace ObjectFunctions
     *
     * \return void
     */
-    extern "C" void SendObjectDelete(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendObjectDelete(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send an ObjectLock packet.
@@ -977,7 +979,7 @@ namespace ObjectFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendObjectLock(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendObjectLock(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send an ObjectTrap packet.
@@ -987,7 +989,7 @@ namespace ObjectFunctions
     *
     * \return void
     */
-    extern "C" void SendObjectTrap(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendObjectTrap(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send an ObjectScale packet.
@@ -998,7 +1000,7 @@ namespace ObjectFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendObjectScale(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendObjectScale(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send an ObjectState packet.
@@ -1009,7 +1011,7 @@ namespace ObjectFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendObjectState(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendObjectState(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send a DoorState packet.
@@ -1020,7 +1022,7 @@ namespace ObjectFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendDoorState(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendDoorState(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send a DoorDestination packet.
@@ -1031,7 +1033,7 @@ namespace ObjectFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendDoorDestination(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendDoorDestination(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send a Container packet.
@@ -1042,7 +1044,7 @@ namespace ObjectFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendContainer(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendContainer(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send a VideoPlay packet.
@@ -1053,7 +1055,7 @@ namespace ObjectFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendVideoPlay(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendVideoPlay(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send a ConsoleCommand packet.
@@ -1064,7 +1066,7 @@ namespace ObjectFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendConsoleCommand(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendConsoleCommand(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
 
     // All methods below are deprecated versions of methods from above

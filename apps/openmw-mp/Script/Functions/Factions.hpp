@@ -1,6 +1,8 @@
 #ifndef OPENMW_FACTIONAPI_HPP
 #define OPENMW_FACTIONAPI_HPP
 
+#include <Script/Platform.hpp>
+
 #define FACTIONAPI \
     {"ClearFactionChanges",      FactionFunctions::ClearFactionChanges},\
     \
@@ -34,7 +36,7 @@ namespace FactionFunctions
     * \param pid The player ID whose faction changes should be used.
     * \return void
     */
-    extern "C" void ClearFactionChanges(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL ClearFactionChanges(unsigned short pid) noexcept;
 
     /**
     * \brief Get the number of indexes in a player's latest faction changes.
@@ -68,7 +70,7 @@ namespace FactionFunctions
     * \param index The index of the faction.
     * \return The rank.
     */
-    extern "C" int GetFactionRank(unsigned short pid, unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetFactionRank(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Get the expulsion state at a certain index in a player's latest faction changes.
@@ -77,7 +79,7 @@ namespace FactionFunctions
     * \param index The index of the faction.
     * \return The expulsion state.
     */
-    extern "C" bool GetFactionExpulsionState(unsigned short pid, unsigned int index) noexcept;
+    EXPORT_APIFUNCTION bool CDECL GetFactionExpulsionState(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Get the reputation at a certain index in a player's latest faction changes.
@@ -86,7 +88,7 @@ namespace FactionFunctions
     * \param index The index of the faction.
     * \return The reputation.
     */
-    extern "C" int GetFactionReputation(unsigned short pid, unsigned int index) noexcept;
+    EXPORT_APIFUNCTION int CDECL GetFactionReputation(unsigned short pid, unsigned int index) noexcept;
 
     /**
     * \brief Set the action type in a player's faction changes.
@@ -95,7 +97,7 @@ namespace FactionFunctions
     * \param action The action (0 for RANK, 1 for EXPULSION, 2 for REPUTATION).
     * \return void
     */
-    extern "C" void SetFactionChangesAction(unsigned short pid, unsigned char action) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetFactionChangesAction(unsigned short pid, unsigned char action) noexcept;
 
     /**
     * \brief Set the factionId of the temporary faction stored on the server.
@@ -103,7 +105,7 @@ namespace FactionFunctions
     * \param factionId The factionId.
     * \return void
     */
-    extern "C" void SetFactionId(const char* factionId) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetFactionId(const char* factionId) noexcept;
 
     /**
     * \brief Set the rank of the temporary faction stored on the server.
@@ -111,7 +113,7 @@ namespace FactionFunctions
     * \param rank The rank.
     * \return void
     */
-    extern "C" void SetFactionRank(unsigned int rank) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetFactionRank(unsigned int rank) noexcept;
 
     /**
     * \brief Set the expulsion state of the temporary faction stored on the server.
@@ -119,7 +121,7 @@ namespace FactionFunctions
     * \param expulsionState The expulsion state.
     * \return void
     */
-    extern "C" void SetFactionExpulsionState(bool expulsionState) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetFactionExpulsionState(bool expulsionState) noexcept;
 
     /**
     * \brief Set the reputation of the temporary faction stored on the server.
@@ -127,7 +129,7 @@ namespace FactionFunctions
     * \param reputation The reputation.
     * \return void
     */
-    extern "C" void SetFactionReputation(int reputation) noexcept;
+    EXPORT_APIFUNCTION void CDECL SetFactionReputation(int reputation) noexcept;
 
     /**
     * \brief Add the server's temporary faction to the faction changes for a player.
@@ -138,7 +140,7 @@ namespace FactionFunctions
     * \param pid The player ID whose faction changes should be used.
     * \return void
     */
-    extern "C" void AddFaction(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL AddFaction(unsigned short pid) noexcept;
 
     /**
     * \brief Send a PlayerFaction packet with a player's recorded faction changes.
@@ -150,11 +152,11 @@ namespace FactionFunctions
     *                           to the packet (false by default).
     * \return void
     */
-    extern "C" void SendFactionChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    EXPORT_APIFUNCTION void CDECL SendFactionChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     // All methods below are deprecated versions of methods from above
 
-    extern "C" void InitializeFactionChanges(unsigned short pid) noexcept;
+    EXPORT_APIFUNCTION void CDECL InitializeFactionChanges(unsigned short pid) noexcept;
 }
 
 #endif //OPENMW_FACTIONAPI_HPP
