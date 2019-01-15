@@ -73,7 +73,7 @@ namespace ServerFunctions
     *
     * \return The type of the operating system.
     */
-    static const char *GetOperatingSystemType() noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetOperatingSystemType() noexcept;
 
     /**
     * \brief Get the architecture type used by the server.
@@ -82,7 +82,7 @@ namespace ServerFunctions
     *
     * \return The architecture type.
     */
-    static const char *GetArchitectureType() noexcept;
+    EXPORT_APIFUNCTION const char *CDECL GetArchitectureType() noexcept;
 
     /**
     * \brief Get the TES3MP version of the server.
