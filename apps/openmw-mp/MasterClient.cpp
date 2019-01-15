@@ -51,7 +51,7 @@ void MasterClient::SetMaxPlayers(unsigned pl)
     mutexData.unlock();
 }
 
-void MasterClient::SetHostname(std::string hostname)
+void MasterClient::SetHostname(const std::string &hostname)
 {
     mutexData.lock();
     string substr = hostname.substr(0, 200);
@@ -63,7 +63,7 @@ void MasterClient::SetHostname(std::string hostname)
     mutexData.unlock();
 }
 
-void MasterClient::SetModname(std::string modname)
+void MasterClient::SetModname(const std::string &modname)
 {
     mutexData.lock();
     string substr = modname.substr(0, 200);
@@ -75,7 +75,7 @@ void MasterClient::SetModname(std::string modname)
     mutexData.unlock();
 }
 
-void MasterClient::SetRuleString(std::string key, std::string value)
+void MasterClient::SetRuleString(const std::string &key, std::string value)
 {
     mutexData.lock();
     if (queryData.rules.find(key) == queryData.rules.end() || queryData.rules[key].type != 's'
@@ -90,7 +90,7 @@ void MasterClient::SetRuleString(std::string key, std::string value)
     mutexData.unlock();
 }
 
-void MasterClient::SetRuleValue(std::string key, double value)
+void MasterClient::SetRuleValue(const std::string &key, double value)
 {
     mutexData.lock();
     if (queryData.rules.find(key) == queryData.rules.end() || queryData.rules[key].type != 'v'
@@ -105,7 +105,7 @@ void MasterClient::SetRuleValue(std::string key, double value)
     mutexData.unlock();
 }
 
-void MasterClient::PushPlugin(Plugin plugin)
+void MasterClient::PushPlugin(const Plugin &plugin)
 {
     mutexData.lock();
     queryData.plugins.push_back(plugin);
@@ -208,7 +208,7 @@ void MasterClient::Thread()
         }
         else
         {
-            for (int i = 0; pIt != players->end(); i++, pIt++)
+            for (int i = 0; pIt != players->end(); i++, ++pIt)
             {
                 if (queryData.players[i] != pIt->second->npc.mName)
                 {
@@ -258,5 +258,6 @@ void MasterClient::SetUpdateRate(unsigned int rate)
         timeout = min_rate;
     else if (timeout > max_rate)
         timeout = max_rate;
-    timeout = rate;
+    else
+        timeout = rate;
 }

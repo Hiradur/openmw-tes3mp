@@ -24,7 +24,7 @@ extern "C" const char *MechanicsFunctions::GetMarkCell(unsigned short pid) noexc
     Player *player;
     GET_PLAYER(pid, player, 0);
 
-    tempCellDescription = player->cell.getDescription().c_str();
+    tempCellDescription = player->cell.getDescription();
     return tempCellDescription.c_str();
 }
 

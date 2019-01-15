@@ -81,12 +81,13 @@ namespace mwmp
     {
     public:
 
-        BaseObjectList(RakNet::RakNetGUID guid) : guid(guid)
+        BaseObjectList(RakNet::RakNetGUID guid) : guid(guid), baseObjectCount(0), packetOrigin(0), action(0),
+                                                  containerSubAction(0), isValid(false)
         {
 
         }
 
-        BaseObjectList()
+        BaseObjectList(): baseObjectCount(0), packetOrigin(0), action(0), containerSubAction(0), isValid(false)
         {
 
         }

@@ -239,7 +239,7 @@ extern "C" int StatsFunctions::GetSkillIncrease(unsigned short pid, unsigned int
     Player *player;
     GET_PLAYER(pid, player, 0);
 
-    if (attributeId > Attribute::Length)
+    if (attributeId >= Attribute::Length)
         return 0;
 
     return player->npcStats.mSkillIncrease[attributeId];
@@ -484,7 +484,7 @@ extern "C" void StatsFunctions::SetSkillIncrease(unsigned short pid, unsigned in
     Player *player;
     GET_PLAYER(pid, player,);
 
-    if (attributeId > Attribute::Length)
+    if (attributeId >= Attribute::Length)
         return;
 
     player->npcStats.mSkillIncrease[attributeId] = value;

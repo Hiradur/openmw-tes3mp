@@ -309,13 +309,15 @@ int main(int argc, char *argv[])
             }
 
             networking.InitQuery(masterAddr, (unsigned short) masterPort);
-            networking.getMasterClient()->SetMaxPlayers((unsigned) players);
-            networking.getMasterClient()->SetUpdateRate((unsigned) updateRate);
-            string hostname = mgr.getString("hostname", "General");
-            networking.getMasterClient()->SetHostname(hostname);
-            networking.getMasterClient()->SetRuleString("CommitHash", version.mCommitHash.substr(0, 10));
+            auto masterClient = networking.getMasterClient();
 
-            networking.getMasterClient()->Start();
+            masterClient->SetMaxPlayers((unsigned) players);
+            masterClient->SetUpdateRate((unsigned) updateRate);
+            string hostname = mgr.getString("hostname", "General");
+            masterClient->SetHostname(hostname);
+            masterClient->SetRuleString("CommitHash", version.mCommitHash.substr(0, 10));
+
+            masterClient->Start();
         }
 
         networking.postInit();

@@ -17,13 +17,13 @@ namespace  mwmp
         Networking(RakNet::RakPeerInterface *peer);
         ~Networking();
 
-        void newPlayer(RakNet::RakNetGUID guid);
-        void disconnectPlayer(RakNet::RakNetGUID guid);
-        void kickPlayer(RakNet::RakNetGUID guid, bool sendNotification = true);
+        void newPlayer(const RakNet::RakNetGUID &guid);
+        void disconnectPlayer(const RakNet::RakNetGUID &guid);
+        void kickPlayer(const RakNet::RakNetGUID &guid, bool sendNotification = true);
         
         void banAddress(const char *ipAddress);
         void unbanAddress(const char *ipAddress);
-        RakNet::SystemAddress getSystemAddress(RakNet::RakNetGUID guid);
+        RakNet::SystemAddress getSystemAddress(const RakNet::RakNetGUID &guid);
 
         void processPlayerPacket(RakNet::Packet *packet);
         void processActorPacket(RakNet::Packet *packet);
@@ -33,7 +33,7 @@ namespace  mwmp
 
         unsigned short numberOfConnections() const;
         unsigned int maxConnections() const;
-        int getAvgPing(RakNet::AddressOrGUID) const;
+        int getAvgPing(const RakNet::AddressOrGUID &) const;
         unsigned short getPort() const;
 
         int mainLoop();
@@ -60,8 +60,8 @@ namespace  mwmp
         void setScriptErrorIgnoringState(bool state);
 
         MasterClient *getMasterClient();
-        void InitQuery(std::string queryAddr, unsigned short queryPort);
-        void setServerPassword(std::string passw) noexcept;
+        void InitQuery(const std::string &queryAddr, unsigned short queryPort);
+        void setServerPassword(const std::string &passw) noexcept;
         bool isPassworded() const;
 
         static const Networking &get();

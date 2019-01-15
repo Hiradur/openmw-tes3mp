@@ -206,4 +206,4 @@ endif (MSVC)
 pvs_studio_add_target(TARGET tes3mp-server.analyze ALL
         OUTPUT FORMAT errorfile
         ANALYZE tes3mp-server
-        LOG target.err)
+        LOG target_tes3mp-server.err)

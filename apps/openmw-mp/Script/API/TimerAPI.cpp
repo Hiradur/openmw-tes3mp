@@ -10,18 +10,18 @@
 using namespace mwmp;
 using namespace std;
 
-Timer::Timer(ScriptFunc callback, long msec, const std::string& def, std::vector<boost::any> args) : ScriptFunction(callback, 'v', def)
+Timer::Timer(ScriptFunc callback, long msec, const std::string& def, std::vector<boost::any> args) : ScriptFunction(callback, 'v', def), args(args)
 {
+    startTime = 0;
     targetMsec = msec;
-    this->args = args;
     end = true;
 }
 
 #if defined(ENABLE_LUA)
-Timer::Timer(lua_State *lua, ScriptFuncLua callback, long msec, const std::string& def, std::vector<boost::any> args): ScriptFunction(callback, lua, 'v', def)
+Timer::Timer(lua_State *lua, ScriptFuncLua callback, long msec, const std::string& def, std::vector<boost::any> args): ScriptFunction(callback, lua, 'v', def), args(args)
 {
+    startTime = 0;
     targetMsec = msec;
-    this->args = args;
     end = true;
 }
 #endif
@@ -94,7 +94,7 @@ int TimerAPI::CreateTimerLua(lua_State *lua, ScriptFuncLua callback, long msec, 
 #endif
 
 
-int TimerAPI::CreateTimer(ScriptFunc callback, long msec, const std::string &def, std::vector<boost::any> args)
+int TimerAPI::CreateTimer(ScriptFunc callback, long msec, const std::string &def, const std::vector<boost::any> &args)
 {
     int id = -1;
 

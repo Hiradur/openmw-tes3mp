@@ -43,15 +43,15 @@ struct QueryData
     QueryData()
     {
         rules["name"].type = ServerRule::Type::string;
-        rules["name"].str = "";
+        rules["name"].str.clear();
         rules["version"].type = ServerRule::Type::string;
-        rules["version"].str = "";
+        rules["version"].str.clear();
         rules["players"].type = ServerRule::Type::number;
         rules["players"].val = 0;
         rules["maxPlayers"].type = ServerRule::Type::number;
         rules["maxPlayers"].val = 0;
         rules["gamemode"].type = ServerRule::Type::string;
-        rules["gamemode"].str = "";
+        rules["gamemode"].str.clear();
         rules["passw"].type = ServerRule::Type::number;
         rules["passw"].val = 0;
     }

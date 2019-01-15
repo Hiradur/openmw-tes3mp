@@ -28,13 +28,13 @@ typedef std::map<unsigned short, Player*> TSlots;
 class Players
 {
 public:
-    static void newPlayer(RakNet::RakNetGUID guid);
-    static void deletePlayer(RakNet::RakNetGUID guid);
-    static Player *getPlayer(RakNet::RakNetGUID guid);
+    static void newPlayer(const RakNet::RakNetGUID &guid);
+    static void deletePlayer(const RakNet::RakNetGUID &guid);
+    static Player *getPlayer(const RakNet::RakNetGUID &guid);
     static Player *getPlayer(unsigned short id);
     static TPlayers *getPlayers();
     static unsigned short getLastPlayerId();
-    static bool doesPlayerExist(RakNet::RakNetGUID guid);
+    static bool doesPlayerExist(const RakNet::RakNetGUID &guid);
 
 private:
     static TPlayers players;
@@ -44,9 +44,8 @@ private:
 class Player : public mwmp::BasePlayer
 {
     friend class Cell;
-    unsigned short id;
 public:
-
+    const unsigned int InvalidID = (unsigned int) -1;
     enum
     {
         NOTLOADED=0,
@@ -54,9 +53,9 @@ public:
         POSTLOADED,
         KICKED
     };
-    Player(RakNet::RakNetGUID guid);
+    Player(const RakNet::RakNetGUID &guid);
 
-    unsigned short getId();
+    unsigned int getId();
     void setId(unsigned short id);
 
     bool isHandshaked();
@@ -78,6 +77,7 @@ private:
     CellController::TContainer cells;
     int loadState;
     int handshakeCounter;
+    unsigned int id;
 
 };
 

@@ -64,7 +64,7 @@ Cell *CellController::getCellByXY(int x, int y)
     return *it;
 }
 
-Cell *CellController::getCellByName(std::string cellName)
+Cell *CellController::getCellByName(const std::string &cellName)
 {
     auto it = find_if(cells.begin(), cells.end(), [cellName](const Cell *c)
     {
@@ -80,7 +80,7 @@ Cell *CellController::getCellByName(std::string cellName)
     return *it;
 }
 
-Cell *CellController::addCell(ESM::Cell cellData)
+Cell *CellController::addCell(const ESM::Cell &cellData)
 {
     LOG_APPEND(Log::LOG_INFO, "- Loaded cells: %d", cells.size());
     auto it = find_if(cells.begin(), cells.end(), [cellData](const Cell *c) {

@@ -22,11 +22,11 @@ public:
     MasterClient(RakNet::RakPeerInterface *peer, std::string queryAddr, unsigned short queryPort);
     void SetPlayers(unsigned pl);
     void SetMaxPlayers(unsigned pl);
-    void SetHostname(std::string hostname);
-    void SetModname(std::string hostname);
-    void SetRuleString(std::string key, std::string value);
-    void SetRuleValue(std::string key, double value);
-    void PushPlugin(Plugin plugin);
+    void SetHostname(const std::string &hostname);
+    void SetModname(const std::string &hostname);
+    void SetRuleString(const std::string &key, std::string value);
+    void SetRuleValue(const std::string &key, double value);
+    void PushPlugin(const Plugin &plugin);
 
     bool Process(RakNet::Packet *packet);
     void Start();

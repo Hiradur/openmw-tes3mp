@@ -91,7 +91,7 @@ lib_t LangNative::GetInterface()
 }
 
 
-LangNative::LangNative()
+LangNative::LangNative(): lib(nullptr)
 {
 
 }

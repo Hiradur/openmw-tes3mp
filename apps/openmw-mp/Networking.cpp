@@ -75,7 +75,7 @@ Networking::~Networking()
     delete worldstatePacketController;
 }
 
-void Networking::setServerPassword(std::string passw) noexcept
+void Networking::setServerPassword(const std::string &passw) noexcept
 {
     serverPassword = passw.empty() ? TES3MP_DEFAULT_PASSW : passw;
 }
@@ -239,7 +239,7 @@ bool Networking::preInit(RakNet::Packet *packet, RakNet::BitStream &bsIn)
     auto plugin = plugins.begin();
     if (samples.size() == plugins.size())
     {
-        for (int i = 0; plugin != plugins.end(); plugin++, i++)
+        for (int i = 0; plugin != plugins.end(); ++plugin, i++)
         {
             LOG_APPEND(Log::LOG_VERBOSE, "- %X\t%s", plugin->second[0], plugin->first.c_str());
             // Check if the filenames match, ignoring case
@@ -311,7 +311,7 @@ void Networking::update(RakNet::Packet *packet, RakNet::BitStream &bsIn)
         LOG_MESSAGE_SIMPLE(Log::LOG_WARN, "Unhandled RakNet packet with identifier %i has arrived", packet->data[0]);
 }
 
-void Networking::newPlayer(RakNet::RakNetGUID guid)
+void Networking::newPlayer(const RakNet::RakNetGUID &guid)
 {
     playerPacketController->GetPacket(ID_PLAYER_BASEINFO)->RequestData(guid);
     playerPacketController->GetPacket(ID_PLAYER_STATS_DYNAMIC)->RequestData(guid);
@@ -321,27 +321,27 @@ void Networking::newPlayer(RakNet::RakNetGUID guid)
 
     LOG_MESSAGE_SIMPLE(Log::LOG_WARN, "Sending info about other players to %lu", guid.g);
 
-    for (TPlayers::iterator pl = players->begin(); pl != players->end(); pl++) //sending other players to new player
+    for (auto &player : *players) //sending other players to new player
     {
         // If we are iterating over the new player, don't send the packets below
-        if (pl->first == guid) continue;
+        if (player.first == guid) continue;
 
         // If an invalid key makes it into the Players map, ignore it
-        else if (pl->first == RakNet::UNASSIGNED_CRABNET_GUID) continue;
+        else if (player.first == RakNet::UNASSIGNED_CRABNET_GUID) continue;
 
         // if player not fully connected
-        else if (pl->second == nullptr) continue;
+        else if (player.second == nullptr) continue;
 
         // If we are iterating over a player who has inputted their name, proceed
-        else if (pl->second->getLoadState() == Player::POSTLOADED)
+        else if (player.second->getLoadState() == Player::POSTLOADED)
         {
-            playerPacketController->GetPacket(ID_PLAYER_BASEINFO)->setPlayer(pl->second);
-            playerPacketController->GetPacket(ID_PLAYER_STATS_DYNAMIC)->setPlayer(pl->second);
-            playerPacketController->GetPacket(ID_PLAYER_ATTRIBUTE)->setPlayer(pl->second);
-            playerPacketController->GetPacket(ID_PLAYER_SKILL)->setPlayer(pl->second);
-            playerPacketController->GetPacket(ID_PLAYER_POSITION)->setPlayer(pl->second);
-            playerPacketController->GetPacket(ID_PLAYER_CELL_CHANGE)->setPlayer(pl->second);
-            playerPacketController->GetPacket(ID_PLAYER_EQUIPMENT)->setPlayer(pl->second);
+            playerPacketController->GetPacket(ID_PLAYER_BASEINFO)->setPlayer(player.second);
+            playerPacketController->GetPacket(ID_PLAYER_STATS_DYNAMIC)->setPlayer(player.second);
+            playerPacketController->GetPacket(ID_PLAYER_ATTRIBUTE)->setPlayer(player.second);
+            playerPacketController->GetPacket(ID_PLAYER_SKILL)->setPlayer(player.second);
+            playerPacketController->GetPacket(ID_PLAYER_POSITION)->setPlayer(player.second);
+            playerPacketController->GetPacket(ID_PLAYER_CELL_CHANGE)->setPlayer(player.second);
+            playerPacketController->GetPacket(ID_PLAYER_EQUIPMENT)->setPlayer(player.second);
 
             playerPacketController->GetPacket(ID_PLAYER_BASEINFO)->Send(guid);
             playerPacketController->GetPacket(ID_PLAYER_STATS_DYNAMIC)->Send(guid);
@@ -357,7 +357,7 @@ void Networking::newPlayer(RakNet::RakNetGUID guid)
 
 }
 
-void Networking::disconnectPlayer(RakNet::RakNetGUID guid)
+void Networking::disconnectPlayer(const RakNet::RakNetGUID &guid)
 {
     Player *player = Players::getPlayer(guid);
     if (!player)
@@ -452,7 +452,7 @@ Networking *Networking::getPtr()
     return sThis;
 }
 
-RakNet::SystemAddress Networking::getSystemAddress(RakNet::RakNetGUID guid)
+RakNet::SystemAddress Networking::getSystemAddress(const RakNet::RakNetGUID &guid)
 {
     return peer->GetSystemAddressFromGuid(guid);
 }
@@ -532,7 +532,7 @@ int Networking::mainLoop()
     return exitCode;
 }
 
-void Networking::kickPlayer(RakNet::RakNetGUID guid, bool sendNotification)
+void Networking::kickPlayer(const RakNet::RakNetGUID &guid, bool sendNotification)
 {
     peer->CloseConnection(guid, sendNotification);
 }
@@ -557,7 +557,7 @@ unsigned int Networking::maxConnections() const
     return peer->GetMaximumIncomingConnections();
 }
 
-int Networking::getAvgPing(RakNet::AddressOrGUID addr) const
+int Networking::getAvgPing(const RakNet::AddressOrGUID &addr) const
 {
     return peer->GetAveragePing(addr);
 }
@@ -572,7 +572,7 @@ MasterClient *Networking::getMasterClient()
     return mclient;
 }
 
-void Networking::InitQuery(std::string queryAddr, unsigned short queryPort)
+void Networking::InitQuery(const std::string &queryAddr, unsigned short queryPort)
 {
     mclient = new MasterClient(peer, queryAddr, queryPort);
 }

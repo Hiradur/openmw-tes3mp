@@ -17,7 +17,6 @@ const vector<string> Utils::split(const string &str, int delimiter)
         else if (!buffer.empty())
         {
             result.push_back(move(buffer));
-            buffer.clear();
         }
     if (!buffer.empty())
         result.push_back(move(buffer));
@@ -25,7 +24,7 @@ const vector<string> Utils::split(const string &str, int delimiter)
     return result;
 }
 
-ESM::Cell Utils::getCellFromDescription(std::string cellDescription)
+ESM::Cell Utils::getCellFromDescription(const std::string &cellDescription)
 {
     ESM::Cell cell;
     cell.blank();

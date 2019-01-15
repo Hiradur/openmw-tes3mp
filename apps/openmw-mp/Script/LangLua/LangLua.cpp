@@ -223,7 +223,7 @@ boost::any LangLua::Call(const char *name, const char *argl, int buf, ...)
                 break;
 
             default:
-                throw runtime_error("C++ call: Unknown argument identifier " + argl[index]);
+                throw runtime_error(std::string("C++ call: Unknown argument identifier ") + argl[index]);
         }
     }
 
@@ -275,7 +275,7 @@ boost::any LangLua::Call(const char *name, const char *argl, const std::vector<b
                 luabridge::Stack<bool>::push(lua, boost::any_cast<int>(args.at(index)));
                 break;
             default:
-                throw runtime_error("Lua call: Unknown argument identifier " + argl[index]);
+                throw runtime_error(std::string("Lua call: Unknown argument identifier ") + argl[index]);
         }
     }
 

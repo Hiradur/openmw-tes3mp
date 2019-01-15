@@ -27,14 +27,14 @@ public:
     typedef std::deque<Cell*> TContainer;
     typedef TContainer::iterator TIter;
 
-    Cell * addCell(ESM::Cell cell);
+    Cell * addCell(const ESM::Cell &cell);
     void removeCell(Cell *);
 
     void deletePlayer(Player *player);
 
     Cell *getCell(ESM::Cell *esmCell);
     Cell *getCellByXY(int x, int y);
-    Cell *getCellByName(std::string cellName);
+    Cell *getCellByName(const std::string &cellName);
 
     void update(Player *player);
 

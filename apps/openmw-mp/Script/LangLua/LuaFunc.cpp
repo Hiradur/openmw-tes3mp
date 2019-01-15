@@ -9,7 +9,7 @@
 
 using namespace std;
 
-inline vector<boost::any> DefToVec(lua_State *lua, string types, int args_begin, int args_n)
+inline vector<boost::any> DefToVec(lua_State *lua, const string &types, int args_begin, int args_n)
 {
     vector<boost::any> args;
 
@@ -93,13 +93,15 @@ int LangLua::CallPublic(lua_State *lua)
     if (result.empty())
         return 0;
 
-    if (result.type().hash_code() == typeid(signed int).hash_code())
+    auto retTypeHash = result.type().hash_code();
+
+    if (retTypeHash == typeid(signed int).hash_code())
         luabridge::Stack<signed int>::push(lua, boost::any_cast<signed int>(result));
-    else if (result.type().hash_code() == typeid(unsigned int).hash_code())
+    else if (retTypeHash == typeid(unsigned int).hash_code())
         luabridge::Stack<unsigned int>::push(lua, boost::any_cast<unsigned int>(result));
-    else if (result.type().hash_code() == typeid(double).hash_code())
+    else if (retTypeHash == typeid(double).hash_code())
         luabridge::Stack<double>::push(lua, boost::any_cast<double>(result));
-    else if (result.type().hash_code() == typeid(const char*).hash_code())
+    else if (retTypeHash == typeid(const char*).hash_code())
         luabridge::Stack<const char*>::push(lua, boost::any_cast<const char*>(result));
     return 1;
 }

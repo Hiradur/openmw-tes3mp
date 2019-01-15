@@ -61,7 +61,7 @@ namespace mwmp
     {
     public:
 
-        BaseActorList()
+        BaseActorList(): count(0), action(0), isValid(false)
         {
 
         }

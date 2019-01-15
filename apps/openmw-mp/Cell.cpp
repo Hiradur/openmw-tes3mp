@@ -55,7 +55,7 @@ void Cell::addPlayer(Player *player)
 
 void Cell::removePlayer(Player *player, bool cleanPlayer)
 {
-    for (Iterator it = begin(); it != end(); it++)
+    for (auto it = begin(); it != end(); ++it)
     {
         if (*it == player)
         {
@@ -161,7 +161,7 @@ void Cell::removeActors(const mwmp::BaseActorList *newActorList)
         }
 
         if (!foundActor)
-            it++;
+            ++it;
     }
 
     cellActorList.count = cellActorList.baseActors.size();

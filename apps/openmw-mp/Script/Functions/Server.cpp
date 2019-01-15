@@ -151,7 +151,7 @@ extern "C" void ServerFunctions::AddPluginHash(const char *pluginName, const cha
 
         unsigned hash = 0;
 
-        if (strlen(hashStr) != 0)
+        if (hashStr[0] != '\0')
         {
             hash = (unsigned) std::stoul(hashStr);
             hashList.push_back(hash);

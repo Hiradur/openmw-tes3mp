@@ -10,7 +10,7 @@ TSlots Players::slots;
 
 using namespace std;
 
-void Players::deletePlayer(RakNet::RakNetGUID guid)
+void Players::deletePlayer(const RakNet::RakNetGUID &guid)
 {
     LOG_MESSAGE_SIMPLE(Log::LOG_INFO, "Deleting player with guid %lu", guid.g);
 
@@ -26,7 +26,7 @@ void Players::deletePlayer(RakNet::RakNetGUID guid)
     }
 }
 
-void Players::newPlayer(RakNet::RakNetGUID guid)
+void Players::newPlayer(const RakNet::RakNetGUID &guid)
 {
     LOG_MESSAGE_SIMPLE(Log::LOG_INFO, "Creating new player with guid %lu", guid.g);
 
@@ -41,7 +41,7 @@ void Players::newPlayer(RakNet::RakNetGUID guid)
 
     for (unsigned int i = 0; i < mwmp::Networking::get().maxConnections(); i++)
     {
-        if (slots[i] == 0)
+        if (slots[i] == nullptr)
         {
             LOG_APPEND(Log::LOG_INFO, "- Storing in slot %i", i);
 
@@ -52,7 +52,7 @@ void Players::newPlayer(RakNet::RakNetGUID guid)
     }
 }
 
-Player *Players::getPlayer(RakNet::RakNetGUID guid)
+Player *Players::getPlayer(const RakNet::RakNetGUID &guid)
 {
     auto it = players.find(guid);
     if (it == players.end())
@@ -70,7 +70,7 @@ unsigned short Players::getLastPlayerId()
     return slots.rbegin()->first;
 }
 
-Player::Player(RakNet::RakNetGUID guid) : BasePlayer(guid)
+Player::Player(const RakNet::RakNetGUID &guid) : BasePlayer(guid), id(InvalidID)
 {
     handshakeCounter = 0;
     loadState = NOTLOADED;
@@ -81,7 +81,7 @@ Player::~Player()
 
 }
 
-unsigned short Player::getId()
+unsigned int Player::getId()
 {
     return id;
 }
@@ -177,7 +177,7 @@ void Player::forEachLoaded(std::function<void(Player *pl, Player *other)> func)
     }
 }
 
-bool Players::doesPlayerExist(RakNet::RakNetGUID guid)
+bool Players::doesPlayerExist(const RakNet::RakNetGUID &guid)
 {
     return players.find(guid) != players.end();
 }

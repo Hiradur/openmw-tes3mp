@@ -99,7 +99,7 @@ extern "C" void CharClassFunctions::SetClassName(unsigned short pid, const char 
     GET_PLAYER(pid, player,);
 
     player->charClass.mName = name;
-    player->charClass.mId = "";
+    player->charClass.mId.clear();
 }
 
 extern "C" void CharClassFunctions::SetClassDesc(unsigned short pid, const char *desc) noexcept

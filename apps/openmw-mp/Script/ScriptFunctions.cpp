@@ -56,7 +56,7 @@ void ScriptFunctions::GetArguments(std::vector<boost::any> &params, va_list args
                     break;
 
                 default:
-                    throw runtime_error("C++ call: Unknown argument identifier " + c);
+                    throw runtime_error(std::string("C++ call: Unknown argument identifier ") + c);
             }
         }
     }

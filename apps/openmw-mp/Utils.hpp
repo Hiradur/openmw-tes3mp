@@ -25,7 +25,7 @@ namespace Utils
 {
     const std::vector<std::string> split(const std::string &str, int delimiter);
 
-    ESM::Cell getCellFromDescription(std::string cellDescription);
+    ESM::Cell getCellFromDescription(const std::string &cellDescription);
 
     template<size_t N>
     constexpr unsigned int hash(const char(&str)[N], size_t I = N)

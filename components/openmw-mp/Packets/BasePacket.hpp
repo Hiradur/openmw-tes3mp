@@ -114,7 +114,7 @@ namespace mwmp
                     str = rstr.C_String();
                 }
                 else
-                    str = std::string();
+                    str.clear();
             }
             return res;
         }
