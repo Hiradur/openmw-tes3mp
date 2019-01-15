@@ -17,4 +17,12 @@
 #endif
 #endif
 
+#ifdef _WIN32
+#define EXPORT_APIFUNCTION extern "C" __declspec(dllexport)
+#define CDECL __cdecl
+#else
+#define EXPORT_APIFUNCTION extern "C" __attribute__ ((visibility ("default")))
+#define CDECL
+#endif
+
 #endif //PLATFORM_HPP
