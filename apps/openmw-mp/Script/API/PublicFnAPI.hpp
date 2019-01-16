@@ -6,10 +6,10 @@
 #define PLUGINSYSTEM3_PUBLICFNAPI_HPP
 
 #include <unordered_map>
-#include <Script/ScriptFunction.hpp>
+#include <Script/FFI.hpp>
 
 
-class Public : public ScriptFunction
+class Public : public FFI
 {
 private:
     ~Public();
@@ -17,20 +17,19 @@ private:
     static std::unordered_map<std::string, Public *> publics;
 
     Public(ScriptFunc _public, const std::string &name, char ret_type, const std::string &def);
-#if defined(ENABLE_LUA)
-    Public(ScriptFuncLua _public, lua_State *lua, const std::string &name, char ret_type, const std::string &def);
-#endif
 
+    std::string def;
+    char retType;
 public:
     template<typename... Args>
-    static void MakePublic(Args &&... args)
-    { new Public(std::forward<Args>(args)...); }
+    static void MakePublic(Args &&... args) { new Public(std::forward<Args>(args)...); }
 
-    static boost::any Call(const std::string &name, const std::vector<boost::any> &args);
+    static ffi_arg Call(const std::string &name, va_list args);
 
-    static const std::string& GetDefinition(const std::string& name);
+    static const std::string &GetName();
 
-    static bool IsLua(const std::string &name);
+    static const std::string &GetDefinition(const std::string &name);
+    static char GetReturnType(const std::string &name);
 
     static void DeleteAll();
 };

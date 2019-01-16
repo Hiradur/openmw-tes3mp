@@ -42,7 +42,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param pid The player ID whose journal changes should be used.
     * \return void
     */
-    API_FUNCTION void CDECL ClearJournalChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL ClearJournalChanges(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Clear the last recorded kill count changes for a player.
@@ -52,7 +52,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param pid The player ID whose kill count changes should be used.
     * \return void
     */
-    API_FUNCTION void CDECL ClearKillChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL ClearKillChanges(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the number of indexes in a player's latest journal changes.
@@ -60,7 +60,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param pid The player ID whose journal changes should be used.
     * \return The number of indexes.
     */
-    API_FUNCTION unsigned int CDECL GetJournalChangesSize(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetJournalChangesSize(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the number of indexes in a player's latest kill count changes.
@@ -68,7 +68,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param pid The player ID whose kill count changes should be used.
     * \return The number of indexes.
     */
-    API_FUNCTION unsigned int CDECL GetKillChangesSize(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetKillChangesSize(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Add a new journal item of type ENTRY to the journal changes for a player,
@@ -80,7 +80,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param actorRefId The actor refId of the journal item.
     * \return void
     */
-    API_FUNCTION void CDECL AddJournalEntry(unsigned short pid, const char* quest, unsigned int index, const char* actorRefId) noexcept;
+    API_FUNCTION void CDECL AddJournalEntry(PlayerId pid, const char* quest, unsigned int index, const char* actorRefId) NOEXCEPT;
 
     /**
     * \brief Add a new journal item of type ENTRY to the journal changes for a player,
@@ -95,8 +95,8 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param The day of the month for the journal item.
     * \return void
     */
-    API_FUNCTION void CDECL AddJournalEntryWithTimestamp(unsigned short pid, const char* quest, unsigned int index, const char* actorRefId,
-        unsigned int daysPassed, unsigned int month, unsigned int day) noexcept;
+    API_FUNCTION void CDECL AddJournalEntryWithTimestamp(PlayerId pid, const char* quest, unsigned int index, const char* actorRefId,
+        unsigned int daysPassed, unsigned int month, unsigned int day) NOEXCEPT;
 
     /**
     * \brief Add a new journal item of type INDEX to the journal changes for a player.
@@ -106,7 +106,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param index The quest index of the journal item.
     * \return void
     */
-    API_FUNCTION void CDECL AddJournalIndex(unsigned short pid, const char* quest, unsigned int index) noexcept;
+    API_FUNCTION void CDECL AddJournalIndex(PlayerId pid, const char* quest, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Add a new kill count to the kill count changes for a player.
@@ -116,7 +116,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param number The number of kills in the kill count.
     * \return void
     */
-    API_FUNCTION void CDECL AddKill(unsigned short pid, const char* refId, int number) noexcept;
+    API_FUNCTION void CDECL AddKill(PlayerId pid, const char* refId, int number) NOEXCEPT;
 
     /**
     * \brief Set the reputation of a certain player.
@@ -125,7 +125,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param value The reputation.
     * \return void
     */
-    API_FUNCTION void CDECL SetReputation(unsigned short pid, int value) noexcept;
+    API_FUNCTION void CDECL SetReputation(PlayerId pid, int value) NOEXCEPT;
 
     /**
     * \brief Get the quest at a certain index in a player's latest journal changes.
@@ -134,7 +134,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param index The index of the journalItem.
     * \return The quest.
     */
-    API_FUNCTION const char *CDECL GetJournalItemQuest(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetJournalItemQuest(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the quest index at a certain index in a player's latest journal changes.
@@ -143,7 +143,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param index The index of the journalItem.
     * \return The quest index.
     */
-    API_FUNCTION int CDECL GetJournalItemIndex(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetJournalItemIndex(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the journal item type at a certain index in a player's latest journal changes.
@@ -152,7 +152,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param index The index of the journalItem.
     * \return The type (0 for ENTRY, 1 for INDEX).
     */
-    API_FUNCTION int CDECL GetJournalItemType(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetJournalItemType(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the actor refId at a certain index in a player's latest journal changes.
@@ -163,7 +163,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param index The index of the journalItem.
     * \return The actor refId.
     */
-    API_FUNCTION const char *CDECL GetJournalItemActorRefId(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetJournalItemActorRefId(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the refId at a certain index in a player's latest kill count changes.
@@ -172,7 +172,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param index The index of the kill count.
     * \return The refId.
     */
-    API_FUNCTION const char *CDECL GetKillRefId(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetKillRefId(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the number of kills at a certain index in a player's latest kill count changes.
@@ -181,7 +181,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param index The index of the kill count.
     * \return The number of kills.
     */
-    API_FUNCTION int CDECL GetKillNumber(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetKillNumber(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the a certain player's reputation.
@@ -189,7 +189,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     * \param pid The player ID.
     * \return The reputation.
     */
-    API_FUNCTION int CDECL GetReputation(unsigned short pid) noexcept;
+    API_FUNCTION int CDECL GetReputation(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Send a PlayerJournal packet with a player's recorded journal changes.
@@ -201,7 +201,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendJournalChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendJournalChanges(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send a WorldKillCount packet with a player's recorded kill count changes.
@@ -213,7 +213,7 @@ NAMESPACE_BEGIN(QuestFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendKillChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendKillChanges(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send a PlayerReputation packet with a player's recorded reputation.
@@ -225,12 +225,12 @@ NAMESPACE_BEGIN(QuestFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendReputation(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendReputation(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     // All methods below are deprecated versions of methods from above
 
-    API_FUNCTION void CDECL InitializeJournalChanges(unsigned short pid) noexcept;
-    API_FUNCTION void CDECL InitializeKillChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL InitializeJournalChanges(PlayerId pid) NOEXCEPT;
+    API_FUNCTION void CDECL InitializeKillChanges(PlayerId pid) NOEXCEPT;
 NAMESPACE_END()
 
 #endif //OPENMW_QUESTAPI_HPP

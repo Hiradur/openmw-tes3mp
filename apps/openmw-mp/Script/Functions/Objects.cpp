@@ -4,7 +4,7 @@
 #include <apps/openmw-mp/Networking.hpp>
 #include <apps/openmw-mp/Player.hpp>
 #include <apps/openmw-mp/Utils.hpp>
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 
 #include "Objects.h"
 
@@ -31,7 +31,7 @@ extern "C" void ObjectFunctions::ClearObjectList() noexcept
     writeObjectList.packetOrigin = mwmp::PACKET_ORIGIN::SERVER_SCRIPT;
 }
 
-extern "C" void ObjectFunctions::SetObjectListPid(unsigned short pid) noexcept
+extern "C" void ObjectFunctions::SetObjectListPid(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -399,7 +399,7 @@ extern "C" void ObjectFunctions::SetObjectRotation(double x, double y, double z)
     tempObject.position.rot[2] = z;
 }
 
-extern "C" void ObjectFunctions::SetObjectActivatingPid(unsigned short pid) noexcept
+extern "C" void ObjectFunctions::SetObjectActivatingPid(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -436,7 +436,7 @@ extern "C" void ObjectFunctions::SetObjectDoorDestinationRotation(double x, doub
     tempObject.destinationPosition.rot[2] = z;
 }
 
-extern "C" void ObjectFunctions::SetPlayerAsObject(unsigned short pid) noexcept
+extern "C" void ObjectFunctions::SetPlayerAsObject(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -646,13 +646,13 @@ extern "C" void ObjectFunctions::ReadLastEvent() noexcept
     ReadReceivedObjectList();
 }
 
-extern "C" void ObjectFunctions::InitializeObjectList(unsigned short pid) noexcept
+extern "C" void ObjectFunctions::InitializeObjectList(PlayerId pid) noexcept
 {
     ClearObjectList();
     SetObjectListPid(pid);
 }
 
-extern "C" void ObjectFunctions::InitializeEvent(unsigned short pid) noexcept
+extern "C" void ObjectFunctions::InitializeEvent(PlayerId pid) noexcept
 {
     InitializeObjectList(pid);
 }

@@ -3,7 +3,6 @@
 
 #include "../PlayerProcessor.hpp"
 #include "apps/openmw-mp/Networking.hpp"
-#include "apps/openmw-mp/Script/Script.hpp"
 #include <components/openmw-mp/Controllers/PlayerPacketController.hpp>
 
 namespace mwmp

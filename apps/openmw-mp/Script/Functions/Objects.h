@@ -144,14 +144,14 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *
     * \return void
     */
-    API_FUNCTION void CDECL ReadReceivedObjectList() noexcept;
+    API_FUNCTION void CDECL ReadReceivedObjectList() NOEXCEPT;
 
     /**
     * \brief Clear the data from the object list stored on the server.
     *
     * \return void
     */
-    API_FUNCTION void CDECL ClearObjectList() noexcept;
+    API_FUNCTION void CDECL ClearObjectList() NOEXCEPT;
 
     /**
     * \brief Set the pid attached to the ObjectList.
@@ -159,7 +159,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param pid The player ID to whom the object list should be attached.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectListPid(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SetObjectListPid(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Take the contents of the read-only object list last received by the
@@ -168,14 +168,14 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *
     * \return void
     */
-    API_FUNCTION void CDECL CopyReceivedObjectListToStore() noexcept;
+    API_FUNCTION void CDECL CopyReceivedObjectListToStore() NOEXCEPT;
 
     /**
     * \brief Get the number of indexes in the read object list.
     *
     * \return The number of indexes.
     */
-    API_FUNCTION unsigned int CDECL GetObjectListSize() noexcept;
+    API_FUNCTION unsigned int CDECL GetObjectListSize() NOEXCEPT;
 
     /**
     * \brief Get the origin of the read object list.
@@ -184,7 +184,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * CLIENT_DIALOGUE, 3 for CLIENT_SCRIPT_LOCAL, 4 for CLIENT_SCRIPT_GLOBAL,
     * 5 for SERVER_SCRIPT).
     */
-    API_FUNCTION unsigned char CDECL GetObjectListOrigin() noexcept;
+    API_FUNCTION unsigned char CDECL GetObjectListOrigin() NOEXCEPT;
 
     /**
     * \brief Get the client script that the read object list originated from.
@@ -193,21 +193,21 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *
     * \return The ID of the client script.
     */
-    API_FUNCTION const char *CDECL GetObjectListClientScript() noexcept;
+    API_FUNCTION const char *CDECL GetObjectListClientScript() NOEXCEPT;
 
     /**
     * \brief Get the action type used in the read object list.
     *
     * \return The action type (0 for SET, 1 for ADD, 2 for REMOVE, 3 for REQUEST).
     */
-    API_FUNCTION unsigned char CDECL GetObjectListAction() noexcept;
+    API_FUNCTION unsigned char CDECL GetObjectListAction() NOEXCEPT;
 
     /**
     * \brief Get the container subaction type used in the read object list.
     *
     * \return The action type (0 for NONE, 1 for DRAG, 2 for DROP, 3 for TAKE_ALL).
     */
-    API_FUNCTION unsigned char CDECL GetObjectListContainerSubAction() noexcept;
+    API_FUNCTION unsigned char CDECL GetObjectListContainerSubAction() NOEXCEPT;
 
     /**
     * \brief Check whether the object at a certain index in the read object list is a
@@ -220,7 +220,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return Whether the object is a player.
     */
-    API_FUNCTION bool CDECL IsObjectPlayer(unsigned int index) noexcept;
+    API_FUNCTION bool CDECL IsObjectPlayer(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the player ID of the object at a certain index in the read object list,
@@ -232,7 +232,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The player ID of the object.
     */
-    API_FUNCTION int CDECL GetObjectPid(unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetObjectPid(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the refId of the object at a certain index in the read object list.
@@ -240,7 +240,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The refId.
     */
-    API_FUNCTION const char *CDECL GetObjectRefId(unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetObjectRefId(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the refNum of the object at a certain index in the read object list.
@@ -248,7 +248,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The refNum.
     */
-    API_FUNCTION unsigned int CDECL GetObjectRefNum(unsigned int index) noexcept;
+    API_FUNCTION unsigned int CDECL GetObjectRefNum(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the mpNum of the object at a certain index in the read object list.
@@ -256,7 +256,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The mpNum.
     */
-    API_FUNCTION unsigned int CDECL GetObjectMpNum(unsigned int index) noexcept;
+    API_FUNCTION unsigned int CDECL GetObjectMpNum(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the count of the object at a certain index in the read object list.
@@ -264,7 +264,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The object count.
     */
-    API_FUNCTION int CDECL GetObjectCount(unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetObjectCount(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the charge of the object at a certain index in the read object list.
@@ -272,7 +272,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The charge.
     */
-    API_FUNCTION int CDECL GetObjectCharge(unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetObjectCharge(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the enchantment charge of the object at a certain index in the read object list.
@@ -280,7 +280,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The enchantment charge.
     */
-    API_FUNCTION double CDECL GetObjectEnchantmentCharge(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetObjectEnchantmentCharge(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the soul of the object at a certain index in the read object list.
@@ -288,7 +288,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The soul.
     */
-    API_FUNCTION const char *CDECL GetObjectSoul(unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetObjectSoul(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the gold value of the object at a certain index in the read object list.
@@ -298,7 +298,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The gold value.
     */
-    API_FUNCTION int CDECL GetObjectGoldValue(unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetObjectGoldValue(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the object scale of the object at a certain index in the read object list.
@@ -306,7 +306,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The object scale.
     */
-    API_FUNCTION double CDECL GetObjectScale(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetObjectScale(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the object state of the object at a certain index in the read object list.
@@ -314,7 +314,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The object state.
     */
-    API_FUNCTION bool CDECL GetObjectState(unsigned int index) noexcept;
+    API_FUNCTION bool CDECL GetObjectState(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the door state of the object at a certain index in the read object list.
@@ -322,7 +322,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The door state.
     */
-    API_FUNCTION int CDECL GetObjectDoorState(unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetObjectDoorState(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the lock level of the object at a certain index in the read object list.
@@ -330,7 +330,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The lock level.
     */
-    API_FUNCTION int CDECL GetObjectLockLevel(unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetObjectLockLevel(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Check whether the object at a certain index in the read object list has been
@@ -339,7 +339,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return Whether the object has been activated by a player.
     */
-    API_FUNCTION bool CDECL DoesObjectHavePlayerActivating(unsigned int index) noexcept;
+    API_FUNCTION bool CDECL DoesObjectHavePlayerActivating(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the player ID of the player activating the object at a certain index in the
@@ -348,7 +348,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The player ID of the activating player.
     */
-    API_FUNCTION int CDECL GetObjectActivatingPid(unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetObjectActivatingPid(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the refId of the actor activating the object at a certain index in the read
@@ -357,7 +357,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The refId of the activating actor.
     */
-    API_FUNCTION const char *CDECL GetObjectActivatingRefId(unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetObjectActivatingRefId(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the refNum of the actor activating the object at a certain index in the read
@@ -366,7 +366,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The refNum of the activating actor.
     */
-    API_FUNCTION unsigned int CDECL GetObjectActivatingRefNum(unsigned int index) noexcept;
+    API_FUNCTION unsigned int CDECL GetObjectActivatingRefNum(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the mpNum of the actor activating the object at a certain index in the read
@@ -375,7 +375,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The mpNum of the activating actor.
     */
-    API_FUNCTION unsigned int CDECL GetObjectActivatingMpNum(unsigned int index) noexcept;
+    API_FUNCTION unsigned int CDECL GetObjectActivatingMpNum(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the name of the actor activating the object at a certain index in the read
@@ -384,7 +384,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The name of the activating actor.
     */
-    API_FUNCTION const char *CDECL GetObjectActivatingName(unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetObjectActivatingName(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Check whether the object at a certain index in the read object list is a
@@ -394,7 +394,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *
     * \return The summon state.
     */
-    API_FUNCTION bool CDECL GetObjectSummonState(unsigned int index) noexcept;
+    API_FUNCTION bool CDECL GetObjectSummonState(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the summon duration of the object at a certain index in the read object list.
@@ -404,7 +404,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The summon duration.
     */
-    API_FUNCTION double CDECL GetObjectSummonDuration(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetObjectSummonDuration(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Check whether the object at a certain index in the read object list has a player
@@ -415,7 +415,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return Whether a player is the summoner of the object.
     */
-    API_FUNCTION bool CDECL DoesObjectHavePlayerSummoner(unsigned int index) noexcept;
+    API_FUNCTION bool CDECL DoesObjectHavePlayerSummoner(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the player ID of the summoner of the object at a certain index in the read object
@@ -424,7 +424,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The player ID of the summoner.
     */
-    API_FUNCTION int CDECL GetObjectSummonerPid(unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetObjectSummonerPid(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the refId of the actor summoner of the object at a certain index in the read object
@@ -433,7 +433,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The refId of the summoner.
     */
-    API_FUNCTION const char *CDECL GetObjectSummonerRefId(unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetObjectSummonerRefId(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the refNum of the actor summoner of the object at a certain index in the read object
@@ -442,7 +442,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The refNum of the summoner.
     */
-    API_FUNCTION unsigned int CDECL GetObjectSummonerRefNum(unsigned int index) noexcept;
+    API_FUNCTION unsigned int CDECL GetObjectSummonerRefNum(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the mpNum of the actor summoner of the object at a certain index in the read object list.
@@ -450,7 +450,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The mpNum of the summoner.
     */
-    API_FUNCTION unsigned int CDECL GetObjectSummonerMpNum(unsigned int index) noexcept;
+    API_FUNCTION unsigned int CDECL GetObjectSummonerMpNum(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the X position of the object at a certain index in the read object list.
@@ -458,7 +458,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The X position.
     */
-    API_FUNCTION double CDECL GetObjectPosX(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetObjectPosX(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the Y position of the object at a certain index in the read object list.
@@ -466,7 +466,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The Y position.
     */
-    API_FUNCTION double CDECL GetObjectPosY(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetObjectPosY(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the Z position at a certain index in the read object list.
@@ -474,7 +474,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The Z position.
     */
-    API_FUNCTION double CDECL GetObjectPosZ(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetObjectPosZ(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the X rotation of the object at a certain index in the read object list.
@@ -482,7 +482,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The X rotation.
     */
-    API_FUNCTION double CDECL GetObjectRotX(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetObjectRotX(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the Y rotation of the object at a certain index in the read object list.
@@ -490,7 +490,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The Y rotation.
     */
-    API_FUNCTION double CDECL GetObjectRotY(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetObjectRotY(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the Z rotation of the object at a certain index in the read object list.
@@ -498,14 +498,14 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The Z rotation.
     */
-    API_FUNCTION double CDECL GetObjectRotZ(unsigned int index) noexcept;
+    API_FUNCTION double CDECL GetObjectRotZ(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the videoFilename of the object at a certain index in the read object list.
     *
     * \return The videoFilename.
     */
-    API_FUNCTION const char *CDECL GetVideoFilename(unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetVideoFilename(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the number of container item indexes of the object at a certain index in the
@@ -514,7 +514,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return The number of container item indexes.
     */
-    API_FUNCTION unsigned int CDECL GetContainerChangesSize(unsigned int objectIndex) noexcept;
+    API_FUNCTION unsigned int CDECL GetContainerChangesSize(unsigned int objectIndex) NOEXCEPT;
 
     /**
     * \brief Get the refId of the container item at a certain itemIndex in the container changes
@@ -524,7 +524,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param itemIndex The index of the container item.
     * \return The refId.
     */
-    API_FUNCTION const char *CDECL GetContainerItemRefId(unsigned int objectIndex, unsigned int itemIndex) noexcept;
+    API_FUNCTION const char *CDECL GetContainerItemRefId(unsigned int objectIndex, unsigned int itemIndex) NOEXCEPT;
 
     /**
     * \brief Get the item count of the container item at a certain itemIndex in the container
@@ -534,7 +534,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param itemIndex The index of the container item.
     * \return The item count.
     */
-    API_FUNCTION int CDECL GetContainerItemCount(unsigned int objectIndex, unsigned int itemIndex) noexcept;
+    API_FUNCTION int CDECL GetContainerItemCount(unsigned int objectIndex, unsigned int itemIndex) NOEXCEPT;
 
     /**
     * \brief Get the charge of the container item at a certain itemIndex in the container changes
@@ -544,7 +544,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param itemIndex The index of the container item.
     * \return The charge.
     */
-    API_FUNCTION int CDECL GetContainerItemCharge(unsigned int objectIndex, unsigned int itemIndex) noexcept;
+    API_FUNCTION int CDECL GetContainerItemCharge(unsigned int objectIndex, unsigned int itemIndex) NOEXCEPT;
 
     /**
     * \brief Get the enchantment charge of the container item at a certain itemIndex in the container changes
@@ -554,7 +554,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param itemIndex The index of the container item.
     * \return The enchantment charge.
     */
-    API_FUNCTION double CDECL GetContainerItemEnchantmentCharge(unsigned int objectIndex, unsigned int itemIndex) noexcept;
+    API_FUNCTION double CDECL GetContainerItemEnchantmentCharge(unsigned int objectIndex, unsigned int itemIndex) NOEXCEPT;
 
     /**
     * \brief Get the soul of the container item at a certain itemIndex in the container changes
@@ -564,7 +564,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param itemIndex The index of the container item.
     * \return The soul.
     */
-    API_FUNCTION const char *CDECL GetContainerItemSoul(unsigned int objectIndex, unsigned int itemIndex) noexcept;
+    API_FUNCTION const char *CDECL GetContainerItemSoul(unsigned int objectIndex, unsigned int itemIndex) NOEXCEPT;
 
     /**
     * \brief Get the action count of the container item at a certain itemIndex in the container
@@ -574,7 +574,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param itemIndex The index of the container item.
     * \return The action count.
     */
-    API_FUNCTION int CDECL GetContainerItemActionCount(unsigned int objectIndex, unsigned int itemIndex) noexcept;
+    API_FUNCTION int CDECL GetContainerItemActionCount(unsigned int objectIndex, unsigned int itemIndex) NOEXCEPT;
 
     /**
     * \brief Check whether the object at a certain index in the read object list has a container.
@@ -585,7 +585,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param index The index of the object.
     * \return Whether the object has a container.
     */
-    API_FUNCTION bool CDECL DoesObjectHaveContainer(unsigned int index) noexcept;
+    API_FUNCTION bool CDECL DoesObjectHaveContainer(unsigned int index) NOEXCEPT;
 
     /**
     * \brief Set the cell of the temporary object list stored on the server.
@@ -596,7 +596,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param cellDescription The description of the cell.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectListCell(const char* cellDescription) noexcept;
+    API_FUNCTION void CDECL SetObjectListCell(const char* cellDescription) NOEXCEPT;
 
     /**
     * \brief Set the action type of the temporary object list stored on the server.
@@ -604,7 +604,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param action The action type (0 for SET, 1 for ADD, 2 for REMOVE, 3 for REQUEST).
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectListAction(unsigned char action) noexcept;
+    API_FUNCTION void CDECL SetObjectListAction(unsigned char action) NOEXCEPT;
 
     /**
     * \brief Set the console command of the temporary object list stored on the server.
@@ -615,7 +615,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param consoleCommand The console command.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectListConsoleCommand(const char* consoleCommand) noexcept;
+    API_FUNCTION void CDECL SetObjectListConsoleCommand(const char* consoleCommand) NOEXCEPT;
 
     /**
     * \brief Set the refId of the temporary object stored on the server.
@@ -623,7 +623,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param refId The refId.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectRefId(const char* refId) noexcept;
+    API_FUNCTION void CDECL SetObjectRefId(const char* refId) NOEXCEPT;
 
     /**
     * \brief Set the refNum of the temporary object stored on the server.
@@ -637,7 +637,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param refNum The refNum.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectRefNum(int refNum) noexcept;
+    API_FUNCTION void CDECL SetObjectRefNum(int refNum) NOEXCEPT;
 
     /**
     * \brief Set the mpNum of the temporary object stored on the server.
@@ -652,7 +652,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param mpNum The mpNum.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectMpNum(int mpNum) noexcept;
+    API_FUNCTION void CDECL SetObjectMpNum(int mpNum) NOEXCEPT;
 
     /**
     * \brief Set the object count of the temporary object stored on the server.
@@ -662,7 +662,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param count The object count.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectCount(int count) noexcept;
+    API_FUNCTION void CDECL SetObjectCount(int count) NOEXCEPT;
 
     /**
     * \brief Set the charge of the temporary object stored on the server.
@@ -672,7 +672,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param charge The charge.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectCharge(int charge) noexcept;
+    API_FUNCTION void CDECL SetObjectCharge(int charge) NOEXCEPT;
 
     /**
     * \brief Set the enchantment charge of the temporary object stored on the server.
@@ -682,7 +682,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param charge The enchantment charge.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectEnchantmentCharge(double enchantmentCharge) noexcept;
+    API_FUNCTION void CDECL SetObjectEnchantmentCharge(double enchantmentCharge) NOEXCEPT;
 
     /**
     * \brief Set the soul of the temporary object stored on the server.
@@ -690,7 +690,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param refId The soul.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectSoul(const char* soul) noexcept;
+    API_FUNCTION void CDECL SetObjectSoul(const char* soul) NOEXCEPT;
 
     /**
     * \brief Set the gold value of the temporary object stored on the server.
@@ -700,7 +700,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param goldValue The gold value.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectGoldValue(int goldValue) noexcept;
+    API_FUNCTION void CDECL SetObjectGoldValue(int goldValue) NOEXCEPT;
 
     /**
     * \brief Set the scale of the temporary object stored on the server.
@@ -710,7 +710,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param scale The scale.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectScale(double scale) noexcept;
+    API_FUNCTION void CDECL SetObjectScale(double scale) NOEXCEPT;
 
     /**
     * \brief Set the object state of the temporary object stored on the server.
@@ -720,7 +720,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param objectState The object state.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectState(bool objectState) noexcept;
+    API_FUNCTION void CDECL SetObjectState(bool objectState) NOEXCEPT;
 
     /**
     * \brief Set the lock level of the temporary object stored on the server.
@@ -728,7 +728,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param lockLevel The lock level.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectLockLevel(int lockLevel) noexcept;
+    API_FUNCTION void CDECL SetObjectLockLevel(int lockLevel) NOEXCEPT;
 
     /**
     * \brief Set the summon duration of the temporary object stored on the server.
@@ -736,7 +736,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param summonDuration The summon duration.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectSummonDuration(float summonDuration) noexcept;
+    API_FUNCTION void CDECL SetObjectSummonDuration(float summonDuration) NOEXCEPT;
 
     /**
     * \brief Set the disarm state of the temporary object stored on the server.
@@ -744,7 +744,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param disarmState The disarmState.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectDisarmState(bool disarmState) noexcept;
+    API_FUNCTION void CDECL SetObjectDisarmState(bool disarmState) NOEXCEPT;
 
     /**
     * \brief Set the summon state of the temporary object stored on the server.
@@ -755,7 +755,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param summonState The summon state.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectSummonState(bool summonState) noexcept;
+    API_FUNCTION void CDECL SetObjectSummonState(bool summonState) NOEXCEPT;
 
     /**
     * \brief Set the position of the temporary object stored on the server.
@@ -765,7 +765,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param z The Z position.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectPosition(double x, double y, double z) noexcept;
+    API_FUNCTION void CDECL SetObjectPosition(double x, double y, double z) NOEXCEPT;
 
     /**
     * \brief Set the rotation of the temporary object stored on the server.
@@ -775,7 +775,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param z The Z rotation.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectRotation(double x, double y, double z) noexcept;
+    API_FUNCTION void CDECL SetObjectRotation(double x, double y, double z) NOEXCEPT;
 
     /**
     * \brief Set the player ID of the player activating the temporary object stored on the
@@ -784,7 +784,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param pid The pid of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectActivatingPid(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SetObjectActivatingPid(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Set the door state of the temporary object stored on the server.
@@ -794,7 +794,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param doorState The door state.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectDoorState(int doorState) noexcept;
+    API_FUNCTION void CDECL SetObjectDoorState(int doorState) NOEXCEPT;
 
     /**
     * \brief Set the teleport state of the temporary object stored on the server.
@@ -805,7 +805,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param teleportState The teleport state.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectDoorTeleportState(bool teleportState) noexcept;
+    API_FUNCTION void CDECL SetObjectDoorTeleportState(bool teleportState) NOEXCEPT;
 
     /**
     * \brief Set the door destination cell of the temporary object stored on the server.
@@ -816,7 +816,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param cellDescription The description of the cell.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectDoorDestinationCell(const char* cellDescription) noexcept;
+    API_FUNCTION void CDECL SetObjectDoorDestinationCell(const char* cellDescription) NOEXCEPT;
 
     /**
     * \brief Set the door destination position of the temporary object stored on the server.
@@ -826,7 +826,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param z The Z position.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectDoorDestinationPosition(double x, double y, double z) noexcept;
+    API_FUNCTION void CDECL SetObjectDoorDestinationPosition(double x, double y, double z) NOEXCEPT;
 
     /**
     * \brief Set the door destination rotation of the temporary object stored on the server.
@@ -838,7 +838,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param z The Z rotation.
     * \return void
     */
-    API_FUNCTION void CDECL SetObjectDoorDestinationRotation(double x, double z) noexcept;
+    API_FUNCTION void CDECL SetObjectDoorDestinationRotation(double x, double z) NOEXCEPT;
 
     /**
     * \brief Set a player as the object in the temporary object stored on the server.
@@ -847,7 +847,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param pid The pid of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetPlayerAsObject(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SetPlayerAsObject(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Set the refId of the temporary container item stored on the server.
@@ -855,7 +855,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param refId The refId.
     * \return void
     */
-    API_FUNCTION void CDECL SetContainerItemRefId(const char* refId) noexcept;
+    API_FUNCTION void CDECL SetContainerItemRefId(const char* refId) NOEXCEPT;
 
     /**
     * \brief Set the item count of the temporary container item stored on the server.
@@ -863,7 +863,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param count The item count.
     * \return void
     */
-    API_FUNCTION void CDECL SetContainerItemCount(int count) noexcept;
+    API_FUNCTION void CDECL SetContainerItemCount(int count) NOEXCEPT;
 
     /**
     * \brief Set the charge of the temporary container item stored on the server.
@@ -871,7 +871,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param charge The charge.
     * \return void
     */
-    API_FUNCTION void CDECL SetContainerItemCharge(int charge) noexcept;
+    API_FUNCTION void CDECL SetContainerItemCharge(int charge) NOEXCEPT;
 
     /**
     * \brief Set the enchantment charge of the temporary container item stored on the server.
@@ -879,7 +879,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param charge The enchantment charge.
     * \return void
     */
-    API_FUNCTION void CDECL SetContainerItemEnchantmentCharge(double enchantmentCharge) noexcept;
+    API_FUNCTION void CDECL SetContainerItemEnchantmentCharge(double enchantmentCharge) NOEXCEPT;
 
     /**
     * \brief Set the soul of the temporary container item stored on the server.
@@ -887,7 +887,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param refId The soul.
     * \return void
     */
-    API_FUNCTION void CDECL SetContainerItemSoul(const char* soul) noexcept;
+    API_FUNCTION void CDECL SetContainerItemSoul(const char* soul) NOEXCEPT;
 
     /**
     * \brief Set the action count of the container item at a certain itemIndex in the container
@@ -902,7 +902,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     * \param actionCount The action count.
     * \return void
     */
-    API_FUNCTION void CDECL SetContainerItemActionCountByIndex(unsigned int objectIndex, unsigned int itemIndex, int actionCount) noexcept;
+    API_FUNCTION void CDECL SetContainerItemActionCountByIndex(unsigned int objectIndex, unsigned int itemIndex, int actionCount) NOEXCEPT;
 
     /**
     * \brief Add a copy of the server's temporary object to the server's currently stored object
@@ -913,7 +913,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *
     * \return void
     */
-    API_FUNCTION void CDECL AddObject() noexcept;
+    API_FUNCTION void CDECL AddObject() NOEXCEPT;
 
     /**
     * \brief Add a copy of the server's temporary container item to the container changes of the
@@ -924,7 +924,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *
     * \return void
     */
-    API_FUNCTION void CDECL AddContainerItem() noexcept;
+    API_FUNCTION void CDECL AddContainerItem() NOEXCEPT;
 
     /**
     * \brief Send an ObjectActivate packet.
@@ -935,7 +935,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendObjectActivate(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendObjectActivate(bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send an ObjectPlace packet.
@@ -946,7 +946,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendObjectPlace(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendObjectPlace(bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send an ObjectSpawn packet.
@@ -957,7 +957,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendObjectSpawn(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendObjectSpawn(bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send an ObjectDelete packet.
@@ -967,7 +967,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *
     * \return void
     */
-    API_FUNCTION void CDECL SendObjectDelete(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendObjectDelete(bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send an ObjectLock packet.
@@ -978,7 +978,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendObjectLock(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendObjectLock(bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send an ObjectTrap packet.
@@ -988,7 +988,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *
     * \return void
     */
-    API_FUNCTION void CDECL SendObjectTrap(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendObjectTrap(bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send an ObjectScale packet.
@@ -999,7 +999,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendObjectScale(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendObjectScale(bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send an ObjectState packet.
@@ -1010,7 +1010,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendObjectState(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendObjectState(bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send a DoorState packet.
@@ -1021,7 +1021,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendDoorState(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendDoorState(bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send a DoorDestination packet.
@@ -1032,7 +1032,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendDoorDestination(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendDoorDestination(bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send a Container packet.
@@ -1043,7 +1043,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendContainer(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendContainer(bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send a VideoPlay packet.
@@ -1054,7 +1054,7 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendVideoPlay(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendVideoPlay(bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Send a ConsoleCommand packet.
@@ -1065,26 +1065,26 @@ NAMESPACE_BEGIN(ObjectFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendConsoleCommand(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendConsoleCommand(bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
 
     // All methods below are deprecated versions of methods from above
 
-    API_FUNCTION void CDECL ReadLastObjectList() noexcept;
-    API_FUNCTION void CDECL ReadLastEvent() noexcept;
-    API_FUNCTION void CDECL InitializeObjectList(unsigned short pid) noexcept;
-    API_FUNCTION void CDECL InitializeEvent(unsigned short pid) noexcept;
-    API_FUNCTION void CDECL CopyLastObjectListToStore() noexcept;
-    API_FUNCTION unsigned int CDECL GetObjectChangesSize() noexcept;
-    API_FUNCTION unsigned char CDECL GetEventAction() noexcept;
-    API_FUNCTION unsigned char CDECL GetEventContainerSubAction() noexcept;
-    API_FUNCTION unsigned int CDECL GetObjectRefNumIndex(unsigned int index) noexcept;
-    API_FUNCTION unsigned int CDECL GetObjectSummonerRefNumIndex(unsigned int index) noexcept;
-    API_FUNCTION void CDECL SetEventCell(const char* cellDescription) noexcept;
-    API_FUNCTION void CDECL SetEventAction(unsigned char action) noexcept;
-    API_FUNCTION void CDECL SetEventConsoleCommand(const char* consoleCommand) noexcept;
-    API_FUNCTION void CDECL SetObjectRefNumIndex(int refNum) noexcept;
-    API_FUNCTION void CDECL AddWorldObject() noexcept;
+    API_FUNCTION void CDECL ReadLastObjectList() NOEXCEPT;
+    API_FUNCTION void CDECL ReadLastEvent() NOEXCEPT;
+    API_FUNCTION void CDECL InitializeObjectList(PlayerId pid) NOEXCEPT;
+    API_FUNCTION void CDECL InitializeEvent(PlayerId pid) NOEXCEPT;
+    API_FUNCTION void CDECL CopyLastObjectListToStore() NOEXCEPT;
+    API_FUNCTION unsigned int CDECL GetObjectChangesSize() NOEXCEPT;
+    API_FUNCTION unsigned char CDECL GetEventAction() NOEXCEPT;
+    API_FUNCTION unsigned char CDECL GetEventContainerSubAction() NOEXCEPT;
+    API_FUNCTION unsigned int CDECL GetObjectRefNumIndex(unsigned int index) NOEXCEPT;
+    API_FUNCTION unsigned int CDECL GetObjectSummonerRefNumIndex(unsigned int index) NOEXCEPT;
+    API_FUNCTION void CDECL SetEventCell(const char* cellDescription) NOEXCEPT;
+    API_FUNCTION void CDECL SetEventAction(unsigned char action) NOEXCEPT;
+    API_FUNCTION void CDECL SetEventConsoleCommand(const char* consoleCommand) NOEXCEPT;
+    API_FUNCTION void CDECL SetObjectRefNumIndex(int refNum) NOEXCEPT;
+    API_FUNCTION void CDECL AddWorldObject() NOEXCEPT;
 NAMESPACE_END()
 
 

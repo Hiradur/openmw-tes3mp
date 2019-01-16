@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Cell.hpp"
 #include "Player.hpp"
-#include "Script/Script.hpp"
+#include "Script/Plugin.hpp"
 
 using namespace std;
 
@@ -123,7 +123,7 @@ void CellController::removeCell(Cell *cell)
     {
         if (*it != nullptr && *it == cell)
         {
-            Script::Call<Script::CallbackIdentity("OnCellDeletion")>(cell->getDescription().c_str());
+            Plugin::Call<CallbackIndex("OnCellDeletion")>(cell->getDescription().c_str());
             LOG_APPEND(Log::LOG_INFO, "- Removing %s from CellController", cell->getDescription().c_str());
 
             delete *it;

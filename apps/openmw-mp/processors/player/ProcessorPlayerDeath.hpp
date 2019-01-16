@@ -22,7 +22,7 @@ namespace mwmp
 
             packet.Send(true);
 
-            Script::Call<Script::CallbackIdentity("OnPlayerDeath")>(player.getId());
+            Plugin::Call<CallbackIndex("OnPlayerDeath")>(player.getId());
         }
     };
 }

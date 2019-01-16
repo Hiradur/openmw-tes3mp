@@ -4,7 +4,7 @@
 #include <apps/openmw-mp/Networking.hpp>
 #include <apps/openmw-mp/Player.hpp>
 #include <apps/openmw-mp/Utils.hpp>
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 
 #include <components/esm/creaturestats.hpp>
 
@@ -38,7 +38,7 @@ extern "C" void ActorFunctions::ClearActorList() noexcept
     writeActorList.baseActors.clear();
 }
 
-extern "C" void ActorFunctions::SetActorListPid(unsigned short pid) noexcept
+extern "C" void ActorFunctions::SetActorListPid(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -321,7 +321,7 @@ extern "C" void ActorFunctions::SetActorAIAction(unsigned int action) noexcept
     tempActor.aiAction = action;
 }
 
-extern "C" void ActorFunctions::SetActorAITargetToPlayer(unsigned short pid) noexcept
+extern "C" void ActorFunctions::SetActorAITargetToPlayer(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -528,7 +528,7 @@ void ActorFunctions::ReadLastActorList() noexcept
     ReadReceivedActorList();
 }
 
-extern "C" void ActorFunctions::InitializeActorList(unsigned short pid) noexcept
+extern "C" void ActorFunctions::InitializeActorList(PlayerId pid) noexcept
 {
     ClearActorList();
     SetActorListPid(pid);

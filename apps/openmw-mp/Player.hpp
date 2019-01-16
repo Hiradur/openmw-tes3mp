@@ -20,6 +20,7 @@
 #include <components/openmw-mp/Packets/Player/PlayerPacket.hpp>
 #include "Cell.hpp"
 #include "CellController.hpp"
+#include "Script/CTypes.h"
 
 class Player;
 typedef std::map<RakNet::RakNetGUID, Player*> TPlayers;
@@ -45,7 +46,6 @@ class Player : public mwmp::BasePlayer
 {
     friend class Cell;
 public:
-    const unsigned int InvalidID = (unsigned int) -1;
     enum
     {
         NOTLOADED=0,
@@ -55,7 +55,7 @@ public:
     };
     Player(const RakNet::RakNetGUID &guid);
 
-    unsigned int getId();
+    PlayerId getId();
     void setId(unsigned short id);
 
     bool isHandshaked();

@@ -27,7 +27,7 @@ NAMESPACE_BEGIN(SpellFunctions)
     * \param pid The player ID whose spellbook changes should be used.
     * \return void
     */
-    API_FUNCTION void CDECL ClearSpellbookChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL ClearSpellbookChanges(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the number of indexes in a player's latest spellbook changes.
@@ -35,7 +35,7 @@ NAMESPACE_BEGIN(SpellFunctions)
     * \param pid The player ID whose spellbook changes should be used.
     * \return The number of indexes.
     */
-    API_FUNCTION unsigned int CDECL GetSpellbookChangesSize(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetSpellbookChangesSize(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the action type used in a player's latest spellbook changes.
@@ -43,7 +43,7 @@ NAMESPACE_BEGIN(SpellFunctions)
     * \param pid The player ID whose spellbook changes should be used.
     * \return The action type (0 for SET, 1 for ADD, 2 for REMOVE).
     */
-    API_FUNCTION unsigned int CDECL GetSpellbookChangesAction(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetSpellbookChangesAction(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Set the action type in a player's spellbook changes.
@@ -52,7 +52,7 @@ NAMESPACE_BEGIN(SpellFunctions)
     * \param action The action (0 for SET, 1 for ADD, 2 for REMOVE).
     * \return void
     */
-    API_FUNCTION void CDECL SetSpellbookChangesAction(unsigned short pid, unsigned char action) noexcept;
+    API_FUNCTION void CDECL SetSpellbookChangesAction(PlayerId pid, unsigned char action) NOEXCEPT;
 
     /**
     * \brief Add a new spell to the spellbook changes for a player.
@@ -61,7 +61,7 @@ NAMESPACE_BEGIN(SpellFunctions)
     * \param spellId The spellId of the spell.
     * \return void
     */
-    API_FUNCTION void CDECL AddSpell(unsigned short pid, const char* spellId) noexcept;
+    API_FUNCTION void CDECL AddSpell(PlayerId pid, const char* spellId) NOEXCEPT;
 
     /**
     * \brief Get the spellId at a certain index in a player's latest spellbook changes.
@@ -70,7 +70,7 @@ NAMESPACE_BEGIN(SpellFunctions)
     * \param index The index of the spell.
     * \return The spellId.
     */
-    API_FUNCTION const char *CDECL GetSpellId(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetSpellId(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Send a PlayerSpellbook packet with a player's recorded spellbook changes.
@@ -82,11 +82,11 @@ NAMESPACE_BEGIN(SpellFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendSpellbookChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendSpellbookChanges(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     // All methods below are deprecated versions of methods from above
 
-    API_FUNCTION void CDECL InitializeSpellbookChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL InitializeSpellbookChanges(PlayerId pid) NOEXCEPT;
 NAMESPACE_END()
 
 #endif //OPENMW_SPELLAPI_HPP

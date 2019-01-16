@@ -3,12 +3,12 @@
 #include <components/misc/stringops.hpp>
 #include <components/openmw-mp/NetworkMessages.hpp>
 
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 #include <apps/openmw-mp/Networking.hpp>
 
 using namespace mwmp;
 
-extern "C" void SpellFunctions::ClearSpellbookChanges(unsigned short pid) noexcept
+extern "C" void SpellFunctions::ClearSpellbookChanges(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -16,7 +16,7 @@ extern "C" void SpellFunctions::ClearSpellbookChanges(unsigned short pid) noexce
     player->spellbookChanges.spells.clear();
 }
 
-extern "C" unsigned int SpellFunctions::GetSpellbookChangesSize(unsigned short pid) noexcept
+extern "C" unsigned int SpellFunctions::GetSpellbookChangesSize(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -24,7 +24,7 @@ extern "C" unsigned int SpellFunctions::GetSpellbookChangesSize(unsigned short p
     return player->spellbookChanges.count;
 }
 
-extern "C" unsigned int SpellFunctions::GetSpellbookChangesAction(unsigned short pid) noexcept
+extern "C" unsigned int SpellFunctions::GetSpellbookChangesAction(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -32,7 +32,7 @@ extern "C" unsigned int SpellFunctions::GetSpellbookChangesAction(unsigned short
     return player->spellbookChanges.action;
 }
 
-extern "C" void SpellFunctions::SetSpellbookChangesAction(unsigned short pid, unsigned char action) noexcept
+extern "C" void SpellFunctions::SetSpellbookChangesAction(PlayerId pid, unsigned char action) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -40,7 +40,7 @@ extern "C" void SpellFunctions::SetSpellbookChangesAction(unsigned short pid, un
     player->spellbookChanges.action = action;
 }
 
-extern "C" void SpellFunctions::AddSpell(unsigned short pid, const char* spellId) noexcept
+extern "C" void SpellFunctions::AddSpell(PlayerId pid, const char* spellId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -51,7 +51,7 @@ extern "C" void SpellFunctions::AddSpell(unsigned short pid, const char* spellId
     player->spellbookChanges.spells.push_back(spell);
 }
 
-extern "C" const char *SpellFunctions::GetSpellId(unsigned short pid, unsigned int index) noexcept
+extern "C" const char *SpellFunctions::GetSpellId(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -62,7 +62,7 @@ extern "C" const char *SpellFunctions::GetSpellId(unsigned short pid, unsigned i
     return player->spellbookChanges.spells.at(index).mId.c_str();
 }
 
-extern "C" void SpellFunctions::SendSpellbookChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
+extern "C" void SpellFunctions::SendSpellbookChanges(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -78,7 +78,7 @@ extern "C" void SpellFunctions::SendSpellbookChanges(unsigned short pid, bool se
 
 extern "C" // All methods below are deprecated versions of methods from above
 
-void SpellFunctions::InitializeSpellbookChanges(unsigned short pid) noexcept
+void SpellFunctions::InitializeSpellbookChanges(PlayerId pid) noexcept
 {
     ClearSpellbookChanges(pid);
 }

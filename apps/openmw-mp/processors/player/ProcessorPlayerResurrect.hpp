@@ -25,7 +25,7 @@ namespace mwmp
 
             packet.Send(true);
 
-            Script::Call<Script::CallbackIdentity("OnPlayerResurrect")>(player.getId());
+            Plugin::Call<CallbackIndex("OnPlayerResurrect")>(player.getId());
         }
     };
 }

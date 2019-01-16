@@ -2,10 +2,10 @@
 
 #include <components/openmw-mp/NetworkMessages.hpp>
 
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 #include <apps/openmw-mp/Networking.hpp>
 
-extern "C" void GUIFunctions::_MessageBox(unsigned short pid, int id, const char *label) noexcept
+extern "C" void GUIFunctions::_MessageBox(PlayerId pid, int id, const char *label) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -20,7 +20,7 @@ extern "C" void GUIFunctions::_MessageBox(unsigned short pid, int id, const char
     packet->Send(false);
 }
 
-extern "C" void GUIFunctions::CustomMessageBox(unsigned short pid, int id, const char *label, const char *buttons) noexcept
+extern "C" void GUIFunctions::CustomMessageBox(PlayerId pid, int id, const char *label, const char *buttons) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -36,7 +36,7 @@ extern "C" void GUIFunctions::CustomMessageBox(unsigned short pid, int id, const
     packet->Send(false);
 }
 
-extern "C" void GUIFunctions::InputDialog(unsigned short pid, int id, const char *label, const char *note) noexcept
+extern "C" void GUIFunctions::InputDialog(PlayerId pid, int id, const char *label, const char *note) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -52,7 +52,7 @@ extern "C" void GUIFunctions::InputDialog(unsigned short pid, int id, const char
     packet->Send(false);
 }
 
-extern "C" void GUIFunctions::PasswordDialog(unsigned short pid, int id, const char *label, const char *note) noexcept
+extern "C" void GUIFunctions::PasswordDialog(PlayerId pid, int id, const char *label, const char *note) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -68,7 +68,7 @@ extern "C" void GUIFunctions::PasswordDialog(unsigned short pid, int id, const c
     packet->Send(false);
 }
 
-extern "C" void GUIFunctions::ListBox(unsigned short pid, int id, const char *label, const char *items)
+extern "C" void GUIFunctions::ListBox(PlayerId pid, int id, const char *label, const char *items)
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -84,7 +84,7 @@ extern "C" void GUIFunctions::ListBox(unsigned short pid, int id, const char *la
     packet->Send(false);
 }
 
-extern "C" void GUIFunctions::ClearQuickKeyChanges(unsigned short pid) noexcept
+extern "C" void GUIFunctions::ClearQuickKeyChanges(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -92,7 +92,7 @@ extern "C" void GUIFunctions::ClearQuickKeyChanges(unsigned short pid) noexcept
     player->quickKeyChanges.quickKeys.clear();
 }
 
-extern "C" unsigned int GUIFunctions::GetQuickKeyChangesSize(unsigned short pid) noexcept
+extern "C" unsigned int GUIFunctions::GetQuickKeyChangesSize(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -100,7 +100,7 @@ extern "C" unsigned int GUIFunctions::GetQuickKeyChangesSize(unsigned short pid)
     return player->quickKeyChanges.count;
 }
 
-extern "C" int GUIFunctions::GetQuickKeySlot(unsigned short pid, unsigned int index) noexcept
+extern "C" int GUIFunctions::GetQuickKeySlot(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -111,7 +111,7 @@ extern "C" int GUIFunctions::GetQuickKeySlot(unsigned short pid, unsigned int in
     return player->quickKeyChanges.quickKeys.at(index).slot;
 }
 
-extern "C" int GUIFunctions::GetQuickKeyType(unsigned short pid, unsigned int index) noexcept
+extern "C" int GUIFunctions::GetQuickKeyType(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -122,7 +122,7 @@ extern "C" int GUIFunctions::GetQuickKeyType(unsigned short pid, unsigned int in
     return player->quickKeyChanges.quickKeys.at(index).type;
 }
 
-extern "C" const char *GUIFunctions::GetQuickKeyItemId(unsigned short pid, unsigned int index) noexcept
+extern "C" const char *GUIFunctions::GetQuickKeyItemId(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -133,7 +133,7 @@ extern "C" const char *GUIFunctions::GetQuickKeyItemId(unsigned short pid, unsig
     return player->quickKeyChanges.quickKeys.at(index).itemId.c_str();
 }
 
-extern "C" void GUIFunctions::AddQuickKey(unsigned short pid, unsigned short slot, int type, const char* itemId) noexcept
+extern "C" void GUIFunctions::AddQuickKey(PlayerId pid, unsigned short slot, int type, const char* itemId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -146,7 +146,7 @@ extern "C" void GUIFunctions::AddQuickKey(unsigned short pid, unsigned short slo
     player->quickKeyChanges.quickKeys.push_back(quickKey);
 }
 
-extern "C" void GUIFunctions::SendQuickKeyChanges(unsigned short pid) noexcept
+extern "C" void GUIFunctions::SendQuickKeyChanges(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -167,7 +167,7 @@ extern "C" void GUIFunctions::SetMapVisibilityAll(unsigned short targetPid, unsi
 
 extern "C" // All methods below are deprecated versions of methods from above
 
-void GUIFunctions::InitializeQuickKeyChanges(unsigned short pid) noexcept
+void GUIFunctions::InitializeQuickKeyChanges(PlayerId pid) noexcept
 {
     ClearQuickKeyChanges(pid);
 }

@@ -31,11 +31,11 @@ struct ServerRule
     double val;
 };
 
-struct Plugin
+struct _Plugin
 {
     std::string name;
     unsigned hash;
-    Plugin(std::string name = "", unsigned hash = 0): name(std::move(name)), hash(hash) {};
+    _Plugin(std::string name = "", unsigned hash = 0): name(std::move(name)), hash(hash) {};
 };
 
 struct QueryData
@@ -76,7 +76,7 @@ struct QueryData
 
     std::vector<std::string> players;
     std::map<std::string, ServerRule> rules;
-    std::vector<Plugin> plugins;
+    std::vector<_Plugin> plugins;
     const static int predefinedRules = 6;
     const static int maxRules = 128;
     const static int maxUserRules = maxRules - predefinedRules;

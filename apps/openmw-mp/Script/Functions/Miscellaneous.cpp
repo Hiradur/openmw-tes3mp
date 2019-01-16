@@ -3,7 +3,7 @@
 #include <components/misc/stringops.hpp>
 #include <components/openmw-mp/Log.hpp>
 
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 #include <apps/openmw-mp/Networking.hpp>
 
 #include <iostream>

@@ -17,7 +17,7 @@ namespace mwmp
         {
             DEBUG_PRINTF(strPacketID.c_str());
 
-            Script::Call<Script::CallbackIdentity("OnPlayerMiscellaneous")>(player.getId());
+            Plugin::Call<CallbackIndex("OnPlayerMiscellaneous")>(player.getId());
         }
     };
 }

@@ -85,7 +85,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     *
     * \return The number of attributes.
     */
-    API_FUNCTION int CDECL GetAttributeCount() noexcept;
+    API_FUNCTION int CDECL GetAttributeCount() NOEXCEPT;
 
     /**
     * \brief Get the number of skills.
@@ -94,7 +94,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     *
     * \return The number of skills.
     */
-    API_FUNCTION int CDECL GetSkillCount() noexcept;
+    API_FUNCTION int CDECL GetSkillCount() NOEXCEPT;
 
     /**
     * \brief Get the numerical ID of an attribute with a certain name.
@@ -104,7 +104,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param name The name of the attribute.
     * \return The ID of the attribute.
     */
-    API_FUNCTION int CDECL GetAttributeId(const char *name) noexcept;
+    API_FUNCTION int CDECL GetAttributeId(const char *name) NOEXCEPT;
 
     /**
     * \brief Get the numerical ID of a skill with a certain name.
@@ -114,7 +114,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param name The name of the skill.
     * \return The ID of the skill.
     */
-    API_FUNCTION int CDECL GetSkillId(const char *name) noexcept;
+    API_FUNCTION int CDECL GetSkillId(const char *name) NOEXCEPT;
 
     /**
     * \brief Get the name of the attribute with a certain numerical ID.
@@ -124,7 +124,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param attributeId The ID of the attribute.
     * \return The name of the attribute.
     */
-    API_FUNCTION const char *CDECL GetAttributeName(unsigned short attributeId) noexcept;
+    API_FUNCTION const char *CDECL GetAttributeName(unsigned short attributeId) NOEXCEPT;
 
     /**
     * \brief Get the name of the skill with a certain numerical ID.
@@ -134,7 +134,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param skillId The ID of the skill.
     * \return The name of the skill.
     */
-    API_FUNCTION const char *CDECL GetSkillName(unsigned short skillId) noexcept;
+    API_FUNCTION const char *CDECL GetSkillName(unsigned short skillId) NOEXCEPT;
 
     /**
     * \brief Get the name of a player.
@@ -142,7 +142,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The name of the player.
     */
-    API_FUNCTION const char *CDECL GetName(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetName(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the race of a player.
@@ -150,7 +150,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The race of the player.
     */
-    API_FUNCTION const char *CDECL GetRace(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetRace(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the head mesh used by a player.
@@ -158,7 +158,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The head mesh of the player.
     */
-    API_FUNCTION const char *CDECL GetHead(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetHead(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the hairstyle mesh used by a player.
@@ -166,7 +166,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The hairstyle mesh of the player.
     */
-    API_FUNCTION const char *CDECL GetHairstyle(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetHairstyle(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Check whether a player is male or not.
@@ -174,7 +174,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return Whether the player is male.
     */
-    API_FUNCTION int CDECL GetIsMale(unsigned short pid) noexcept;
+    API_FUNCTION int CDECL GetIsMale(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the birthsign of a player.
@@ -182,7 +182,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The birthsign of the player.
     */
-    API_FUNCTION const char *CDECL GetBirthsign(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetBirthsign(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the character level of a player.
@@ -190,7 +190,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The level of the player.
     */
-    API_FUNCTION int CDECL GetLevel(unsigned short pid) noexcept;
+    API_FUNCTION int CDECL GetLevel(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the player's progress to their next character level.
@@ -198,7 +198,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The level progress.
     */
-    API_FUNCTION int CDECL GetLevelProgress(unsigned short pid) noexcept;
+    API_FUNCTION int CDECL GetLevelProgress(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the base health of the player.
@@ -206,7 +206,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The base health.
     */
-    API_FUNCTION double CDECL GetHealthBase(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetHealthBase(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the current health of the player.
@@ -214,7 +214,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The current health.
     */
-    API_FUNCTION double CDECL GetHealthCurrent(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetHealthCurrent(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the base magicka of the player.
@@ -222,7 +222,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The base magicka.
     */
-    API_FUNCTION double CDECL GetMagickaBase(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetMagickaBase(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the current magicka of the player.
@@ -230,7 +230,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The current magicka.
     */
-    API_FUNCTION double CDECL GetMagickaCurrent(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetMagickaCurrent(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the base fatigue of the player.
@@ -238,7 +238,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The base fatigue.
     */
-    API_FUNCTION double CDECL GetFatigueBase(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetFatigueBase(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the current fatigue of the player.
@@ -246,7 +246,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The current fatigue.
     */
-    API_FUNCTION double CDECL GetFatigueCurrent(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetFatigueCurrent(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the base value of a player's attribute.
@@ -255,7 +255,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param attributeId The attribute ID.
     * \return The base value of the attribute.
     */
-    API_FUNCTION int CDECL GetAttributeBase(unsigned short pid, unsigned short attributeId) noexcept;
+    API_FUNCTION int CDECL GetAttributeBase(PlayerId pid, unsigned short attributeId) NOEXCEPT;
 
     /**
     * \brief Get the modifier value of a player's attribute.
@@ -264,7 +264,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param attributeId The attribute ID.
     * \return The modifier value of the attribute.
     */
-    API_FUNCTION int CDECL GetAttributeModifier(unsigned short pid, unsigned short attributeId) noexcept;
+    API_FUNCTION int CDECL GetAttributeModifier(PlayerId pid, unsigned short attributeId) NOEXCEPT;
 
     /**
     * \brief Get the base value of a player's skill.
@@ -273,7 +273,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param skillId The skill ID.
     * \return The base value of the skill.
     */
-    API_FUNCTION int CDECL GetSkillBase(unsigned short pid, unsigned short skillId) noexcept;
+    API_FUNCTION int CDECL GetSkillBase(PlayerId pid, unsigned short skillId) NOEXCEPT;
 
     /**
     * \brief Get the modifier value of a player's skill.
@@ -282,7 +282,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param skillId The skill ID.
     * \return The modifier value of the skill.
     */
-    API_FUNCTION int CDECL GetSkillModifier(unsigned short pid, unsigned short skillId) noexcept;
+    API_FUNCTION int CDECL GetSkillModifier(PlayerId pid, unsigned short skillId) NOEXCEPT;
 
     /**
     * \brief Get the progress the player has made towards increasing a certain skill by 1.
@@ -291,7 +291,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param skillId The skill ID.
     * \return The skill progress.
     */
-    API_FUNCTION double CDECL GetSkillProgress(unsigned short pid, unsigned short skillId) noexcept;
+    API_FUNCTION double CDECL GetSkillProgress(PlayerId pid, unsigned short skillId) NOEXCEPT;
 
     /**
     * \brief Get the bonus applied to a certain attribute at the next level up as a result
@@ -303,7 +303,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param skillId The attribute ID.
     * \return The increase in the attribute caused by skills.
     */
-    API_FUNCTION int CDECL GetSkillIncrease(unsigned short pid, unsigned int attributeId) noexcept;
+    API_FUNCTION int CDECL GetSkillIncrease(PlayerId pid, unsigned int attributeId) NOEXCEPT;
 
     /**
     * \brief Get the bounty of the player.
@@ -311,7 +311,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return The bounty.
     */
-    API_FUNCTION int CDECL GetBounty(unsigned short pid) noexcept;
+    API_FUNCTION int CDECL GetBounty(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Set the name of a player.
@@ -320,7 +320,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param name The new name of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetName(unsigned short pid, const char *name) noexcept;
+    API_FUNCTION void CDECL SetName(PlayerId pid, const char *name) NOEXCEPT;
 
     /**
     * \brief Set the race of a player.
@@ -329,7 +329,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param race The new race of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetRace(unsigned short pid, const char *race) noexcept;
+    API_FUNCTION void CDECL SetRace(PlayerId pid, const char *race) NOEXCEPT;
 
     /**
     * \brief Set the head mesh used by a player.
@@ -338,7 +338,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param head The new head mesh of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetHead(unsigned short pid, const char *head) noexcept;
+    API_FUNCTION void CDECL SetHead(PlayerId pid, const char *head) NOEXCEPT;
 
     /**
     * \brief Set the hairstyle mesh used by a player.
@@ -347,7 +347,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param hairstyle The new hairstyle mesh of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetHairstyle(unsigned short pid, const char *hairstyle) noexcept;
+    API_FUNCTION void CDECL SetHairstyle(PlayerId pid, const char *hairstyle) NOEXCEPT;
 
     /**
     * \brief Set whether a player is male or not.
@@ -356,7 +356,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param state Whether the player is male.
     * \return void
     */
-    API_FUNCTION void CDECL SetIsMale(unsigned short pid, int state) noexcept;
+    API_FUNCTION void CDECL SetIsMale(PlayerId pid, int state) NOEXCEPT;
 
     /**
     * \brief Set the birthsign of a player.
@@ -365,7 +365,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param name The new birthsign of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetBirthsign(unsigned short pid, const char *name) noexcept;
+    API_FUNCTION void CDECL SetBirthsign(PlayerId pid, const char *name) NOEXCEPT;
 
     /**
     * \brief Set whether the player's stats should be reset based on their
@@ -378,7 +378,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param resetStats The stat reset state.
     * \return void
     */
-    API_FUNCTION void CDECL SetResetStats(unsigned short pid, bool resetStats) noexcept;
+    API_FUNCTION void CDECL SetResetStats(PlayerId pid, bool resetStats) NOEXCEPT;
     
     /**
     * \brief Set the character level of a player.
@@ -387,7 +387,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param value The new level of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetLevel(unsigned short pid, int value) noexcept;
+    API_FUNCTION void CDECL SetLevel(PlayerId pid, int value) NOEXCEPT;
 
     /**
     * \brief Set the player's progress to their next character level.
@@ -396,7 +396,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param value The new level progress of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetLevelProgress(unsigned short pid, int value) noexcept;
+    API_FUNCTION void CDECL SetLevelProgress(PlayerId pid, int value) NOEXCEPT;
 
     /**
     * \brief Set the base health of a player.
@@ -405,7 +405,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param name The new base health of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetHealthBase(unsigned short pid, double value) noexcept;
+    API_FUNCTION void CDECL SetHealthBase(PlayerId pid, double value) NOEXCEPT;
 
     /**
     * \brief Set the current health of a player.
@@ -414,7 +414,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param name The new current health of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetHealthCurrent(unsigned short pid, double value) noexcept;
+    API_FUNCTION void CDECL SetHealthCurrent(PlayerId pid, double value) NOEXCEPT;
 
     /**
     * \brief Set the base magicka of a player.
@@ -423,7 +423,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param name The new base magicka of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetMagickaBase(unsigned short pid, double value) noexcept;
+    API_FUNCTION void CDECL SetMagickaBase(PlayerId pid, double value) NOEXCEPT;
 
     /**
     * \brief Set the current magicka of a player.
@@ -432,7 +432,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param name The new current magicka of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetMagickaCurrent(unsigned short pid, double value) noexcept;
+    API_FUNCTION void CDECL SetMagickaCurrent(PlayerId pid, double value) NOEXCEPT;
 
     /**
     * \brief Set the base fatigue of a player.
@@ -441,7 +441,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param name The new base fatigue of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetFatigueBase(unsigned short pid, double value) noexcept;
+    API_FUNCTION void CDECL SetFatigueBase(PlayerId pid, double value) NOEXCEPT;
 
     /**
     * \brief Set the current fatigue of a player.
@@ -450,7 +450,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param name The new current fatigue of the player.
     * \return void
     */
-    API_FUNCTION void CDECL SetFatigueCurrent(unsigned short pid, double value) noexcept;
+    API_FUNCTION void CDECL SetFatigueCurrent(PlayerId pid, double value) NOEXCEPT;
 
     /**
     * \brief Set the base value of a player's attribute.
@@ -460,7 +460,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param value The new base value of the player's attribute.
     * \return void
     */
-    API_FUNCTION void CDECL SetAttributeBase(unsigned short pid, unsigned short attributeId, int value) noexcept;
+    API_FUNCTION void CDECL SetAttributeBase(PlayerId pid, unsigned short attributeId, int value) NOEXCEPT;
 
     /**
     * \brief Clear the modifier value of a player's attribute.
@@ -474,7 +474,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param attributeId The attribute ID.
     * \return void
     */
-    API_FUNCTION void CDECL ClearAttributeModifier(unsigned short pid, unsigned short attributeId) noexcept;
+    API_FUNCTION void CDECL ClearAttributeModifier(PlayerId pid, unsigned short attributeId) NOEXCEPT;
 
     /**
     * \brief Set the base value of a player's skill.
@@ -484,7 +484,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param value The new base value of the player's skill.
     * \return void
     */
-    API_FUNCTION void CDECL SetSkillBase(unsigned short pid, unsigned short skillId, int value) noexcept;
+    API_FUNCTION void CDECL SetSkillBase(PlayerId pid, unsigned short skillId, int value) NOEXCEPT;
 
     /**
     * \brief Clear the modifier value of a player's skill.
@@ -498,7 +498,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param skillId The skill ID.
     * \return void
     */
-    API_FUNCTION void CDECL ClearSkillModifier(unsigned short pid, unsigned short skillId) noexcept;
+    API_FUNCTION void CDECL ClearSkillModifier(PlayerId pid, unsigned short skillId) NOEXCEPT;
 
     /**
     * \brief Set the progress the player has made towards increasing a certain skill by 1.
@@ -508,7 +508,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param value The progress value.
     * \return void
     */
-    API_FUNCTION void CDECL SetSkillProgress(unsigned short pid, unsigned short skillId, double value) noexcept;
+    API_FUNCTION void CDECL SetSkillProgress(PlayerId pid, unsigned short skillId, double value) NOEXCEPT;
 
     /**
     * \brief Set the bonus applied to a certain attribute at the next level up as a result
@@ -521,7 +521,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param value The increase in the attribute caused by skills.
     * \return void
     */
-    API_FUNCTION void CDECL SetSkillIncrease(unsigned short pid, unsigned int attributeId, int value) noexcept;
+    API_FUNCTION void CDECL SetSkillIncrease(PlayerId pid, unsigned int attributeId, int value) NOEXCEPT;
 
     /**
     * \brief Set the bounty of a player.
@@ -530,7 +530,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param value The new bounty.
     * \return void
     */
-    API_FUNCTION void CDECL SetBounty(unsigned short pid, int value) noexcept;
+    API_FUNCTION void CDECL SetBounty(PlayerId pid, int value) NOEXCEPT;
 
     /**
     * \brief Set the current and ending stages of character generation for a player.
@@ -542,7 +542,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param endStage The new ending stage.
     * \return void
     */
-    API_FUNCTION void CDECL SetCharGenStage(unsigned short pid, int currentStage, int endStage) noexcept;
+    API_FUNCTION void CDECL SetCharGenStage(PlayerId pid, int currentStage, int endStage) NOEXCEPT;
 
     /**
     * \brief Send a PlayerBaseInfo packet with a player's name, race, head mesh,
@@ -553,7 +553,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return void
     */
-    API_FUNCTION void CDECL SendBaseInfo(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SendBaseInfo(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Send a PlayerStatsDynamic packet with a player's dynamic stats (health,
@@ -564,7 +564,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return void
     */
-    API_FUNCTION void CDECL SendStatsDynamic(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SendStatsDynamic(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Send a PlayerAttribute packet with a player's attributes and bonuses
@@ -576,7 +576,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return void
     */
-    API_FUNCTION void CDECL SendAttributes(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SendAttributes(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Send a PlayerSkill packet with a player's skills.
@@ -586,7 +586,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return void
     */
-    API_FUNCTION void CDECL SendSkills(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SendSkills(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Send a PlayerLevel packet with a player's character level and
@@ -597,7 +597,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return void
     */
-    API_FUNCTION void CDECL SendLevel(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SendLevel(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Send a PlayerBounty packet with a player's bounty.
@@ -607,7 +607,7 @@ NAMESPACE_BEGIN(StatsFunctions)
     * \param pid The player ID.
     * \return void
     */
-    API_FUNCTION void CDECL SendBounty(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SendBounty(PlayerId pid) NOEXCEPT;
 NAMESPACE_END()
 
 #endif //OPENMW_STATAPI_HPP

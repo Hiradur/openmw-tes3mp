@@ -1,29 +1,7 @@
 #ifndef OPENMW_CELLAPI_HPP
 #define OPENMW_CELLAPI_HPP
 
-#include "../Types.hpp"
-
 #include "../api.h"
-
-#define CELLAPI \
-    {"GetCellStateChangesSize", CellFunctions::GetCellStateChangesSize},\
-    \
-    {"GetCellStateType",        CellFunctions::GetCellStateType},\
-    {"GetCellStateDescription", CellFunctions::GetCellStateDescription},\
-    \
-    {"GetCell",                 CellFunctions::GetCell},\
-    {"GetExteriorX",            CellFunctions::GetExteriorX},\
-    {"GetExteriorY",            CellFunctions::GetExteriorY},\
-    {"IsInExterior",            CellFunctions::IsInExterior},\
-    \
-    {"GetRegion",               CellFunctions::GetRegion},\
-    {"IsChangingRegion",        CellFunctions::IsChangingRegion},\
-    \
-    {"SetCell",                 CellFunctions::SetCell},\
-    {"SetExteriorCell",         CellFunctions::SetExteriorCell},\
-    \
-    {"SendCell",                CellFunctions::SendCell}
-
 
 NAMESPACE_BEGIN(CellFunctions)
     /**
@@ -32,7 +10,7 @@ NAMESPACE_BEGIN(CellFunctions)
     * \param pid The player ID whose cell state changes should be used.
     * \return The number of indexes.
     */
-    API_FUNCTION unsigned int CDECL GetCellStateChangesSize(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetCellStateChangesSize(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the cell state type at a certain index in a player's latest cell state changes.
@@ -41,7 +19,7 @@ NAMESPACE_BEGIN(CellFunctions)
     * \param index The index of the cell state.
     * \return The cell state type (0 for LOAD, 1 for UNLOAD).
     */
-    API_FUNCTION unsigned int CDECL GetCellStateType(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION unsigned int CDECL GetCellStateType(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the cell description at a certain index in a player's latest cell state changes.
@@ -50,7 +28,7 @@ NAMESPACE_BEGIN(CellFunctions)
     * \param index The index of the cell state.
     * \return The cell description.
     */
-    API_FUNCTION const char *CDECL GetCellStateDescription(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetCellStateDescription(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the cell description of a player's cell.
@@ -58,7 +36,7 @@ NAMESPACE_BEGIN(CellFunctions)
     * \param pid The player ID.
     * \return The cell description.
     */
-    API_FUNCTION const char *CDECL GetCell(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetCell(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the X coordinate of the player's exterior cell.
@@ -66,7 +44,7 @@ NAMESPACE_BEGIN(CellFunctions)
     * \param pid The player ID.
     * \return The X coordinate of the cell.
     */
-    API_FUNCTION int CDECL GetExteriorX(unsigned short pid) noexcept;
+    API_FUNCTION int CDECL GetExteriorX(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the Y coordinate of the player's exterior cell.
@@ -74,7 +52,7 @@ NAMESPACE_BEGIN(CellFunctions)
     * \param pid The player ID.
     * \return The Y coordinate of the cell.
     */
-    API_FUNCTION int CDECL GetExteriorY(unsigned short pid) noexcept;
+    API_FUNCTION int CDECL GetExteriorY(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Check whether the player is in an exterior cell or not.
@@ -82,7 +60,7 @@ NAMESPACE_BEGIN(CellFunctions)
     * \param pid The player ID.
     * \return Whether the player is in an exterior cell.
     */
-    API_FUNCTION bool CDECL IsInExterior(unsigned short pid) noexcept;
+    API_FUNCTION bool CDECL IsInExterior(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the region of the player's exterior cell.
@@ -92,7 +70,7 @@ NAMESPACE_BEGIN(CellFunctions)
     * \param pid The player ID.
     * \return The region.
     */
-    API_FUNCTION const char *CDECL GetRegion(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetRegion(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Check whether the player's last cell change has involved a region change.
@@ -100,7 +78,7 @@ NAMESPACE_BEGIN(CellFunctions)
     * \param pid The player ID.
     * \return Whether the player has changed their region.
     */
-    API_FUNCTION bool CDECL IsChangingRegion(unsigned short pid) noexcept;
+    API_FUNCTION bool CDECL IsChangingRegion(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Set the cell of a player.
@@ -115,7 +93,7 @@ NAMESPACE_BEGIN(CellFunctions)
     * \param cellDescription The cell description.
     * \return void
     */
-    API_FUNCTION void CDECL SetCell(unsigned short pid, const char *cellDescription) noexcept;
+    API_FUNCTION void CDECL SetCell(PlayerId pid, const char *cellDescription) NOEXCEPT;
 
     /**
     * \brief Set the cell of a player to an exterior cell.
@@ -128,7 +106,7 @@ NAMESPACE_BEGIN(CellFunctions)
     * \param y The Y coordinate of the cell.
     * \return void
     */
-    API_FUNCTION void CDECL SetExteriorCell(unsigned short pid, int x, int y) noexcept;
+    API_FUNCTION void CDECL SetExteriorCell(PlayerId pid, int x, int y) NOEXCEPT;
 
     /**
     * \brief Send a PlayerCellChange packet about a player.
@@ -138,7 +116,7 @@ NAMESPACE_BEGIN(CellFunctions)
     * \param pid The player ID.
     * \return void
     */
-    API_FUNCTION void CDECL SendCell(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL SendCell(PlayerId pid) NOEXCEPT;
 NAMESPACE_END()
 
 #endif //OPENMW_CELLAPI_HPP

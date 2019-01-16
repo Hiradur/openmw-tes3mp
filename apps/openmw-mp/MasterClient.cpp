@@ -105,7 +105,7 @@ void MasterClient::SetRuleValue(const std::string &key, double value)
     mutexData.unlock();
 }
 
-void MasterClient::PushPlugin(const Plugin &plugin)
+void MasterClient::PushPlugin(const _Plugin &plugin)
 {
     mutexData.lock();
     queryData.plugins.push_back(plugin);

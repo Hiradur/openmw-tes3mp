@@ -10,7 +10,7 @@
 #include <components/openmw-mp/Packets/PacketPreInit.hpp>
 
 #include <iostream>
-#include <Script/Script.hpp>
+#include <Script/Plugin.hpp>
 #include <Script/API/TimerAPI.hpp>
 #include <chrono>
 #include <thread>
@@ -55,7 +55,7 @@ Networking::Networking(RakNet::RakPeerInterface *peer) : mclient(nullptr)
     running = true;
     exitCode = 0;
 
-    Script::Call<Script::CallbackIdentity("OnServerInit")>();
+    Plugin::Call<CallbackIndex("OnServerInit")>();
 
     serverPassword = TES3MP_DEFAULT_PASSW;
 
@@ -64,7 +64,7 @@ Networking::Networking(RakNet::RakPeerInterface *peer) : mclient(nullptr)
 
 Networking::~Networking()
 {
-    Script::Call<Script::CallbackIdentity("OnServerExit")>(false);
+    Plugin::Call<CallbackIndex("OnServerExit")>(false);
 
     CellController::destroy();
 
@@ -141,8 +141,8 @@ void Networking::processPlayerPacket(RakNet::Packet *packet)
     {
         player->setLoadState(Player::LOADED);
 
-        unsigned short pid = Players::getPlayer(packet->guid)->getId();
-        Script::Call<Script::CallbackIdentity("OnPlayerConnect")>(pid);
+        PlayerId pid = Players::getPlayer(packet->guid)->getId();
+        Plugin::Call<CallbackIndex("OnPlayerConnect")>(pid);
 
         if (player->getLoadState() == Player::KICKED) // kicked inside in OnPlayerConnect
         {
@@ -362,7 +362,7 @@ void Networking::disconnectPlayer(const RakNet::RakNetGUID &guid)
     Player *player = Players::getPlayer(guid);
     if (!player)
         return;
-    Script::Call<Script::CallbackIdentity("OnPlayerDisconnect")>(player->getId());
+    Plugin::Call<CallbackIndex("OnPlayerDisconnect")>(player->getId());
 
     playerPacketController->GetPacket(ID_USER_DISCONNECTED)->setPlayer(player);
     playerPacketController->GetPacket(ID_USER_DISCONNECTED)->Send(true);
@@ -417,7 +417,7 @@ void Networking::setCurrentMpNum(int value)
 int Networking::incrementMpNum()
 {
     currentMpNum++;
-    Script::Call<Script::CallbackIdentity("OnMpNumIncrement")>(currentMpNum);
+    Plugin::Call<CallbackIndex("OnMpNumIncrement")>(currentMpNum);
     return currentMpNum;
 }
 
@@ -579,8 +579,8 @@ void Networking::InitQuery(const std::string &queryAddr, unsigned short queryPor
 
 void Networking::postInit()
 {
-    Script::Call<Script::CallbackIdentity("OnServerPostInit")>();
-    Script::Call<Script::CallbackIdentity("OnRequestPluginList")>();
+    Plugin::Call<CallbackIndex("OnServerPostInit")>();
+    Plugin::Call<CallbackIndex("OnRequestPluginList")>();
 }
 
 PacketPreInit::PluginContainer &Networking::getSamples()

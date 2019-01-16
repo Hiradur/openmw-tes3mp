@@ -7,7 +7,7 @@
 
 #include "../PlayerProcessor.hpp"
 #include "apps/openmw-mp/Networking.hpp"
-#include "apps/openmw-mp/Script/Script.hpp"
+#include <Script/Plugin.hpp>
 #include <components/openmw-mp/Controllers/PlayerPacketController.hpp>
 
 namespace mwmp
@@ -27,7 +27,7 @@ namespace mwmp
             LOG_MESSAGE_SIMPLE(Log::LOG_INFO, "Received %s from %s", strPacketID.c_str(), player.npc.mName.c_str());
             LOG_APPEND(Log::LOG_INFO, "- Moved to %s", player.cell.getDescription().c_str());
 
-            Script::Call<Script::CallbackIdentity("OnPlayerCellChange")>(player.getId());
+            Plugin::Call<CallbackIndex("OnPlayerCellChange")>(player.getId());
 
             player.exchangeFullInfo = true;
 

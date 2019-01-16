@@ -26,7 +26,7 @@ public:
     void SetModname(const std::string &hostname);
     void SetRuleString(const std::string &key, std::string value);
     void SetRuleValue(const std::string &key, double value);
-    void PushPlugin(const Plugin &plugin);
+    void PushPlugin(const _Plugin &plugin);
 
     bool Process(RakNet::Packet *packet);
     void Start();

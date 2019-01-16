@@ -2,7 +2,7 @@
 
 #include <apps/openmw-mp/Networking.hpp>
 #include <apps/openmw-mp/Player.hpp>
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 #include <fstream>
 
 #include "Worldstate.h"
@@ -196,7 +196,7 @@ extern "C" void WorldstateFunctions::LoadMapTileImageFile(int cellX, int cellY, 
     }
 }
 
-extern "C" void WorldstateFunctions::SendWorldMap(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
+extern "C" void WorldstateFunctions::SendWorldMap(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -212,7 +212,7 @@ extern "C" void WorldstateFunctions::SendWorldMap(unsigned short pid, bool sendT
         packet->Send(true);
 }
 
-extern "C" void WorldstateFunctions::SendWorldTime(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
+extern "C" void WorldstateFunctions::SendWorldTime(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -228,7 +228,7 @@ extern "C" void WorldstateFunctions::SendWorldTime(unsigned short pid, bool send
         packet->Send(true);
 }
 
-extern "C" void WorldstateFunctions::SendWorldWeather(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
+extern "C" void WorldstateFunctions::SendWorldWeather(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -244,7 +244,7 @@ extern "C" void WorldstateFunctions::SendWorldWeather(unsigned short pid, bool s
         packet->Send(true);
 }
 
-extern "C" void WorldstateFunctions::SendWorldCollisionOverride(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
+extern "C" void WorldstateFunctions::SendWorldCollisionOverride(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -260,7 +260,7 @@ extern "C" void WorldstateFunctions::SendWorldCollisionOverride(unsigned short p
         packet->Send(true);
 }
 
-extern "C" void WorldstateFunctions::SendWorldRegionAuthority(unsigned short pid) noexcept
+extern "C" void WorldstateFunctions::SendWorldRegionAuthority(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );

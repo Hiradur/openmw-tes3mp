@@ -7,12 +7,12 @@
 #include <components/openmw-mp/NetworkMessages.hpp>
 
 #include <apps/openmw-mp/Networking.hpp>
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 
 using namespace std;
 using namespace ESM;
 
-extern "C" const char *CharClassFunctions::GetDefaultClass(unsigned short pid) noexcept
+extern "C" const char *CharClassFunctions::GetDefaultClass(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -20,7 +20,7 @@ extern "C" const char *CharClassFunctions::GetDefaultClass(unsigned short pid) n
     return player->charClass.mId.c_str();
 }
 
-extern "C" const char *CharClassFunctions::GetClassName(unsigned short pid) noexcept
+extern "C" const char *CharClassFunctions::GetClassName(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -28,7 +28,7 @@ extern "C" const char *CharClassFunctions::GetClassName(unsigned short pid) noex
     return player->charClass.mName.c_str();
 }
 
-extern "C" const char *CharClassFunctions::GetClassDesc(unsigned short pid) noexcept
+extern "C" const char *CharClassFunctions::GetClassDesc(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -36,7 +36,7 @@ extern "C" const char *CharClassFunctions::GetClassDesc(unsigned short pid) noex
     return player->charClass.mDescription.c_str();
 }
 
-extern "C" int CharClassFunctions::GetClassMajorAttribute(unsigned short pid, unsigned char slot) noexcept
+extern "C" int CharClassFunctions::GetClassMajorAttribute(PlayerId pid, unsigned char slot) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -47,7 +47,7 @@ extern "C" int CharClassFunctions::GetClassMajorAttribute(unsigned short pid, un
     return player->charClass.mData.mAttribute[slot];
 }
 
-extern "C" int CharClassFunctions::GetClassSpecialization(unsigned short pid) noexcept
+extern "C" int CharClassFunctions::GetClassSpecialization(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -55,7 +55,7 @@ extern "C" int CharClassFunctions::GetClassSpecialization(unsigned short pid) no
     return player->charClass.mData.mSpecialization;
 }
 
-extern "C" int CharClassFunctions::GetClassMajorSkill(unsigned short pid, unsigned char slot) noexcept
+extern "C" int CharClassFunctions::GetClassMajorSkill(PlayerId pid, unsigned char slot) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -66,7 +66,7 @@ extern "C" int CharClassFunctions::GetClassMajorSkill(unsigned short pid, unsign
     return player->charClass.mData.mSkills[slot][1];
 }
 
-extern "C" int CharClassFunctions::GetClassMinorSkill(unsigned short pid, unsigned char slot) noexcept
+extern "C" int CharClassFunctions::GetClassMinorSkill(PlayerId pid, unsigned char slot) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -77,7 +77,7 @@ extern "C" int CharClassFunctions::GetClassMinorSkill(unsigned short pid, unsign
     return player->charClass.mData.mSkills[slot][0];
 }
 
-extern "C" int CharClassFunctions::IsClassDefault(unsigned short pid) noexcept
+extern "C" int CharClassFunctions::IsClassDefault(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -85,7 +85,7 @@ extern "C" int CharClassFunctions::IsClassDefault(unsigned short pid) noexcept
     return !player->charClass.mId.empty(); // true if default
 }
 
-extern "C" void CharClassFunctions::SetDefaultClass(unsigned short pid, const char *id) noexcept
+extern "C" void CharClassFunctions::SetDefaultClass(PlayerId pid, const char *id) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -93,7 +93,7 @@ extern "C" void CharClassFunctions::SetDefaultClass(unsigned short pid, const ch
     player->charClass.mId = id;
 }
 
-extern "C" void CharClassFunctions::SetClassName(unsigned short pid, const char *name) noexcept
+extern "C" void CharClassFunctions::SetClassName(PlayerId pid, const char *name) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -102,7 +102,7 @@ extern "C" void CharClassFunctions::SetClassName(unsigned short pid, const char 
     player->charClass.mId.clear();
 }
 
-extern "C" void CharClassFunctions::SetClassDesc(unsigned short pid, const char *desc) noexcept
+extern "C" void CharClassFunctions::SetClassDesc(PlayerId pid, const char *desc) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -110,7 +110,7 @@ extern "C" void CharClassFunctions::SetClassDesc(unsigned short pid, const char 
     player->charClass.mDescription = desc;
 }
 
-extern "C" void CharClassFunctions::SetClassMajorAttribute(unsigned short pid, unsigned char slot, int attrId) noexcept
+extern "C" void CharClassFunctions::SetClassMajorAttribute(PlayerId pid, unsigned char slot, int attrId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -122,7 +122,7 @@ extern "C" void CharClassFunctions::SetClassMajorAttribute(unsigned short pid, u
 
 }
 
-extern "C" void CharClassFunctions::SetClassSpecialization(unsigned short pid, int spec) noexcept
+extern "C" void CharClassFunctions::SetClassSpecialization(PlayerId pid, int spec) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -130,7 +130,7 @@ extern "C" void CharClassFunctions::SetClassSpecialization(unsigned short pid, i
     player->charClass.mData.mSpecialization = spec;
 }
 
-extern "C" void CharClassFunctions::SetClassMajorSkill(unsigned short pid, unsigned char slot, int skillId) noexcept
+extern "C" void CharClassFunctions::SetClassMajorSkill(PlayerId pid, unsigned char slot, int skillId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -141,7 +141,7 @@ extern "C" void CharClassFunctions::SetClassMajorSkill(unsigned short pid, unsig
     player->charClass.mData.mSkills[slot][1] = skillId;
 }
 
-extern "C" void CharClassFunctions::SetClassMinorSkill(unsigned short pid, unsigned char slot, int skillId) noexcept
+extern "C" void CharClassFunctions::SetClassMinorSkill(PlayerId pid, unsigned char slot, int skillId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -152,7 +152,7 @@ extern "C" void CharClassFunctions::SetClassMinorSkill(unsigned short pid, unsig
     player->charClass.mData.mSkills[slot][0] = skillId;
 }
 
-extern "C" void CharClassFunctions::SendClass(unsigned short pid) noexcept
+extern "C" void CharClassFunctions::SendClass(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );

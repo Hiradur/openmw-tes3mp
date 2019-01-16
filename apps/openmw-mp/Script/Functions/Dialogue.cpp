@@ -2,12 +2,12 @@
 
 #include <components/openmw-mp/NetworkMessages.hpp>
 
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 #include <apps/openmw-mp/Networking.hpp>
 
 using namespace mwmp;
 
-extern "C" void DialogueFunctions::ClearTopicChanges(unsigned short pid) noexcept
+extern "C" void DialogueFunctions::ClearTopicChanges(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -15,7 +15,7 @@ extern "C" void DialogueFunctions::ClearTopicChanges(unsigned short pid) noexcep
     player->topicChanges.topics.clear();
 }
 
-extern "C" unsigned int DialogueFunctions::GetTopicChangesSize(unsigned short pid) noexcept
+extern "C" unsigned int DialogueFunctions::GetTopicChangesSize(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -23,7 +23,7 @@ extern "C" unsigned int DialogueFunctions::GetTopicChangesSize(unsigned short pi
     return player->topicChanges.count;
 }
 
-extern "C" void DialogueFunctions::AddTopic(unsigned short pid, const char* topicId) noexcept
+extern "C" void DialogueFunctions::AddTopic(PlayerId pid, const char* topicId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -34,7 +34,7 @@ extern "C" void DialogueFunctions::AddTopic(unsigned short pid, const char* topi
     player->topicChanges.topics.push_back(topic);
 }
 
-extern "C" const char *DialogueFunctions::GetTopicId(unsigned short pid, unsigned int index) noexcept
+extern "C" const char *DialogueFunctions::GetTopicId(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -45,7 +45,7 @@ extern "C" const char *DialogueFunctions::GetTopicId(unsigned short pid, unsigne
     return player->topicChanges.topics.at(index).topicId.c_str();
 }
 
-extern "C" void DialogueFunctions::SendTopicChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
+extern "C" void DialogueFunctions::SendTopicChanges(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -59,7 +59,7 @@ extern "C" void DialogueFunctions::SendTopicChanges(unsigned short pid, bool sen
         packet->Send(true);
 }
 
-extern "C" void DialogueFunctions::PlayAnimation(unsigned short pid, const char* groupname, int mode, int count, bool persist) noexcept
+extern "C" void DialogueFunctions::PlayAnimation(PlayerId pid, const char* groupname, int mode, int count, bool persist) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -76,7 +76,7 @@ extern "C" void DialogueFunctions::PlayAnimation(unsigned short pid, const char*
     player->sendToLoaded(packet);
 }
 
-extern "C" void DialogueFunctions::PlaySpeech(unsigned short pid, const char* sound) noexcept
+extern "C" void DialogueFunctions::PlaySpeech(PlayerId pid, const char* sound) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -92,7 +92,7 @@ extern "C" void DialogueFunctions::PlaySpeech(unsigned short pid, const char* so
 
 extern "C" // All methods below are deprecated versions of methods from above
 
-void DialogueFunctions::InitializeTopicChanges(unsigned short pid) noexcept
+void DialogueFunctions::InitializeTopicChanges(PlayerId pid) noexcept
 {
     ClearTopicChanges(pid);
 }

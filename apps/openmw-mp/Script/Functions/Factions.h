@@ -3,29 +3,6 @@
 
 #include "../api.h"
 
-#define FACTIONAPI \
-    {"ClearFactionChanges",      FactionFunctions::ClearFactionChanges},\
-    \
-    {"GetFactionChangesSize",    FactionFunctions::GetFactionChangesSize},\
-    {"GetFactionChangesAction",  FactionFunctions::GetFactionChangesAction},\
-    \
-    {"GetFactionId",             FactionFunctions::GetFactionId},\
-    {"GetFactionRank",           FactionFunctions::GetFactionRank},\
-    {"GetFactionExpulsionState", FactionFunctions::GetFactionExpulsionState},\
-    {"GetFactionReputation",     FactionFunctions::GetFactionReputation},\
-    \
-    {"SetFactionChangesAction",  FactionFunctions::SetFactionChangesAction},\
-    {"SetFactionId",             FactionFunctions::SetFactionId},\
-    {"SetFactionRank",           FactionFunctions::SetFactionRank},\
-    {"SetFactionExpulsionState", FactionFunctions::SetFactionExpulsionState},\
-    {"SetFactionReputation",     FactionFunctions::SetFactionReputation},\
-    \
-    {"AddFaction",               FactionFunctions::AddFaction},\
-    \
-    {"SendFactionChanges",       FactionFunctions::SendFactionChanges},\
-    \
-    {"InitializeFactionChanges", FactionFunctions::InitializeFactionChanges}
-
 NAMESPACE_BEGIN(FactionFunctions)
     /**
     * \brief Clear the last recorded faction changes for a player.
@@ -35,7 +12,7 @@ NAMESPACE_BEGIN(FactionFunctions)
     * \param pid The player ID whose faction changes should be used.
     * \return void
     */
-    API_FUNCTION void CDECL ClearFactionChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL ClearFactionChanges(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the number of indexes in a player's latest faction changes.
@@ -43,7 +20,7 @@ NAMESPACE_BEGIN(FactionFunctions)
     * \param pid The player ID whose faction changes should be used.
     * \return The number of indexes.
     */
-    API_FUNCTION unsigned int CDECL GetFactionChangesSize(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetFactionChangesSize(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the action type used in a player's latest faction changes.
@@ -51,7 +28,7 @@ NAMESPACE_BEGIN(FactionFunctions)
     * \param pid The player ID whose faction changes should be used.
     * \return The action type (0 for RANK, 1 for EXPULSION, 2 for REPUTATION).
     */
-    API_FUNCTION unsigned char CDECL GetFactionChangesAction(unsigned short pid) noexcept;
+    API_FUNCTION unsigned char CDECL GetFactionChangesAction(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the factionId at a certain index in a player's latest faction changes.
@@ -60,7 +37,7 @@ NAMESPACE_BEGIN(FactionFunctions)
     * \param index The index of the faction.
     * \return The factionId.
     */
-    API_FUNCTION const char *CDECL GetFactionId(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetFactionId(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the rank at a certain index in a player's latest faction changes.
@@ -69,7 +46,7 @@ NAMESPACE_BEGIN(FactionFunctions)
     * \param index The index of the faction.
     * \return The rank.
     */
-    API_FUNCTION int CDECL GetFactionRank(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetFactionRank(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the expulsion state at a certain index in a player's latest faction changes.
@@ -78,7 +55,7 @@ NAMESPACE_BEGIN(FactionFunctions)
     * \param index The index of the faction.
     * \return The expulsion state.
     */
-    API_FUNCTION bool CDECL GetFactionExpulsionState(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION bool CDECL GetFactionExpulsionState(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Get the reputation at a certain index in a player's latest faction changes.
@@ -87,7 +64,7 @@ NAMESPACE_BEGIN(FactionFunctions)
     * \param index The index of the faction.
     * \return The reputation.
     */
-    API_FUNCTION int CDECL GetFactionReputation(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION int CDECL GetFactionReputation(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Set the action type in a player's faction changes.
@@ -96,7 +73,7 @@ NAMESPACE_BEGIN(FactionFunctions)
     * \param action The action (0 for RANK, 1 for EXPULSION, 2 for REPUTATION).
     * \return void
     */
-    API_FUNCTION void CDECL SetFactionChangesAction(unsigned short pid, unsigned char action) noexcept;
+    API_FUNCTION void CDECL SetFactionChangesAction(PlayerId pid, unsigned char action) NOEXCEPT;
 
     /**
     * \brief Set the factionId of the temporary faction stored on the server.
@@ -104,7 +81,7 @@ NAMESPACE_BEGIN(FactionFunctions)
     * \param factionId The factionId.
     * \return void
     */
-    API_FUNCTION void CDECL SetFactionId(const char* factionId) noexcept;
+    API_FUNCTION void CDECL SetFactionId(const char* factionId) NOEXCEPT;
 
     /**
     * \brief Set the rank of the temporary faction stored on the server.
@@ -112,7 +89,7 @@ NAMESPACE_BEGIN(FactionFunctions)
     * \param rank The rank.
     * \return void
     */
-    API_FUNCTION void CDECL SetFactionRank(unsigned int rank) noexcept;
+    API_FUNCTION void CDECL SetFactionRank(unsigned int rank) NOEXCEPT;
 
     /**
     * \brief Set the expulsion state of the temporary faction stored on the server.
@@ -120,7 +97,7 @@ NAMESPACE_BEGIN(FactionFunctions)
     * \param expulsionState The expulsion state.
     * \return void
     */
-    API_FUNCTION void CDECL SetFactionExpulsionState(bool expulsionState) noexcept;
+    API_FUNCTION void CDECL SetFactionExpulsionState(bool expulsionState) NOEXCEPT;
 
     /**
     * \brief Set the reputation of the temporary faction stored on the server.
@@ -128,7 +105,7 @@ NAMESPACE_BEGIN(FactionFunctions)
     * \param reputation The reputation.
     * \return void
     */
-    API_FUNCTION void CDECL SetFactionReputation(int reputation) noexcept;
+    API_FUNCTION void CDECL SetFactionReputation(int reputation) NOEXCEPT;
 
     /**
     * \brief Add the server's temporary faction to the faction changes for a player.
@@ -139,7 +116,7 @@ NAMESPACE_BEGIN(FactionFunctions)
     * \param pid The player ID whose faction changes should be used.
     * \return void
     */
-    API_FUNCTION void CDECL AddFaction(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL AddFaction(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Send a PlayerFaction packet with a player's recorded faction changes.
@@ -151,11 +128,11 @@ NAMESPACE_BEGIN(FactionFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendFactionChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendFactionChanges(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     // All methods below are deprecated versions of methods from above
 
-    API_FUNCTION void CDECL InitializeFactionChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL InitializeFactionChanges(PlayerId pid) NOEXCEPT;
 NAMESPACE_END()
 
 #endif //OPENMW_FACTIONAPI_HPP

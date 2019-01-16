@@ -3,10 +3,10 @@
 #include <components/openmw-mp/NetworkMessages.hpp>
 #include <components/openmw-mp/Log.hpp>
 
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 #include <apps/openmw-mp/Networking.hpp>
 
-extern "C" void ChatFunctions::SendMessage(unsigned short pid, const char *message, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
+extern "C" void ChatFunctions::SendMessage(PlayerId pid, const char *message, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -24,7 +24,7 @@ extern "C" void ChatFunctions::SendMessage(unsigned short pid, const char *messa
         packet->Send(true);
 }
 
-extern "C" void ChatFunctions::CleanChatForPid(unsigned short pid)
+extern "C" void ChatFunctions::CleanChatForPid(PlayerId pid)
 {
     Player *player;
     GET_PLAYER(pid, player,);

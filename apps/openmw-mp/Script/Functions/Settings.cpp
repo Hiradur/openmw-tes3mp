@@ -3,13 +3,13 @@
 #include <components/openmw-mp/NetworkMessages.hpp>
 #include <components/openmw-mp/Log.hpp>
 
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 #include <apps/openmw-mp/Networking.hpp>
 
 #include <iostream>
 using namespace std;
 
-extern "C" void SettingFunctions::SetDifficulty(unsigned short pid, int difficulty)
+extern "C" void SettingFunctions::SetDifficulty(PlayerId pid, int difficulty)
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -17,7 +17,7 @@ extern "C" void SettingFunctions::SetDifficulty(unsigned short pid, int difficul
     player->difficulty = difficulty;
 }
 
-extern "C" void SettingFunctions::SetEnforcedLogLevel(unsigned short pid, int enforcedLogLevel)
+extern "C" void SettingFunctions::SetEnforcedLogLevel(PlayerId pid, int enforcedLogLevel)
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -25,7 +25,7 @@ extern "C" void SettingFunctions::SetEnforcedLogLevel(unsigned short pid, int en
     player->enforcedLogLevel = enforcedLogLevel;
 }
 
-extern "C" void SettingFunctions::SetPhysicsFramerate(unsigned short pid, double physicsFramerate)
+extern "C" void SettingFunctions::SetPhysicsFramerate(PlayerId pid, double physicsFramerate)
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -33,7 +33,7 @@ extern "C" void SettingFunctions::SetPhysicsFramerate(unsigned short pid, double
     player->physicsFramerate = physicsFramerate;
 }
 
-extern "C" void SettingFunctions::SetConsoleAllowed(unsigned short pid, bool state)
+extern "C" void SettingFunctions::SetConsoleAllowed(PlayerId pid, bool state)
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -41,7 +41,7 @@ extern "C" void SettingFunctions::SetConsoleAllowed(unsigned short pid, bool sta
     player->consoleAllowed = state;
 }
 
-extern "C" void SettingFunctions::SetBedRestAllowed(unsigned short pid, bool state)
+extern "C" void SettingFunctions::SetBedRestAllowed(PlayerId pid, bool state)
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -49,7 +49,7 @@ extern "C" void SettingFunctions::SetBedRestAllowed(unsigned short pid, bool sta
     player->bedRestAllowed = state;
 }
 
-extern "C" void SettingFunctions::SetWildernessRestAllowed(unsigned short pid, bool state)
+extern "C" void SettingFunctions::SetWildernessRestAllowed(PlayerId pid, bool state)
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -57,7 +57,7 @@ extern "C" void SettingFunctions::SetWildernessRestAllowed(unsigned short pid, b
     player->wildernessRestAllowed = state;
 }
 
-extern "C" void SettingFunctions::SetWaitAllowed(unsigned short pid, bool state)
+extern "C" void SettingFunctions::SetWaitAllowed(PlayerId pid, bool state)
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -65,7 +65,7 @@ extern "C" void SettingFunctions::SetWaitAllowed(unsigned short pid, bool state)
     player->waitAllowed = state;
 }
 
-extern "C" void SettingFunctions::SendSettings(unsigned short pid) noexcept
+extern "C" void SettingFunctions::SendSettings(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);

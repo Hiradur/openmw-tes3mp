@@ -25,7 +25,7 @@
 #include "MasterClient.hpp"
 #include "Utils.hpp"
 
-#include <apps/openmw-mp/Script/Script.hpp>
+#include <apps/openmw-mp/Script/Plugin.hpp>
 
 #ifdef ENABLE_BREAKPAD
 #include <handler/exception_handler.h>
@@ -196,7 +196,6 @@ int main(int argc, char *argv[])
     string passw = mgr.getString("password", "General");
 
     string plugin_home = mgr.getString("home", "Plugins");
-    string moddir = Utils::convertPath(plugin_home + "/data");
 
     vector<string> plugins (Utils::split(mgr.getString("plugins", "Plugins"), ','));
 
@@ -221,19 +220,9 @@ int main(int argc, char *argv[])
         LOG_APPEND(Log::LOG_FATAL, "- %s", TES3MP_CREDITS_ERROR);
         return 1;
     }
-    
-    Script::SetModDir(moddir);
 
-#ifdef ENABLE_LUA
-    LangLua::AddPackagePath(Utils::convertPath(plugin_home + "/scripts/?.lua" + ";"
-        + plugin_home + "/lib/lua/?.lua" + ";"));
-#ifdef _WIN32
-    LangLua::AddPackageCPath(Utils::convertPath(plugin_home + "/lib/?.dll"));
-#else
-    LangLua::AddPackageCPath(Utils::convertPath(plugin_home + "/lib/?.so"));
-#endif
-
-#endif
+    Plugin::SetModDir(Utils::convertPath(plugin_home + "/data"));
+    Plugin::SetPluginDir(Utils::convertPath(plugin_home + "/scripts"));
 
     int code;
 
@@ -256,8 +245,8 @@ int main(int argc, char *argv[])
 
     try
     {
-        for (auto plugin : plugins)
-            Script::LoadScript(plugin.c_str(), plugin_home.c_str());
+        for (const auto &plugin : plugins)
+            Plugin::LoadPlugin(Utils::convertPath(plugin_home + "/scripts/" + plugin));
 
         switch (peer->Startup((unsigned) players, &sd, 1))
         {

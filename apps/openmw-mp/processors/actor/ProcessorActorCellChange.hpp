@@ -37,7 +37,7 @@ namespace mwmp
                 {
                     serverCell->removeActors(&actorList);
 
-                    Script::Call<Script::CallbackIdentity("OnActorCellChange")>(player.getId(), actorList.cell.getDescription().c_str());
+                    Plugin::Call<CallbackIndex("OnActorCellChange")>(player.getId(), actorList.cell.getDescription().c_str());
 
                     // Send this to everyone
                     packet.Send(true);

@@ -3,22 +3,6 @@
 
 #include "../api.h"
 
-#define DIALOGUEAPI \
-    {"ClearTopicChanges",       DialogueFunctions::ClearTopicChanges},\
-    \
-    {"GetTopicChangesSize",     DialogueFunctions::GetTopicChangesSize},\
-    \
-    {"AddTopic",                DialogueFunctions::AddTopic},\
-    \
-    {"GetTopicId",              DialogueFunctions::GetTopicId},\
-    \
-    {"SendTopicChanges",        DialogueFunctions::SendTopicChanges},\
-    \
-    {"PlayAnimation",           DialogueFunctions::PlayAnimation},\
-    {"PlaySpeech",              DialogueFunctions::PlaySpeech},\
-    \
-    {"InitializeTopicChanges",  DialogueFunctions::InitializeTopicChanges}
-
 NAMESPACE_BEGIN(DialogueFunctions)
     /**
     * \brief Clear the last recorded topic changes for a player.
@@ -28,7 +12,7 @@ NAMESPACE_BEGIN(DialogueFunctions)
     * \param pid The player ID whose topic changes should be used.
     * \return void
     */
-    API_FUNCTION void CDECL ClearTopicChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL ClearTopicChanges(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the number of indexes in a player's latest topic changes.
@@ -36,7 +20,7 @@ NAMESPACE_BEGIN(DialogueFunctions)
     * \param pid The player ID whose topic changes should be used.
     * \return The number of indexes.
     */
-    API_FUNCTION unsigned int CDECL GetTopicChangesSize(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetTopicChangesSize(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Add a new topic to the topic changes for a player.
@@ -45,7 +29,7 @@ NAMESPACE_BEGIN(DialogueFunctions)
     * \param topicId The topicId of the topic.
     * \return void
     */
-    API_FUNCTION void CDECL AddTopic(unsigned short pid, const char* topicId) noexcept;
+    API_FUNCTION void CDECL AddTopic(PlayerId pid, const char* topicId) NOEXCEPT;
 
     /**
     * \brief Get the topicId at a certain index in a player's latest topic changes.
@@ -54,7 +38,7 @@ NAMESPACE_BEGIN(DialogueFunctions)
     * \param index The index of the topic.
     * \return The topicId.
     */
-    API_FUNCTION const char *CDECL GetTopicId(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetTopicId(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Send a PlayerTopic packet with a player's recorded topic changes.
@@ -66,7 +50,7 @@ NAMESPACE_BEGIN(DialogueFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendTopicChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendTopicChanges(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Play a certain animation on a player's character by sending a PlayerAnimation
@@ -79,7 +63,7 @@ NAMESPACE_BEGIN(DialogueFunctions)
     * \param bool Whether the animation should persist or not.
     * \return void
     */
-    API_FUNCTION void CDECL PlayAnimation(unsigned short pid, const char* groupname, int mode, int count, bool persist) noexcept;
+    API_FUNCTION void CDECL PlayAnimation(PlayerId pid, const char* groupname, int mode, int count, bool persist) NOEXCEPT;
 
     /**
     * \brief Play a certain sound for a player as spoken by their character by sending
@@ -89,11 +73,11 @@ NAMESPACE_BEGIN(DialogueFunctions)
     * \param sound The path of the sound file.
     * \return void
     */
-    API_FUNCTION void CDECL PlaySpeech(unsigned short pid, const char* sound) noexcept;
+    API_FUNCTION void CDECL PlaySpeech(PlayerId pid, const char* sound) NOEXCEPT;
 
     // All methods below are deprecated versions of methods from above
 
-    API_FUNCTION void CDECL InitializeTopicChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL InitializeTopicChanges(PlayerId pid) NOEXCEPT;
 NAMESPACE_END()
 
 #endif //OPENMW_DIALOGUEAPI_HPP

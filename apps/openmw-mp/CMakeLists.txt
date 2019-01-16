@@ -14,31 +14,6 @@ if(ENABLE_BREAKPAD)
     include_directories(${CMAKE_SOURCE_DIR}/extern/breakpad/src ${Breakpad_Headers})
 endif(ENABLE_BREAKPAD)
 
-option(BUILD_WITH_LUA "Enable Lua language" ON)
-if(BUILD_WITH_LUA)
-
-    find_package(LuaJit REQUIRED)
-
-    MESSAGE(STATUS "Found LuaJit_LIBRARIES: ${LuaJit_LIBRARIES}")
-    MESSAGE(STATUS "Found LuaJit_INCLUDE_DIRS: ${LuaJit_INCLUDE_DIRS}")
-
-    set(LuaScript_Sources
-            Script/LangLua/LangLua.cpp
-            Script/LangLua/LuaFunc.cpp)
-    set(LuaScript_Headers
-            Script/LangLua/LangLua.hpp)
-
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DENABLE_LUA")
-    include_directories(SYSTEM ${LuaJit_INCLUDE_DIRS} SYSTEM ${CMAKE_SOURCE_DIR}/extern/LuaBridge)
-endif(BUILD_WITH_LUA)
-
-set(NativeScript_Sources
-        Script/LangNative/LangNative.cpp
-        )
-set(NativeScript_Headers
-        Script/LangNative/LangNative.hpp
-        )
-
 # local files
 set(SERVER
     main.cpp
@@ -48,8 +23,8 @@ set(SERVER
     Cell.cpp
     CellController.cpp
     Utils.cpp
-    Script/Script.cpp Script/ScriptFunction.cpp
-    Script/ScriptFunctions.cpp
+    Script/Plugin.cpp
+        Script/Callbacks.cpp
 
     Script/Functions/Actors.cpp Script/Functions/Objects.cpp Script/Functions/Miscellaneous.cpp
     Script/Functions/Worldstate.cpp
@@ -60,20 +35,15 @@ set(SERVER
     Script/Functions/Positions.cpp Script/Functions/Quests.cpp Script/Functions/RecordsDynamic.cpp
     Script/Functions/Server.cpp Script/Functions/Settings.cpp Script/Functions/Shapeshift.cpp
     Script/Functions/Spells.cpp Script/Functions/Stats.cpp Script/Functions/Timer.cpp
-    Script/Functions/Public.cpp
+    Script/Functions/Public.cpp Script/FFI.cpp
 
     Script/API/TimerAPI.cpp Script/API/PublicFnAPI.cpp
-        ${LuaScript_Sources}
-        ${NativeScript_Sources}
-
 )
 
 set(SERVER_HEADER
-        Script/Types.hpp Script/Script.hpp Script/SystemInterface.hpp
-        Script/ScriptFunction.hpp Script/Platform.h Script/Language.hpp
-        Script/ScriptFunctions.hpp Script/API/TimerAPI.hpp Script/API/PublicFnAPI.hpp
-        ${LuaScript_Headers}
-        ${NativeScript_Headers}
+        Script/Types.hpp Script/Plugin.hpp Script/SystemInterface.hpp
+        Script/Platform.h
+        Script/Callbacks.hpp Script/API/TimerAPI.hpp Script/API/PublicFnAPI.hpp Script/FFI.hpp
 )
 source_group(tes3mp-server FILES ${SERVER} ${SERVER_HEADER})
 
@@ -154,6 +124,8 @@ add_executable(tes3mp-server
         ${APPLE_BUNDLE_RESOURCES}
         )
 
+target_compile_definitions(tes3mp-server PRIVATE _HOST)
+
 target_compile_options(tes3mp-server PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
 
 if (OPENMW_MP_BUILD)
@@ -161,7 +133,7 @@ if (OPENMW_MP_BUILD)
 endif()
 
 set_target_properties(tes3mp-server PROPERTIES
-    CXX_STANDARD 14
+    CXX_STANDARD 17
     CXX_STANDARD_REQUIRED YES
     CXX_EXTENSIONS YES
 )
@@ -202,6 +174,11 @@ if (MSVC)
     endif (CMAKE_CL_64)
     add_definitions("-D_USE_MATH_DEFINES")
 endif (MSVC)
+
+
+find_package(LibFFI REQUIRED)
+include_directories(SYSTEM ${LIBFFI_INCLUDE_DIR})
+target_link_libraries(tes3mp-server ${LIBFFI_LIBRARIES})
 
 if (ENABLE_PVS)
 pvs_studio_add_target(TARGET tes3mp-server.analyze ALL

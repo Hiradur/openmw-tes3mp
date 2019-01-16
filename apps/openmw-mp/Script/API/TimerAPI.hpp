@@ -7,50 +7,49 @@
 
 #include <string>
 
-#include <Script/Script.hpp>
-#include <Script/ScriptFunction.hpp>
+#include <Script/FFI.hpp>
+#include <unordered_map>
 
 namespace mwmp
 {
 
     class TimerAPI;
 
-    class Timer: public ScriptFunction
+    class Timer: public FFI
     {
         friend class TimerAPI;
 
     public:
 
-        Timer(ScriptFunc callback, long msec, const std::string& def, std::vector<boost::any> args);
-#if defined(ENABLE_LUA)
-        Timer(lua_State *lua, ScriptFuncLua callback, long msec, const std::string& def, std::vector<boost::any> args);
-#endif
-        void Tick();
+        Timer(ScriptFunc callback, long msec, const std::string& def, va_list args);
+        ~Timer();
+
+        void Tick(int timerId);
 
         bool IsEnd();
         void Stop();
         void Start();
         void Restart(int msec);
+        const char *GetDefinition();
     private:
         double startTime, targetMsec;
         //std::string publ, arg_types;
-        std::vector<boost::any> args;
         //Script *scr;
         bool end;
+        char *def;
     };
 
     class TimerAPI
     {
     public:
-#if defined(ENABLE_LUA)
-        static int CreateTimerLua(lua_State *lua, ScriptFuncLua callback, long msec, const std::string& def, std::vector<boost::any> args);
-#endif
-        static int CreateTimer(ScriptFunc callback, long msec, const std::string& def, const std::vector<boost::any> &args);
+        static int CreateTimer(ScriptFunc callback, long msec, const std::string& def, va_list args);
         static void FreeTimer(int timerid);
         static void ResetTimer(int timerid, long msec);
         static void StartTimer(int timerid);
         static void StopTimer(int timerid);
         static bool IsEndTimer(int timerid);
+        static int GetTimerId();
+        static const char *GetDefinition(int timerid);
 
         static void Terminate();
 
@@ -58,6 +57,7 @@ namespace mwmp
     private:
         static std::unordered_map<int, Timer* > timers;
         static int pointer;
+        static int lastTimerId;
     };
 }
 

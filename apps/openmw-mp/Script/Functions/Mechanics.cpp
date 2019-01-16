@@ -3,7 +3,7 @@
 #include <components/openmw-mp/NetworkMessages.hpp>
 #include <components/openmw-mp/Log.hpp>
 
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 #include <apps/openmw-mp/Networking.hpp>
 
 #include <iostream>
@@ -11,7 +11,7 @@ using namespace std;
 
 static std::string tempCellDescription;
 
-extern "C" unsigned char MechanicsFunctions::GetMiscellaneousChangeType(unsigned short pid) noexcept
+extern "C" unsigned char MechanicsFunctions::GetMiscellaneousChangeType(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -19,7 +19,7 @@ extern "C" unsigned char MechanicsFunctions::GetMiscellaneousChangeType(unsigned
     return player->miscellaneousChangeType;
 }
 
-extern "C" const char *MechanicsFunctions::GetMarkCell(unsigned short pid) noexcept
+extern "C" const char *MechanicsFunctions::GetMarkCell(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -28,7 +28,7 @@ extern "C" const char *MechanicsFunctions::GetMarkCell(unsigned short pid) noexc
     return tempCellDescription.c_str();
 }
 
-extern "C" double MechanicsFunctions::GetMarkPosX(unsigned short pid) noexcept
+extern "C" double MechanicsFunctions::GetMarkPosX(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0.0f);
@@ -36,7 +36,7 @@ extern "C" double MechanicsFunctions::GetMarkPosX(unsigned short pid) noexcept
     return player->markPosition.pos[0];
 }
 
-extern "C" double MechanicsFunctions::GetMarkPosY(unsigned short pid) noexcept
+extern "C" double MechanicsFunctions::GetMarkPosY(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0.0f);
@@ -44,7 +44,7 @@ extern "C" double MechanicsFunctions::GetMarkPosY(unsigned short pid) noexcept
     return player->markPosition.pos[1];
 }
 
-extern "C" double MechanicsFunctions::GetMarkPosZ(unsigned short pid) noexcept
+extern "C" double MechanicsFunctions::GetMarkPosZ(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0.0f);
@@ -52,7 +52,7 @@ extern "C" double MechanicsFunctions::GetMarkPosZ(unsigned short pid) noexcept
     return player->markPosition.pos[2];
 }
 
-extern "C" double MechanicsFunctions::GetMarkRotX(unsigned short pid) noexcept
+extern "C" double MechanicsFunctions::GetMarkRotX(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0.0f);
@@ -60,7 +60,7 @@ extern "C" double MechanicsFunctions::GetMarkRotX(unsigned short pid) noexcept
     return player->markPosition.rot[0];
 }
 
-extern "C" double MechanicsFunctions::GetMarkRotZ(unsigned short pid) noexcept
+extern "C" double MechanicsFunctions::GetMarkRotZ(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0.0f);
@@ -68,7 +68,7 @@ extern "C" double MechanicsFunctions::GetMarkRotZ(unsigned short pid) noexcept
     return player->markPosition.rot[2];
 }
 
-extern "C" bool MechanicsFunctions::DoesPlayerHavePlayerKiller(unsigned short pid) noexcept
+extern "C" bool MechanicsFunctions::DoesPlayerHavePlayerKiller(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, false);
@@ -76,7 +76,7 @@ extern "C" bool MechanicsFunctions::DoesPlayerHavePlayerKiller(unsigned short pi
     return player->killer.isPlayer;
 }
 
-extern "C" int MechanicsFunctions::GetPlayerKillerPid(unsigned short pid) noexcept
+extern "C" int MechanicsFunctions::GetPlayerKillerPid(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -89,7 +89,7 @@ extern "C" int MechanicsFunctions::GetPlayerKillerPid(unsigned short pid) noexce
     return -1;
 }
 
-extern "C" const char *MechanicsFunctions::GetPlayerKillerRefId(unsigned short pid) noexcept
+extern "C" const char *MechanicsFunctions::GetPlayerKillerRefId(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -97,7 +97,7 @@ extern "C" const char *MechanicsFunctions::GetPlayerKillerRefId(unsigned short p
     return player->killer.refId.c_str();
 }
 
-extern "C" unsigned int MechanicsFunctions::GetPlayerKillerRefNum(unsigned short pid) noexcept
+extern "C" unsigned int MechanicsFunctions::GetPlayerKillerRefNum(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -105,7 +105,7 @@ extern "C" unsigned int MechanicsFunctions::GetPlayerKillerRefNum(unsigned short
     return player->killer.refNum;
 }
 
-extern "C" unsigned int MechanicsFunctions::GetPlayerKillerMpNum(unsigned short pid) noexcept
+extern "C" unsigned int MechanicsFunctions::GetPlayerKillerMpNum(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -113,7 +113,7 @@ extern "C" unsigned int MechanicsFunctions::GetPlayerKillerMpNum(unsigned short 
     return player->killer.mpNum;
 }
 
-extern "C" const char *MechanicsFunctions::GetPlayerKillerName(unsigned short pid) noexcept
+extern "C" const char *MechanicsFunctions::GetPlayerKillerName(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -121,7 +121,7 @@ extern "C" const char *MechanicsFunctions::GetPlayerKillerName(unsigned short pi
     return player->killer.name.c_str();
 }
 
-extern "C" const char *MechanicsFunctions::GetSelectedSpellId(unsigned short pid) noexcept
+extern "C" const char *MechanicsFunctions::GetSelectedSpellId(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -129,7 +129,7 @@ extern "C" const char *MechanicsFunctions::GetSelectedSpellId(unsigned short pid
     return player->selectedSpellId.c_str();
 }
 
-extern "C" unsigned int MechanicsFunctions::GetDrawState(unsigned short pid) noexcept
+extern "C" unsigned int MechanicsFunctions::GetDrawState(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, false);
@@ -137,7 +137,7 @@ extern "C" unsigned int MechanicsFunctions::GetDrawState(unsigned short pid) noe
     return player->drawState;
 }
 
-extern "C" bool MechanicsFunctions::GetSneakState(unsigned short pid) noexcept
+extern "C" bool MechanicsFunctions::GetSneakState(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, false);
@@ -146,7 +146,7 @@ extern "C" bool MechanicsFunctions::GetSneakState(unsigned short pid) noexcept
     return (player->movementFlags & 8) != 0;
 }
 
-extern "C" void MechanicsFunctions::SetMarkCell(unsigned short pid, const char *cellDescription) noexcept
+extern "C" void MechanicsFunctions::SetMarkCell(PlayerId pid, const char *cellDescription) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -154,7 +154,7 @@ extern "C" void MechanicsFunctions::SetMarkCell(unsigned short pid, const char *
     player->markCell = Utils::getCellFromDescription(cellDescription);
 }
 
-extern "C" void MechanicsFunctions::SetMarkPos(unsigned short pid, double x, double y, double z) noexcept
+extern "C" void MechanicsFunctions::SetMarkPos(PlayerId pid, double x, double y, double z) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -164,7 +164,7 @@ extern "C" void MechanicsFunctions::SetMarkPos(unsigned short pid, double x, dou
     player->markPosition.pos[2] = z;
 }
 
-extern "C" void MechanicsFunctions::SetMarkRot(unsigned short pid, double x, double z) noexcept
+extern "C" void MechanicsFunctions::SetMarkRot(PlayerId pid, double x, double z) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -173,7 +173,7 @@ extern "C" void MechanicsFunctions::SetMarkRot(unsigned short pid, double x, dou
     player->markPosition.rot[2] = z;
 }
 
-extern "C" void MechanicsFunctions::SetSelectedSpellId(unsigned short pid, const char *spellId) noexcept
+extern "C" void MechanicsFunctions::SetSelectedSpellId(PlayerId pid, const char *spellId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -181,7 +181,7 @@ extern "C" void MechanicsFunctions::SetSelectedSpellId(unsigned short pid, const
     player->selectedSpellId = spellId;
 }
 
-extern "C" void MechanicsFunctions::SendMarkLocation(unsigned short pid)
+extern "C" void MechanicsFunctions::SendMarkLocation(PlayerId pid)
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -194,7 +194,7 @@ extern "C" void MechanicsFunctions::SendMarkLocation(unsigned short pid)
     packet->Send(false);
 }
 
-extern "C" void MechanicsFunctions::SendSelectedSpell(unsigned short pid)
+extern "C" void MechanicsFunctions::SendSelectedSpell(PlayerId pid)
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -207,7 +207,7 @@ extern "C" void MechanicsFunctions::SendSelectedSpell(unsigned short pid)
     packet->Send(false);
 }
 
-extern "C" void MechanicsFunctions::Jail(unsigned short pid, int jailDays, bool ignoreJailTeleportation, bool ignoreJailSkillIncreases,
+extern "C" void MechanicsFunctions::Jail(PlayerId pid, int jailDays, bool ignoreJailTeleportation, bool ignoreJailSkillIncreases,
                               const char* jailProgressText, const char* jailEndText) noexcept
 {
     Player *player;
@@ -225,7 +225,7 @@ extern "C" void MechanicsFunctions::Jail(unsigned short pid, int jailDays, bool 
     packet->Send(false);
 }
 
-extern "C" void MechanicsFunctions::Resurrect(unsigned short pid, unsigned int type) noexcept
+extern "C" void MechanicsFunctions::Resurrect(PlayerId pid, unsigned int type) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -241,7 +241,7 @@ extern "C" void MechanicsFunctions::Resurrect(unsigned short pid, unsigned int t
 
 // All methods below are deprecated versions of methods from above
 
-extern "C" const char *MechanicsFunctions::GetDeathReason(unsigned short pid) noexcept
+extern "C" const char *MechanicsFunctions::GetDeathReason(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -259,7 +259,7 @@ extern "C" const char *MechanicsFunctions::GetDeathReason(unsigned short pid) no
     return "suicide";
 }
 
-extern "C" unsigned int MechanicsFunctions::GetPlayerKillerRefNumIndex(unsigned short pid) noexcept
+extern "C" unsigned int MechanicsFunctions::GetPlayerKillerRefNumIndex(PlayerId pid) noexcept
 {
     return GetPlayerKillerRefNum(pid);
 }

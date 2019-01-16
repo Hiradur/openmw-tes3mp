@@ -70,7 +70,7 @@ unsigned short Players::getLastPlayerId()
     return slots.rbegin()->first;
 }
 
-Player::Player(const RakNet::RakNetGUID &guid) : BasePlayer(guid), id(InvalidID)
+Player::Player(const RakNet::RakNetGUID &guid) : BasePlayer(guid), id(InvalidPID)
 {
     handshakeCounter = 0;
     loadState = NOTLOADED;
@@ -81,7 +81,7 @@ Player::~Player()
 
 }
 
-unsigned int Player::getId()
+PlayerId Player::getId()
 {
     return id;
 }

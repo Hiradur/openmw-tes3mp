@@ -23,7 +23,7 @@ namespace mwmp
 
             player.sendToLoaded(&packet);
 
-            Script::Call<Script::CallbackIdentity("OnPlayerEquipment")>(player.getId());
+            Plugin::Call<CallbackIndex("OnPlayerEquipment")>(player.getId());
         }
     };
 }

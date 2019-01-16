@@ -4,10 +4,10 @@
 #include <components/openmw-mp/Log.hpp>
 #include <components/openmw-mp/Version.hpp>
 
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 #include <apps/openmw-mp/Networking.hpp>
 #include <apps/openmw-mp/MasterClient.hpp>
-#include <Script/Script.hpp>
+#include <Script/Plugin.hpp>
 
 
 extern "C" void ServerFunctions::StopServer(int code) noexcept
@@ -15,7 +15,7 @@ extern "C" void ServerFunctions::StopServer(int code) noexcept
     mwmp::Networking::getPtr()->stopServer(code);
 }
 
-extern "C" void ServerFunctions::Kick(unsigned short pid) noexcept
+extern "C" void ServerFunctions::Kick(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -56,14 +56,14 @@ extern "C" const char *ServerFunctions::GetProtocolVersion() noexcept
     return version.c_str();
 }
 
-extern "C" int ServerFunctions::GetAvgPing(unsigned short pid) noexcept
+extern "C" int ServerFunctions::GetAvgPing(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, -1);
     return mwmp::Networking::get().getAvgPing(player->guid);
 }
 
-extern "C" const char *ServerFunctions::GetIP(unsigned short pid) noexcept
+extern "C" const char *ServerFunctions::GetIP(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -166,5 +166,10 @@ extern "C" void ServerFunctions::AddPluginHash(const char *pluginName, const cha
 
 extern "C" const char* ServerFunctions::GetModDir() noexcept
 {
-    return Script::GetModDir();
+    return Plugin::GetModDir();
+}
+
+const char *ServerFunctions::GetPluginDir() noexcept
+{
+    return Plugin::GetPluginDir();
 }

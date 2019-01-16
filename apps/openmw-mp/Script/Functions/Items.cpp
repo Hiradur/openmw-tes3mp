@@ -3,13 +3,13 @@
 #include <components/misc/stringops.hpp>
 #include <components/openmw-mp/NetworkMessages.hpp>
 
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 #include <apps/openmw-mp/Networking.hpp>
 #include <apps/openmw/mwworld/inventorystore.hpp>
 
 using namespace mwmp;
 
-extern "C" void ItemFunctions::ClearInventoryChanges(unsigned short pid) noexcept
+extern "C" void ItemFunctions::ClearInventoryChanges(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -22,7 +22,7 @@ extern "C" int ItemFunctions::GetEquipmentSize() noexcept
     return MWWorld::InventoryStore::Slots;
 }
 
-extern "C" unsigned int ItemFunctions::GetInventoryChangesSize(unsigned short pid) noexcept
+extern "C" unsigned int ItemFunctions::GetInventoryChangesSize(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -30,7 +30,7 @@ extern "C" unsigned int ItemFunctions::GetInventoryChangesSize(unsigned short pi
     return player->inventoryChanges.count;
 }
 
-extern "C" unsigned int ItemFunctions::GetInventoryChangesAction(unsigned short pid) noexcept
+extern "C" unsigned int ItemFunctions::GetInventoryChangesAction(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -38,7 +38,7 @@ extern "C" unsigned int ItemFunctions::GetInventoryChangesAction(unsigned short 
     return player->inventoryChanges.action;
 }
 
-extern "C" void ItemFunctions::SetInventoryChangesAction(unsigned short pid, unsigned char action) noexcept
+extern "C" void ItemFunctions::SetInventoryChangesAction(PlayerId pid, unsigned char action) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -46,7 +46,7 @@ extern "C" void ItemFunctions::SetInventoryChangesAction(unsigned short pid, uns
     player->inventoryChanges.action = action;
 }
 
-extern "C" void ItemFunctions::EquipItem(unsigned short pid, unsigned short slot, const char *refId, unsigned int count,
+extern "C" void ItemFunctions::EquipItem(PlayerId pid, unsigned short slot, const char *refId, unsigned int count,
     int charge, double enchantmentCharge) noexcept
 {
     Player *player;
@@ -61,7 +61,7 @@ extern "C" void ItemFunctions::EquipItem(unsigned short pid, unsigned short slot
         player->equipmentIndexChanges.push_back(slot);
 }
 
-extern "C" void ItemFunctions::UnequipItem(unsigned short pid, unsigned short slot) noexcept
+extern "C" void ItemFunctions::UnequipItem(PlayerId pid, unsigned short slot) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -69,7 +69,7 @@ extern "C" void ItemFunctions::UnequipItem(unsigned short pid, unsigned short sl
     ItemFunctions::EquipItem(pid, slot, "", 0, -1, -1);
 }
 
-extern "C" void ItemFunctions::AddItemChange(unsigned short pid, const char* refId, unsigned int count, int charge,
+extern "C" void ItemFunctions::AddItemChange(PlayerId pid, const char* refId, unsigned int count, int charge,
     double enchantmentCharge, const char* soul) noexcept
 {
     Player *player;
@@ -85,7 +85,7 @@ extern "C" void ItemFunctions::AddItemChange(unsigned short pid, const char* ref
     player->inventoryChanges.items.push_back(item);
 }
 
-extern "C" bool ItemFunctions::HasItemEquipped(unsigned short pid, const char* refId)
+extern "C" bool ItemFunctions::HasItemEquipped(PlayerId pid, const char* refId)
 {
     Player *player;
     GET_PLAYER(pid, player, false);
@@ -96,7 +96,7 @@ extern "C" bool ItemFunctions::HasItemEquipped(unsigned short pid, const char* r
     return false;
 }
 
-extern "C" const char *ItemFunctions::GetEquipmentItemRefId(unsigned short pid, unsigned short slot) noexcept
+extern "C" const char *ItemFunctions::GetEquipmentItemRefId(PlayerId pid, unsigned short slot) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -104,7 +104,7 @@ extern "C" const char *ItemFunctions::GetEquipmentItemRefId(unsigned short pid, 
     return player->equipmentItems[slot].refId.c_str();
 }
 
-extern "C" int ItemFunctions::GetEquipmentItemCount(unsigned short pid, unsigned short slot) noexcept
+extern "C" int ItemFunctions::GetEquipmentItemCount(PlayerId pid, unsigned short slot) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -112,7 +112,7 @@ extern "C" int ItemFunctions::GetEquipmentItemCount(unsigned short pid, unsigned
     return player->equipmentItems[slot].count;
 }
 
-extern "C" int ItemFunctions::GetEquipmentItemCharge(unsigned short pid, unsigned short slot) noexcept
+extern "C" int ItemFunctions::GetEquipmentItemCharge(PlayerId pid, unsigned short slot) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -120,7 +120,7 @@ extern "C" int ItemFunctions::GetEquipmentItemCharge(unsigned short pid, unsigne
     return player->equipmentItems[slot].charge;
 }
 
-extern "C" double ItemFunctions::GetEquipmentItemEnchantmentCharge(unsigned short pid, unsigned short slot) noexcept
+extern "C" double ItemFunctions::GetEquipmentItemEnchantmentCharge(PlayerId pid, unsigned short slot) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -128,7 +128,7 @@ extern "C" double ItemFunctions::GetEquipmentItemEnchantmentCharge(unsigned shor
     return player->equipmentItems[slot].enchantmentCharge;
 }
 
-extern "C" const char *ItemFunctions::GetInventoryItemRefId(unsigned short pid, unsigned int index) noexcept
+extern "C" const char *ItemFunctions::GetInventoryItemRefId(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -139,7 +139,7 @@ extern "C" const char *ItemFunctions::GetInventoryItemRefId(unsigned short pid, 
     return player->inventoryChanges.items.at(index).refId.c_str();
 }
 
-extern "C" int ItemFunctions::GetInventoryItemCount(unsigned short pid, unsigned int index) noexcept
+extern "C" int ItemFunctions::GetInventoryItemCount(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -147,7 +147,7 @@ extern "C" int ItemFunctions::GetInventoryItemCount(unsigned short pid, unsigned
     return player->inventoryChanges.items.at(index).count;
 }
 
-extern "C" int ItemFunctions::GetInventoryItemCharge(unsigned short pid, unsigned int index) noexcept
+extern "C" int ItemFunctions::GetInventoryItemCharge(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -155,7 +155,7 @@ extern "C" int ItemFunctions::GetInventoryItemCharge(unsigned short pid, unsigne
     return player->inventoryChanges.items.at(index).charge;
 }
 
-extern "C" double ItemFunctions::GetInventoryItemEnchantmentCharge(unsigned short pid, unsigned int index) noexcept
+extern "C" double ItemFunctions::GetInventoryItemEnchantmentCharge(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -163,7 +163,7 @@ extern "C" double ItemFunctions::GetInventoryItemEnchantmentCharge(unsigned shor
     return player->inventoryChanges.items.at(index).enchantmentCharge;
 }
 
-extern "C" const char *ItemFunctions::GetInventoryItemSoul(unsigned short pid, unsigned int index) noexcept
+extern "C" const char *ItemFunctions::GetInventoryItemSoul(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -174,7 +174,7 @@ extern "C" const char *ItemFunctions::GetInventoryItemSoul(unsigned short pid, u
     return player->inventoryChanges.items.at(index).soul.c_str();
 }
 
-extern "C" const char *ItemFunctions::GetUsedItemRefId(unsigned short pid) noexcept
+extern "C" const char *ItemFunctions::GetUsedItemRefId(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -182,7 +182,7 @@ extern "C" const char *ItemFunctions::GetUsedItemRefId(unsigned short pid) noexc
     return player->usedItem.refId.c_str();
 }
 
-extern "C" int ItemFunctions::GetUsedItemCount(unsigned short pid) noexcept
+extern "C" int ItemFunctions::GetUsedItemCount(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -190,7 +190,7 @@ extern "C" int ItemFunctions::GetUsedItemCount(unsigned short pid) noexcept
     return player->usedItem.count;
 }
 
-extern "C" int ItemFunctions::GetUsedItemCharge(unsigned short pid) noexcept
+extern "C" int ItemFunctions::GetUsedItemCharge(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -198,7 +198,7 @@ extern "C" int ItemFunctions::GetUsedItemCharge(unsigned short pid) noexcept
     return player->usedItem.charge;
 }
 
-extern "C" double ItemFunctions::GetUsedItemEnchantmentCharge(unsigned short pid) noexcept
+extern "C" double ItemFunctions::GetUsedItemEnchantmentCharge(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -206,7 +206,7 @@ extern "C" double ItemFunctions::GetUsedItemEnchantmentCharge(unsigned short pid
     return player->usedItem.enchantmentCharge;
 }
 
-extern "C" const char *ItemFunctions::GetUsedItemSoul(unsigned short pid) noexcept
+extern "C" const char *ItemFunctions::GetUsedItemSoul(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -214,7 +214,7 @@ extern "C" const char *ItemFunctions::GetUsedItemSoul(unsigned short pid) noexce
     return player->usedItem.soul.c_str();
 }
 
-extern "C" void ItemFunctions::SendEquipment(unsigned short pid) noexcept
+extern "C" void ItemFunctions::SendEquipment(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -228,7 +228,7 @@ extern "C" void ItemFunctions::SendEquipment(unsigned short pid) noexcept
     player->equipmentIndexChanges.clear();
 }
 
-extern "C" void ItemFunctions::SendInventoryChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
+extern "C" void ItemFunctions::SendInventoryChanges(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -242,7 +242,7 @@ extern "C" void ItemFunctions::SendInventoryChanges(unsigned short pid, bool sen
         packet->Send(true);
 }
 
-extern "C" void ItemFunctions::SendItemUse(unsigned short pid) noexcept
+extern "C" void ItemFunctions::SendItemUse(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -255,12 +255,12 @@ extern "C" void ItemFunctions::SendItemUse(unsigned short pid) noexcept
 
 extern "C" // All methods below are deprecated versions of methods from above
 
-void ItemFunctions::InitializeInventoryChanges(unsigned short pid) noexcept
+void ItemFunctions::InitializeInventoryChanges(PlayerId pid) noexcept
 {
     ClearInventoryChanges(pid);
 }
 
-extern "C" void ItemFunctions::AddItem(unsigned short pid, const char* refId, unsigned int count, int charge,
+extern "C" void ItemFunctions::AddItem(PlayerId pid, const char* refId, unsigned int count, int charge,
     double enchantmentCharge, const char* soul) noexcept
 {
     AddItemChange(pid, refId, count, charge, enchantmentCharge, soul);

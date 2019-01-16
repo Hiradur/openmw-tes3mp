@@ -1,22 +1,7 @@
 #ifndef OPENMW_SHAPESHIFTAPI_HPP
 #define OPENMW_SHAPESHIFTAPI_HPP
 
-#include "../Types.hpp"
-
 #include "../api.h"
-
-#define SHAPESHIFTAPI \
-    {"GetScale",                    ShapeshiftFunctions::GetScale},\
-    {"IsWerewolf",                  ShapeshiftFunctions::IsWerewolf},\
-    {"GetCreatureRefId",            ShapeshiftFunctions::GetCreatureRefId},\
-    {"GetCreatureNameDisplayState", ShapeshiftFunctions::GetCreatureNameDisplayState},\
-    \
-    {"SetScale",                    ShapeshiftFunctions::SetScale},\
-    {"SetWerewolfState",            ShapeshiftFunctions::SetWerewolfState},\
-    {"SetCreatureRefId",            ShapeshiftFunctions::SetCreatureRefId},\
-    {"SetCreatureNameDisplayState", ShapeshiftFunctions::SetCreatureNameDisplayState},\
-    \
-    {"SendShapeshift",              ShapeshiftFunctions::SendShapeshift}
 
 NAMESPACE_BEGIN(ShapeshiftFunctions)
     /**
@@ -25,7 +10,7 @@ NAMESPACE_BEGIN(ShapeshiftFunctions)
     * \param pid The player ID.
     * \return The scale.
     */
-    API_FUNCTION double CDECL GetScale(unsigned short pid) noexcept;
+    API_FUNCTION double CDECL GetScale(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Check whether a player is a werewolf.
@@ -35,7 +20,7 @@ NAMESPACE_BEGIN(ShapeshiftFunctions)
     * \param pid The player ID.
     * \return The werewolf state.
     */
-    API_FUNCTION bool CDECL IsWerewolf(unsigned short pid) noexcept;
+    API_FUNCTION bool CDECL IsWerewolf(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the refId of the creature the player is disguised as.
@@ -43,7 +28,7 @@ NAMESPACE_BEGIN(ShapeshiftFunctions)
     * \param pid The player ID.
     * \return The creature refId.
     */
-    API_FUNCTION const char *CDECL GetCreatureRefId(unsigned short pid) noexcept;
+    API_FUNCTION const char *CDECL GetCreatureRefId(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Check whether a player's name is replaced by that of the creature they are
@@ -54,7 +39,7 @@ NAMESPACE_BEGIN(ShapeshiftFunctions)
     * \param pid The player ID.
     * \return The creature name display state.
     */
-    API_FUNCTION bool CDECL GetCreatureNameDisplayState(unsigned short pid) noexcept;
+    API_FUNCTION bool CDECL GetCreatureNameDisplayState(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Set the scale of a player.
@@ -66,7 +51,7 @@ NAMESPACE_BEGIN(ShapeshiftFunctions)
     * \param scale The new scale.
     * \return void
     */
-    API_FUNCTION void CDECL SetScale(unsigned short pid, double scale) noexcept;
+    API_FUNCTION void CDECL SetScale(PlayerId pid, double scale) NOEXCEPT;
 
     /**
     * \brief Set the werewolf state of a player.
@@ -78,7 +63,7 @@ NAMESPACE_BEGIN(ShapeshiftFunctions)
     * \param isWerewolf The new werewolf state.
     * \return void
     */
-    API_FUNCTION void CDECL SetWerewolfState(unsigned short pid, bool isWerewolf) noexcept;
+    API_FUNCTION void CDECL SetWerewolfState(PlayerId pid, bool isWerewolf) NOEXCEPT;
 
     /**
     * \brief Set the refId of the creature a player is disguised as.
@@ -92,7 +77,7 @@ NAMESPACE_BEGIN(ShapeshiftFunctions)
     *                             when hovered over by others.
     * \return void
     */
-    API_FUNCTION void CDECL SetCreatureRefId(unsigned short pid, const char *refId) noexcept;
+    API_FUNCTION void CDECL SetCreatureRefId(PlayerId pid, const char *refId) NOEXCEPT;
 
     /**
     * \brief Set whether a player's name is replaced by that of the creature they are
@@ -102,7 +87,7 @@ NAMESPACE_BEGIN(ShapeshiftFunctions)
     * \param displayState The creature name display state.
     * \return void
     */
-    API_FUNCTION void CDECL SetCreatureNameDisplayState(unsigned short pid, bool displayState) noexcept;
+    API_FUNCTION void CDECL SetCreatureNameDisplayState(PlayerId pid, bool displayState) NOEXCEPT;
 
     /**
     * \brief Send a PlayerShapeshift packet about a player.
@@ -113,7 +98,7 @@ NAMESPACE_BEGIN(ShapeshiftFunctions)
     * \param pid The player ID.
     * \return void
     */
-    API_FUNCTION void CDECL SendShapeshift(unsigned short pid);
+    API_FUNCTION void CDECL SendShapeshift(PlayerId pid);
 NAMESPACE_END()
 
 #endif //OPENMW_SHAPESHIFTAPI_HPP

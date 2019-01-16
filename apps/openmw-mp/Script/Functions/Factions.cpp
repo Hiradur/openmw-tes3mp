@@ -3,7 +3,7 @@
 #include <components/misc/stringops.hpp>
 #include <components/openmw-mp/NetworkMessages.hpp>
 
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 #include <apps/openmw-mp/Networking.hpp>
 
 using namespace mwmp;
@@ -11,7 +11,7 @@ using namespace mwmp;
 Faction tempFaction;
 const Faction emptyFaction = {};
 
-extern "C" void FactionFunctions::ClearFactionChanges(unsigned short pid) noexcept
+extern "C" void FactionFunctions::ClearFactionChanges(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -19,7 +19,7 @@ extern "C" void FactionFunctions::ClearFactionChanges(unsigned short pid) noexce
     player->factionChanges.factions.clear();
 }
 
-extern "C" unsigned int FactionFunctions::GetFactionChangesSize(unsigned short pid) noexcept
+extern "C" unsigned int FactionFunctions::GetFactionChangesSize(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -27,7 +27,7 @@ extern "C" unsigned int FactionFunctions::GetFactionChangesSize(unsigned short p
     return player->factionChanges.count;
 }
 
-extern "C" unsigned char FactionFunctions::GetFactionChangesAction(unsigned short pid) noexcept
+extern "C" unsigned char FactionFunctions::GetFactionChangesAction(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -35,7 +35,7 @@ extern "C" unsigned char FactionFunctions::GetFactionChangesAction(unsigned shor
     return player->factionChanges.action;
 }
 
-extern "C" const char *FactionFunctions::GetFactionId(unsigned short pid, unsigned int index) noexcept
+extern "C" const char *FactionFunctions::GetFactionId(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -46,7 +46,7 @@ extern "C" const char *FactionFunctions::GetFactionId(unsigned short pid, unsign
     return player->factionChanges.factions.at(index).factionId.c_str();
 }
 
-extern "C" int FactionFunctions::GetFactionRank(unsigned short pid, unsigned int index) noexcept
+extern "C" int FactionFunctions::GetFactionRank(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -54,7 +54,7 @@ extern "C" int FactionFunctions::GetFactionRank(unsigned short pid, unsigned int
     return player->factionChanges.factions.at(index).rank;
 }
 
-extern "C" bool FactionFunctions::GetFactionExpulsionState(unsigned short pid, unsigned int index) noexcept
+extern "C" bool FactionFunctions::GetFactionExpulsionState(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, false);
@@ -62,7 +62,7 @@ extern "C" bool FactionFunctions::GetFactionExpulsionState(unsigned short pid, u
     return player->factionChanges.factions.at(index).isExpelled;
 }
 
-extern "C" int FactionFunctions::GetFactionReputation(unsigned short pid, unsigned int index) noexcept
+extern "C" int FactionFunctions::GetFactionReputation(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -70,7 +70,7 @@ extern "C" int FactionFunctions::GetFactionReputation(unsigned short pid, unsign
     return player->factionChanges.factions.at(index).reputation;
 }
 
-extern "C" void FactionFunctions::SetFactionChangesAction(unsigned short pid, unsigned char action) noexcept
+extern "C" void FactionFunctions::SetFactionChangesAction(PlayerId pid, unsigned char action) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -98,7 +98,7 @@ extern "C" void FactionFunctions::SetFactionReputation(int reputation) noexcept
     tempFaction.reputation = reputation;
 }
 
-extern "C" void FactionFunctions::AddFaction(unsigned short pid) noexcept
+extern "C" void FactionFunctions::AddFaction(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -108,7 +108,7 @@ extern "C" void FactionFunctions::AddFaction(unsigned short pid) noexcept
     tempFaction = emptyFaction;
 }
 
-extern "C" void FactionFunctions::SendFactionChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
+extern "C" void FactionFunctions::SendFactionChanges(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -124,7 +124,7 @@ extern "C" void FactionFunctions::SendFactionChanges(unsigned short pid, bool se
 
 extern "C" // All methods below are deprecated versions of methods from above
 
-void FactionFunctions::InitializeFactionChanges(unsigned short pid) noexcept
+void FactionFunctions::InitializeFactionChanges(PlayerId pid) noexcept
 {
     ClearFactionChanges(pid);
 }

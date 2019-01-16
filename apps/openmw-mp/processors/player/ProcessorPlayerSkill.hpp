@@ -24,7 +24,7 @@ namespace mwmp
                 //myPacket->Send(player, true);
                 player.sendToLoaded(&packet);
 
-                Script::Call<Script::CallbackIdentity("OnPlayerSkill")>(player.getId());
+                Plugin::Call<CallbackIndex("OnPlayerSkill")>(player.getId());
             }
         }
     };

@@ -3,19 +3,6 @@
 
 #include "../api.h"
 
-#define BOOKAPI \
-    {"ClearBookChanges",       BookFunctions::ClearBookChanges},\
-    \
-    {"GetBookChangesSize",     BookFunctions::GetBookChangesSize},\
-    \
-    {"AddBook",                BookFunctions::AddBook},\
-    \
-    {"GetBookId",              BookFunctions::GetBookId},\
-    \
-    {"SendBookChanges",        BookFunctions::SendBookChanges},\
-    \
-    {"InitializeBookChanges",  BookFunctions::InitializeBookChanges}
-
 NAMESPACE_BEGIN(BookFunctions)
 
     /**
@@ -26,7 +13,7 @@ NAMESPACE_BEGIN(BookFunctions)
     * \param pid The player ID whose book changes should be used.
     * \return void
     */
-    API_FUNCTION void CDECL ClearBookChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL ClearBookChanges(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Get the number of indexes in a player's latest book changes.
@@ -34,7 +21,7 @@ NAMESPACE_BEGIN(BookFunctions)
     * \param pid The player ID whose book changes should be used.
     * \return The number of indexes.
     */
-    API_FUNCTION unsigned int CDECL GetBookChangesSize(unsigned short pid) noexcept;
+    API_FUNCTION unsigned int CDECL GetBookChangesSize(PlayerId pid) NOEXCEPT;
 
     /**
     * \brief Add a new book to the book changes for a player.
@@ -43,7 +30,7 @@ NAMESPACE_BEGIN(BookFunctions)
     * \param bookId The bookId of the book.
     * \return void
     */
-    API_FUNCTION void CDECL AddBook(unsigned short pid, const char* bookId) noexcept;
+    API_FUNCTION void CDECL AddBook(PlayerId pid, const char* bookId) NOEXCEPT;
 
     /**
     * \brief Get the bookId at a certain index in a player's latest book changes.
@@ -52,7 +39,7 @@ NAMESPACE_BEGIN(BookFunctions)
     * \param index The index of the book.
     * \return The bookId.
     */
-    API_FUNCTION const char *CDECL GetBookId(unsigned short pid, unsigned int index) noexcept;
+    API_FUNCTION const char *CDECL GetBookId(PlayerId pid, unsigned int index) NOEXCEPT;
 
     /**
     * \brief Send a PlayerBook packet with a player's recorded book changes.
@@ -64,11 +51,11 @@ NAMESPACE_BEGIN(BookFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendBookChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendBookChanges(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     // All methods below are deprecated versions of methods from above
 
-    API_FUNCTION void CDECL InitializeBookChanges(unsigned short pid) noexcept;
+    API_FUNCTION void CDECL InitializeBookChanges(PlayerId pid) NOEXCEPT;
 NAMESPACE_END()
 
 #endif //OPENMW_BOOKAPI_HPP

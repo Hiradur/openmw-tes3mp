@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include "Player.hpp"
-#include "Script/Script.hpp"
+#include "Script/Plugin.hpp"
 
 using namespace std;
 
@@ -34,7 +34,8 @@ void Cell::addPlayer(Player *player)
 
     if (it != end())
     {
-        LOG_APPEND(Log::LOG_INFO, "- Attempt to add %s to Cell %s again was ignored", player->npc.mName.c_str(), getDescription().c_str());
+        LOG_APPEND(Log::LOG_INFO, "- Attempt to add %s to Cell %s again was ignored", player->npc.mName.c_str(),
+                   getDescription().c_str());
         return;
     }
 
@@ -48,9 +49,12 @@ void Cell::addPlayer(Player *player)
 
     LOG_APPEND(Log::LOG_INFO, "- Adding %s to Cell %s", player->npc.mName.c_str(), getDescription().c_str());
 
-    Script::Call<Script::CallbackIdentity("OnCellLoad")>(player->getId(), getDescription().c_str());
-
-    players.push_back(player);
+    PlayerId id = player->getId();
+    if (id != InvalidPID)
+    {
+        Plugin::Call<CallbackIndex("OnCellLoad")>(id, getDescription().c_str());
+        players.push_back(player);
+    }
 }
 
 void Cell::removePlayer(Player *player, bool cleanPlayer)
@@ -72,7 +76,7 @@ void Cell::removePlayer(Player *player, bool cleanPlayer)
 
             LOG_APPEND(Log::LOG_INFO, "- Removing %s from Cell %s", player->npc.mName.c_str(), getDescription().c_str());
 
-            Script::Call<Script::CallbackIdentity("OnCellUnload")>(player->getId(), getDescription().c_str());
+            Plugin::Call<CallbackIndex("OnCellUnload")>(player->getId(), getDescription().c_str());
 
             players.erase(it);
             return;

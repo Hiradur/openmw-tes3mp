@@ -19,7 +19,7 @@ namespace mwmp
 
             packet.Send(true);
 
-            Script::Call<Script::CallbackIdentity("OnPlayerDisposition")>(player.getId());
+            Plugin::Call<CallbackIndex("OnPlayerDisposition")>(player.getId());
         }
     };
 }

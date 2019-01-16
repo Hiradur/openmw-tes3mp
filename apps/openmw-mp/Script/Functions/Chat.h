@@ -1,14 +1,7 @@
 #ifndef OPENMW_CHATAPI_HPP
 #define OPENMW_CHATAPI_HPP
 
-#include "../Types.hpp"
-
 #include "../api.h"
-
-#define CHATAPI \
-    {"SendMessage",       ChatFunctions::SendMessage},\
-    {"CleanChatForPid",   ChatFunctions::CleanChat},\
-    {"CleanChat",         ChatFunctions::CleanChatForPid}
 
 NAMESPACE_BEGIN(ChatFunctions)
     /**
@@ -22,7 +15,7 @@ NAMESPACE_BEGIN(ChatFunctions)
     *                           to the packet (false by default).
     * \return void
     */
-    API_FUNCTION void CDECL SendMessage(unsigned short pid, const char *message, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+    API_FUNCTION void CDECL SendMessage(PlayerId pid, const char *message, bool sendToOtherPlayers, bool skipAttachedPlayer) NOEXCEPT;
 
     /**
     * \brief Remove all messages from chat for a certain player.
@@ -30,7 +23,7 @@ NAMESPACE_BEGIN(ChatFunctions)
     * \param pid The player ID.
     * \return void
     */
-    API_FUNCTION void CDECL CleanChatForPid(unsigned short pid);
+    API_FUNCTION void CDECL CleanChatForPid(PlayerId pid);
 
     /**
     * \brief Remove all messages from chat for everyone on the server.

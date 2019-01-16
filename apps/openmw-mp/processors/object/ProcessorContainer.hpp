@@ -22,7 +22,7 @@ namespace mwmp
             // container packets to ensure their integrity based on what exists in the
             // server data
 
-            Script::Call<Script::CallbackIdentity("OnContainer")>(player.getId(), objectList.cell.getDescription().c_str());
+            Plugin::Call<CallbackIndex("OnContainer")>(player.getId(), objectList.cell.getDescription().c_str());
 
             LOG_APPEND(Log::LOG_INFO, "- Finished processing ID_CONTAINER");
         }

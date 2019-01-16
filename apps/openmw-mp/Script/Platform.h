@@ -50,9 +50,11 @@
 #if defined __cplusplus
 #define NAMESPACE_BEGIN(name) namespace name {
 #define NAMESPACE_END() }
+#define NOEXCEPT noexcept
 #else
 #define NAMESPACE_BEGIN(name)
 #define NAMESPACE_END()
+#define NOEXCEPT
 #endif
 
 #endif //PLATFORM_HPP

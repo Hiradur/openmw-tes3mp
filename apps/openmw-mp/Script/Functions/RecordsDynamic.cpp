@@ -3,7 +3,7 @@
 
 #include <apps/openmw-mp/Networking.hpp>
 #include <apps/openmw-mp/Player.hpp>
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 #include <fstream>
 
 #include "Worldstate.h"
@@ -1238,7 +1238,7 @@ extern "C" void RecordsDynamicFunctions::AddRecordInventoryItem() noexcept
     tempInventoryItem = {};
 }
 
-extern "C" void RecordsDynamicFunctions::SendRecordDynamic(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
+extern "C" void RecordsDynamicFunctions::SendRecordDynamic(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );

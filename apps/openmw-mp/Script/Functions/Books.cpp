@@ -2,12 +2,12 @@
 
 #include <components/openmw-mp/NetworkMessages.hpp>
 
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 #include <apps/openmw-mp/Networking.hpp>
 
 using namespace mwmp;
 
-extern "C" void BookFunctions::ClearBookChanges(unsigned short pid) noexcept
+extern "C" void BookFunctions::ClearBookChanges(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -15,7 +15,7 @@ extern "C" void BookFunctions::ClearBookChanges(unsigned short pid) noexcept
     player->bookChanges.books.clear();
 }
 
-extern "C" unsigned int BookFunctions::GetBookChangesSize(unsigned short pid) noexcept
+extern "C" unsigned int BookFunctions::GetBookChangesSize(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -23,7 +23,7 @@ extern "C" unsigned int BookFunctions::GetBookChangesSize(unsigned short pid) no
     return player->bookChanges.count;
 }
 
-extern "C" void BookFunctions::AddBook(unsigned short pid, const char* bookId) noexcept
+extern "C" void BookFunctions::AddBook(PlayerId pid, const char* bookId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -34,7 +34,7 @@ extern "C" void BookFunctions::AddBook(unsigned short pid, const char* bookId) n
     player->bookChanges.books.push_back(book);
 }
 
-extern "C" const char *BookFunctions::GetBookId(unsigned short pid, unsigned int index) noexcept
+extern "C" const char *BookFunctions::GetBookId(PlayerId pid, unsigned int index) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, "");
@@ -45,7 +45,7 @@ extern "C" const char *BookFunctions::GetBookId(unsigned short pid, unsigned int
     return player->bookChanges.books.at(index).bookId.c_str();
 }
 
-extern "C" void BookFunctions::SendBookChanges(unsigned short pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
+extern "C" void BookFunctions::SendBookChanges(PlayerId pid, bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -62,7 +62,7 @@ extern "C" void BookFunctions::SendBookChanges(unsigned short pid, bool sendToOt
 
 // All methods below are deprecated versions of methods from above
 
-extern "C" void BookFunctions::InitializeBookChanges(unsigned short pid) noexcept
+extern "C" void BookFunctions::InitializeBookChanges(PlayerId pid) noexcept
 {
     ClearBookChanges(pid);
 }

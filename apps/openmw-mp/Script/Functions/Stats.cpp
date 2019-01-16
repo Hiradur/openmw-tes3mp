@@ -9,7 +9,7 @@
 #include <components/openmw-mp/NetworkMessages.hpp>
 
 #include <apps/openmw-mp/Networking.hpp>
-#include <apps/openmw-mp/Script/ScriptFunctions.hpp>
+#include <apps/openmw-mp/Script/Callbacks.hpp>
 
 using namespace std;
 using namespace ESM;
@@ -66,7 +66,7 @@ extern "C" const char *StatsFunctions::GetSkillName(unsigned short skillId) noex
     return Skill::sSkillNames[skillId].c_str();
 }
 
-extern "C" const char *StatsFunctions::GetName(unsigned short pid) noexcept
+extern "C" const char *StatsFunctions::GetName(PlayerId pid) noexcept
 {
 
     Player *player;
@@ -75,7 +75,7 @@ extern "C" const char *StatsFunctions::GetName(unsigned short pid) noexcept
     return player->npc.mName.c_str();
 }
 
-extern "C" const char *StatsFunctions::GetRace(unsigned short pid) noexcept
+extern "C" const char *StatsFunctions::GetRace(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -83,7 +83,7 @@ extern "C" const char *StatsFunctions::GetRace(unsigned short pid) noexcept
     return player->npc.mRace.c_str();
 }
 
-extern "C" const char *StatsFunctions::GetHead(unsigned short pid) noexcept
+extern "C" const char *StatsFunctions::GetHead(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -91,7 +91,7 @@ extern "C" const char *StatsFunctions::GetHead(unsigned short pid) noexcept
     return player->npc.mHead.c_str();
 }
 
-extern "C" const char *StatsFunctions::GetHairstyle(unsigned short pid) noexcept
+extern "C" const char *StatsFunctions::GetHairstyle(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -99,7 +99,7 @@ extern "C" const char *StatsFunctions::GetHairstyle(unsigned short pid) noexcept
     return player->npc.mHair.c_str();
 }
 
-extern "C" int StatsFunctions::GetIsMale(unsigned short pid) noexcept
+extern "C" int StatsFunctions::GetIsMale(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, false);
@@ -107,7 +107,7 @@ extern "C" int StatsFunctions::GetIsMale(unsigned short pid) noexcept
     return player->npc.isMale();
 }
 
-extern "C" const char *StatsFunctions::GetBirthsign(unsigned short pid) noexcept
+extern "C" const char *StatsFunctions::GetBirthsign(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -115,7 +115,7 @@ extern "C" const char *StatsFunctions::GetBirthsign(unsigned short pid) noexcept
     return player->birthsign.c_str();
 }
 
-extern "C" int StatsFunctions::GetLevel(unsigned short pid) noexcept
+extern "C" int StatsFunctions::GetLevel(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -123,7 +123,7 @@ extern "C" int StatsFunctions::GetLevel(unsigned short pid) noexcept
     return player->creatureStats.mLevel;
 }
 
-extern "C" int StatsFunctions::GetLevelProgress(unsigned short pid) noexcept
+extern "C" int StatsFunctions::GetLevelProgress(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -131,7 +131,7 @@ extern "C" int StatsFunctions::GetLevelProgress(unsigned short pid) noexcept
     return player->npcStats.mLevelProgress;
 }
 
-extern "C" double StatsFunctions::GetHealthBase(unsigned short pid) noexcept
+extern "C" double StatsFunctions::GetHealthBase(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0.0f);
@@ -139,7 +139,7 @@ extern "C" double StatsFunctions::GetHealthBase(unsigned short pid) noexcept
     return player->creatureStats.mDynamic[0].mBase;
 }
 
-extern "C" double StatsFunctions::GetHealthCurrent(unsigned short pid) noexcept
+extern "C" double StatsFunctions::GetHealthCurrent(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0.0f);
@@ -147,7 +147,7 @@ extern "C" double StatsFunctions::GetHealthCurrent(unsigned short pid) noexcept
     return player->creatureStats.mDynamic[0].mCurrent;
 }
 
-extern "C" double StatsFunctions::GetMagickaBase(unsigned short pid) noexcept
+extern "C" double StatsFunctions::GetMagickaBase(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0.0f);
@@ -155,7 +155,7 @@ extern "C" double StatsFunctions::GetMagickaBase(unsigned short pid) noexcept
     return player->creatureStats.mDynamic[1].mBase;
 }
 
-extern "C" double StatsFunctions::GetMagickaCurrent(unsigned short pid) noexcept
+extern "C" double StatsFunctions::GetMagickaCurrent(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0.0f);
@@ -163,7 +163,7 @@ extern "C" double StatsFunctions::GetMagickaCurrent(unsigned short pid) noexcept
     return player->creatureStats.mDynamic[1].mCurrent;
 }
 
-extern "C" double StatsFunctions::GetFatigueBase(unsigned short pid) noexcept
+extern "C" double StatsFunctions::GetFatigueBase(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0.0f);
@@ -171,7 +171,7 @@ extern "C" double StatsFunctions::GetFatigueBase(unsigned short pid) noexcept
     return player->creatureStats.mDynamic[2].mBase;
 }
 
-extern "C" double StatsFunctions::GetFatigueCurrent(unsigned short pid) noexcept
+extern "C" double StatsFunctions::GetFatigueCurrent(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0.0f);
@@ -179,7 +179,7 @@ extern "C" double StatsFunctions::GetFatigueCurrent(unsigned short pid) noexcept
     return player->creatureStats.mDynamic[2].mCurrent;
 }
 
-extern "C" int StatsFunctions::GetAttributeBase(unsigned short pid, unsigned short attributeId) noexcept
+extern "C" int StatsFunctions::GetAttributeBase(PlayerId pid, unsigned short attributeId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -190,7 +190,7 @@ extern "C" int StatsFunctions::GetAttributeBase(unsigned short pid, unsigned sho
     return player->creatureStats.mAttributes[attributeId].mBase;
 }
 
-extern "C" int StatsFunctions::GetAttributeModifier(unsigned short pid, unsigned short attributeId) noexcept
+extern "C" int StatsFunctions::GetAttributeModifier(PlayerId pid, unsigned short attributeId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -201,7 +201,7 @@ extern "C" int StatsFunctions::GetAttributeModifier(unsigned short pid, unsigned
     return player->creatureStats.mAttributes[attributeId].mMod;
 }
 
-extern "C" int StatsFunctions::GetSkillBase(unsigned short pid, unsigned short skillId) noexcept
+extern "C" int StatsFunctions::GetSkillBase(PlayerId pid, unsigned short skillId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -212,7 +212,7 @@ extern "C" int StatsFunctions::GetSkillBase(unsigned short pid, unsigned short s
     return player->npcStats.mSkills[skillId].mBase;
 }
 
-extern "C" int StatsFunctions::GetSkillModifier(unsigned short pid, unsigned short skillId) noexcept
+extern "C" int StatsFunctions::GetSkillModifier(PlayerId pid, unsigned short skillId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -223,7 +223,7 @@ extern "C" int StatsFunctions::GetSkillModifier(unsigned short pid, unsigned sho
     return player->npcStats.mSkills[skillId].mMod;
 }
 
-extern "C" double StatsFunctions::GetSkillProgress(unsigned short pid, unsigned short skillId) noexcept
+extern "C" double StatsFunctions::GetSkillProgress(PlayerId pid, unsigned short skillId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0.0f);
@@ -234,7 +234,7 @@ extern "C" double StatsFunctions::GetSkillProgress(unsigned short pid, unsigned 
     return player->npcStats.mSkills[skillId].mProgress;
 }
 
-extern "C" int StatsFunctions::GetSkillIncrease(unsigned short pid, unsigned int attributeId) noexcept
+extern "C" int StatsFunctions::GetSkillIncrease(PlayerId pid, unsigned int attributeId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -245,7 +245,7 @@ extern "C" int StatsFunctions::GetSkillIncrease(unsigned short pid, unsigned int
     return player->npcStats.mSkillIncrease[attributeId];
 }
 
-extern "C" int StatsFunctions::GetBounty(unsigned short pid) noexcept
+extern "C" int StatsFunctions::GetBounty(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, 0);
@@ -253,7 +253,7 @@ extern "C" int StatsFunctions::GetBounty(unsigned short pid) noexcept
     return player->npcStats.mBounty;
 }
 
-extern "C" void StatsFunctions::SetName(unsigned short pid, const char *name) noexcept
+extern "C" void StatsFunctions::SetName(PlayerId pid, const char *name) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -264,7 +264,7 @@ extern "C" void StatsFunctions::SetName(unsigned short pid, const char *name) no
     player->npc.mName = name;
 }
 
-extern "C" void StatsFunctions::SetRace(unsigned short pid, const char *race) noexcept
+extern "C" void StatsFunctions::SetRace(PlayerId pid, const char *race) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -278,7 +278,7 @@ extern "C" void StatsFunctions::SetRace(unsigned short pid, const char *race) no
     player->npc.mRace = race;
 }
 
-extern "C" void StatsFunctions::SetHead(unsigned short pid, const char *head) noexcept
+extern "C" void StatsFunctions::SetHead(PlayerId pid, const char *head) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -289,7 +289,7 @@ extern "C" void StatsFunctions::SetHead(unsigned short pid, const char *head) no
     player->npc.mHead = head;
 }
 
-extern "C" void StatsFunctions::SetHairstyle(unsigned short pid, const char *hairstyle) noexcept
+extern "C" void StatsFunctions::SetHairstyle(PlayerId pid, const char *hairstyle) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -300,7 +300,7 @@ extern "C" void StatsFunctions::SetHairstyle(unsigned short pid, const char *hai
     player->npc.mHair = hairstyle;
 }
 
-extern "C" void StatsFunctions::SetIsMale(unsigned short pid, int state) noexcept
+extern "C" void StatsFunctions::SetIsMale(PlayerId pid, int state) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -308,7 +308,7 @@ extern "C" void StatsFunctions::SetIsMale(unsigned short pid, int state) noexcep
     player->npc.setIsMale(state == true);
 }
 
-extern "C" void StatsFunctions::SetBirthsign(unsigned short pid, const char *sign) noexcept
+extern "C" void StatsFunctions::SetBirthsign(PlayerId pid, const char *sign) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -319,7 +319,7 @@ extern "C" void StatsFunctions::SetBirthsign(unsigned short pid, const char *sig
     player->birthsign = sign;
 }
 
-extern "C" void StatsFunctions::SetResetStats(unsigned short pid, bool resetStats) noexcept
+extern "C" void StatsFunctions::SetResetStats(PlayerId pid, bool resetStats) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -327,7 +327,7 @@ extern "C" void StatsFunctions::SetResetStats(unsigned short pid, bool resetStat
     player->resetStats = resetStats;
 }
 
-extern "C" void StatsFunctions::SetLevel(unsigned short pid, int value) noexcept
+extern "C" void StatsFunctions::SetLevel(PlayerId pid, int value) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -335,7 +335,7 @@ extern "C" void StatsFunctions::SetLevel(unsigned short pid, int value) noexcept
     player->creatureStats.mLevel = value;
 }
 
-extern "C" void StatsFunctions::SetLevelProgress(unsigned short pid, int value) noexcept
+extern "C" void StatsFunctions::SetLevelProgress(PlayerId pid, int value) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -343,7 +343,7 @@ extern "C" void StatsFunctions::SetLevelProgress(unsigned short pid, int value) 
     player->npcStats.mLevelProgress = value;
 }
 
-extern "C" void StatsFunctions::SetHealthBase(unsigned short pid, double value) noexcept
+extern "C" void StatsFunctions::SetHealthBase(PlayerId pid, double value) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -354,7 +354,7 @@ extern "C" void StatsFunctions::SetHealthBase(unsigned short pid, double value) 
         player->statsDynamicIndexChanges.push_back(0);
 }
 
-extern "C" void StatsFunctions::SetHealthCurrent(unsigned short pid, double value) noexcept
+extern "C" void StatsFunctions::SetHealthCurrent(PlayerId pid, double value) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -365,7 +365,7 @@ extern "C" void StatsFunctions::SetHealthCurrent(unsigned short pid, double valu
         player->statsDynamicIndexChanges.push_back(0);
 }
 
-extern "C" void StatsFunctions::SetMagickaBase(unsigned short pid, double value) noexcept
+extern "C" void StatsFunctions::SetMagickaBase(PlayerId pid, double value) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -376,7 +376,7 @@ extern "C" void StatsFunctions::SetMagickaBase(unsigned short pid, double value)
         player->statsDynamicIndexChanges.push_back(1);
 }
 
-extern "C" void StatsFunctions::SetMagickaCurrent(unsigned short pid, double value) noexcept
+extern "C" void StatsFunctions::SetMagickaCurrent(PlayerId pid, double value) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -387,7 +387,7 @@ extern "C" void StatsFunctions::SetMagickaCurrent(unsigned short pid, double val
         player->statsDynamicIndexChanges.push_back(1);
 }
 
-extern "C" void StatsFunctions::SetFatigueBase(unsigned short pid, double value) noexcept
+extern "C" void StatsFunctions::SetFatigueBase(PlayerId pid, double value) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -398,7 +398,7 @@ extern "C" void StatsFunctions::SetFatigueBase(unsigned short pid, double value)
         player->statsDynamicIndexChanges.push_back(2);
 }
 
-extern "C" void StatsFunctions::SetFatigueCurrent(unsigned short pid, double value) noexcept
+extern "C" void StatsFunctions::SetFatigueCurrent(PlayerId pid, double value) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -409,7 +409,7 @@ extern "C" void StatsFunctions::SetFatigueCurrent(unsigned short pid, double val
         player->statsDynamicIndexChanges.push_back(2);
 }
 
-extern "C" void StatsFunctions::SetAttributeBase(unsigned short pid, unsigned short attributeId, int value) noexcept
+extern "C" void StatsFunctions::SetAttributeBase(PlayerId pid, unsigned short attributeId, int value) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -423,7 +423,7 @@ extern "C" void StatsFunctions::SetAttributeBase(unsigned short pid, unsigned sh
         player->attributeIndexChanges.push_back(attributeId);
 }
 
-extern "C" void StatsFunctions::ClearAttributeModifier(unsigned short pid, unsigned short attributeId) noexcept
+extern "C" void StatsFunctions::ClearAttributeModifier(PlayerId pid, unsigned short attributeId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -437,7 +437,7 @@ extern "C" void StatsFunctions::ClearAttributeModifier(unsigned short pid, unsig
         player->attributeIndexChanges.push_back(attributeId);
 }
 
-extern "C" void StatsFunctions::SetSkillBase(unsigned short pid, unsigned short skillId, int value) noexcept
+extern "C" void StatsFunctions::SetSkillBase(PlayerId pid, unsigned short skillId, int value) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -451,7 +451,7 @@ extern "C" void StatsFunctions::SetSkillBase(unsigned short pid, unsigned short 
         player->skillIndexChanges.push_back(skillId);
 }
 
-extern "C" void StatsFunctions::ClearSkillModifier(unsigned short pid, unsigned short skillId) noexcept
+extern "C" void StatsFunctions::ClearSkillModifier(PlayerId pid, unsigned short skillId) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -465,7 +465,7 @@ extern "C" void StatsFunctions::ClearSkillModifier(unsigned short pid, unsigned 
         player->skillIndexChanges.push_back(skillId);
 }
 
-extern "C" void StatsFunctions::SetSkillProgress(unsigned short pid, unsigned short skillId, double value) noexcept
+extern "C" void StatsFunctions::SetSkillProgress(PlayerId pid, unsigned short skillId, double value) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -479,7 +479,7 @@ extern "C" void StatsFunctions::SetSkillProgress(unsigned short pid, unsigned sh
         player->skillIndexChanges.push_back(skillId);
 }
 
-extern "C" void StatsFunctions::SetSkillIncrease(unsigned short pid, unsigned int attributeId, int value) noexcept
+extern "C" void StatsFunctions::SetSkillIncrease(PlayerId pid, unsigned int attributeId, int value) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -493,7 +493,7 @@ extern "C" void StatsFunctions::SetSkillIncrease(unsigned short pid, unsigned in
         player->attributeIndexChanges.push_back(attributeId);
 }
 
-extern "C" void StatsFunctions::SetBounty(unsigned short pid, int value) noexcept
+extern "C" void StatsFunctions::SetBounty(PlayerId pid, int value) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -501,7 +501,7 @@ extern "C" void StatsFunctions::SetBounty(unsigned short pid, int value) noexcep
     player->npcStats.mBounty = value;
 }
 
-extern "C" void StatsFunctions::SetCharGenStage(unsigned short pid, int currentStage, int endStage) noexcept
+extern "C" void StatsFunctions::SetCharGenStage(PlayerId pid, int currentStage, int endStage) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -516,7 +516,7 @@ extern "C" void StatsFunctions::SetCharGenStage(unsigned short pid, int currentS
     packet->Send(false);
 }
 
-extern "C" void StatsFunctions::SendBaseInfo(unsigned short pid) noexcept
+extern "C" void StatsFunctions::SendBaseInfo(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -528,7 +528,7 @@ extern "C" void StatsFunctions::SendBaseInfo(unsigned short pid) noexcept
     packet->Send(true);
 }
 
-extern "C" void StatsFunctions::SendStatsDynamic(unsigned short pid) noexcept
+extern "C" void StatsFunctions::SendStatsDynamic(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -542,7 +542,7 @@ extern "C" void StatsFunctions::SendStatsDynamic(unsigned short pid) noexcept
     player->statsDynamicIndexChanges.clear();
 }
 
-extern "C" void StatsFunctions::SendAttributes(unsigned short pid) noexcept
+extern "C" void StatsFunctions::SendAttributes(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -556,7 +556,7 @@ extern "C" void StatsFunctions::SendAttributes(unsigned short pid) noexcept
     player->attributeIndexChanges.clear();
 }
 
-extern "C" void StatsFunctions::SendSkills(unsigned short pid) noexcept
+extern "C" void StatsFunctions::SendSkills(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player,);
@@ -570,7 +570,7 @@ extern "C" void StatsFunctions::SendSkills(unsigned short pid) noexcept
     player->skillIndexChanges.clear();
 }
 
-extern "C" void StatsFunctions::SendLevel(unsigned short pid) noexcept
+extern "C" void StatsFunctions::SendLevel(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );
@@ -582,7 +582,7 @@ extern "C" void StatsFunctions::SendLevel(unsigned short pid) noexcept
     packet->Send(true);
 }
 
-extern "C" void StatsFunctions::SendBounty(unsigned short pid) noexcept
+extern "C" void StatsFunctions::SendBounty(PlayerId pid) noexcept
 {
     Player *player;
     GET_PLAYER(pid, player, );

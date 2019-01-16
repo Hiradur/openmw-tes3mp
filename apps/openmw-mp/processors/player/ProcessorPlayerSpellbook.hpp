@@ -21,7 +21,7 @@ namespace mwmp
         {
             DEBUG_PRINTF(strPacketID.c_str());
 
-            Script::Call<Script::CallbackIdentity("OnPlayerSpellbook")>(player.getId());
+            Plugin::Call<CallbackIndex("OnPlayerSpellbook")>(player.getId());
         }
     };
 }

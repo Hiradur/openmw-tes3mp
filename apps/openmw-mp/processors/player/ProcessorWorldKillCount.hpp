@@ -19,7 +19,7 @@ namespace mwmp
 
             packet.Send(true);
 
-            Script::Call<Script::CallbackIdentity("OnWorldKillCount")>(player.getId());
+            Plugin::Call<CallbackIndex("OnWorldKillCount")>(player.getId());
         }
     };
 }
