@@ -24,5 +24,5 @@ typedef unsigned int PlayerId;
 #define InvalidPID ((unsigned int) -1)
 
 #if !defined __cplusplus
-#define bool uint8_t
+typedef uint8_t bool;
 #endif
