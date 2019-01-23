@@ -17,7 +17,7 @@
 #endif
 #endif
 
-#if defined _WIN32 && !defined _LUAJIT_PREPROCESS
+#if defined _WIN32 && !defined __genffi__
 #ifndef CDECL
 #define CDECL __cdecl
 #endif
@@ -39,13 +39,13 @@
 #define IMPORT_FUNCTION EXTERN
 #endif
 
-#if defined _LUAJIT_PREPROCESS
+#if defined __genffi__
 #define API_FUNCTION
 #elif !defined _HOST
 #define API_FUNCTION IMPORT_FUNCTION
 #else
 #define API_FUNCTION EXPORT_FUNCTION
-#endif // _LUAJIT_PREPROCESS
+#endif // __genffi__
 
 #if defined __cplusplus
 #define NAMESPACE_BEGIN(name) namespace name {

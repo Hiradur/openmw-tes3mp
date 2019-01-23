@@ -15,7 +15,7 @@
 
 #include "CTypes.h"
 
-#if !(defined _HOST || defined _LUAJIT_PREPROCESS)
+#if !(defined _HOST || defined __genffi__)
 
 /** @addtogroup PluginCallbacks Plugin Callbacks
  *  @brief Those callbacks can be implemented by plugin.

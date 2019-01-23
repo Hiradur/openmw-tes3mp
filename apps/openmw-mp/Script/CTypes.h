@@ -12,7 +12,7 @@ typedef unsigned __int64 RetType;
 #else
 typedef unsigned long long RetType;
 #endif
-#elif defined __x86_64__ && defined __ILP32__
+#elif (defined __x86_64__ || defined __aarch64__) && defined __ILP32__
 typedef unsigned long long RetType;
 #else
 typedef unsigned long RetType;
@@ -23,6 +23,6 @@ typedef unsigned int PlayerId;
 
 #define InvalidPID ((unsigned int) -1)
 
-#if !defined __cplusplus
+#if !(defined __cplusplus || defined __genffi__)
 typedef uint8_t bool;
 #endif
