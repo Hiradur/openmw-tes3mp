@@ -25,4 +25,6 @@ typedef unsigned int PlayerId;
 
 #if !(defined __cplusplus || defined __genffi__)
 typedef uint8_t bool;
+#define true 1
+#define false 0
 #endif
